@@ -7,18 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BC259E906A3443CBBA34DB2 /* Pods_XHomeLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */; };
 		3E4B8E5A2ABFE6B60010028C /* XHomeLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */; };
 		3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8E5B2ABFE6B60010028C /* ContentView.swift */; };
 		3E4B8E5E2ABFE6B80010028C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B8E5D2ABFE6B80010028C /* Assets.xcassets */; };
 		3E4B8E612ABFE6B80010028C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B8E602ABFE6B80010028C /* Preview Assets.xcassets */; };
+		3E5FC2912ABFEA1800EBD86B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2902ABFEA1800EBD86B /* HomeView.swift */; };
+		3E5FC2A42ABFF56E00EBD86B /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2982ABFF56E00EBD86B /* SearchAPI.swift */; };
+		3E5FC2A52ABFF56E00EBD86B /* MoyaResult+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC29A2ABFF56E00EBD86B /* MoyaResult+Extension.swift */; };
+		3E5FC2A62ABFF56E00EBD86B /* MoyaProviderType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC29B2ABFF56E00EBD86B /* MoyaProviderType+Extension.swift */; };
+		3E5FC2A72ABFF56E00EBD86B /* Response+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC29C2ABFF56E00EBD86B /* Response+Extension.swift */; };
+		3E5FC2A82ABFF56E00EBD86B /* NetWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC29E2ABFF56E00EBD86B /* NetWorking.swift */; };
+		3E5FC2A92ABFF56E00EBD86B /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC29F2ABFF56E00EBD86B /* ApiConfig.swift */; };
+		3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2A12ABFF56E00EBD86B /* TokenPlugin.swift */; };
+		3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2A22ABFF56E00EBD86B /* NetworkLoggerPlugin.swift */; };
+		3E5FC2AC2ABFF56E00EBD86B /* WarningPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2A32ABFF56E00EBD86B /* WarningPlugin.swift */; };
+		3E5FC2AE2AC020A200EBD86B /* LocalBookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2AD2AC020A200EBD86B /* LocalBookshelfView.swift */; };
+		3E5FC2B02AC020F800EBD86B /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2AF2AC020F800EBD86B /* MineView.swift */; };
+		3E5FC2B42AC02FC600EBD86B /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2B32AC02FC600EBD86B /* Book.swift */; };
+		3E5FC2B62AC03B5100EBD86B /* BookItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2B52AC03B5100EBD86B /* BookItemView.swift */; };
+		3E5FC2BA2AC060C500EBD86B /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2B92AC060C500EBD86B /* TabViewModel.swift */; };
+		3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */; };
+		3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2BD2AC0851400EBD86B /* MainView.swift */; };
+		3E5FC2C12AC08D0A00EBD86B /* LocalBookshelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */; };
+		3E5FC2C42AC08EF400EBD86B /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C32AC08EF400EBD86B /* AddBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14B1E245D87BD8DD275875C5 /* Pods-XHomeLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.release.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.release.xcconfig"; sourceTree = "<group>"; };
+		243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHomeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4B8E562ABFE6B60010028C /* XHomeLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHomeLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XHomeLibraryApp.swift; sourceTree = "<group>"; };
 		3E4B8E5B2ABFE6B60010028C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3E4B8E5D2ABFE6B80010028C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E4B8E602ABFE6B80010028C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3E5FC2902ABFEA1800EBD86B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3E5FC2982ABFF56E00EBD86B /* SearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
+		3E5FC29A2ABFF56E00EBD86B /* MoyaResult+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoyaResult+Extension.swift"; sourceTree = "<group>"; };
+		3E5FC29B2ABFF56E00EBD86B /* MoyaProviderType+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoyaProviderType+Extension.swift"; sourceTree = "<group>"; };
+		3E5FC29C2ABFF56E00EBD86B /* Response+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Response+Extension.swift"; sourceTree = "<group>"; };
+		3E5FC29E2ABFF56E00EBD86B /* NetWorking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorking.swift; sourceTree = "<group>"; };
+		3E5FC29F2ABFF56E00EBD86B /* ApiConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
+		3E5FC2A12ABFF56E00EBD86B /* TokenPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPlugin.swift; sourceTree = "<group>"; };
+		3E5FC2A22ABFF56E00EBD86B /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		3E5FC2A32ABFF56E00EBD86B /* WarningPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningPlugin.swift; sourceTree = "<group>"; };
+		3E5FC2AD2AC020A200EBD86B /* LocalBookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBookshelfView.swift; sourceTree = "<group>"; };
+		3E5FC2AF2AC020F800EBD86B /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
+		3E5FC2B32AC02FC600EBD86B /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		3E5FC2B52AC03B5100EBD86B /* BookItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemView.swift; sourceTree = "<group>"; };
+		3E5FC2B92AC060C500EBD86B /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
+		3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfViewModel.swift; sourceTree = "<group>"; };
+		3E5FC2BD2AC0851400EBD86B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBookshelfViewModel.swift; sourceTree = "<group>"; };
+		3E5FC2C32AC08EF400EBD86B /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.debug.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BC259E906A3443CBBA34DB2 /* Pods_XHomeLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +80,8 @@
 			children = (
 				3E4B8E582ABFE6B60010028C /* XHomeLibrary */,
 				3E4B8E572ABFE6B60010028C /* Products */,
+				AAC57864D78BD213AF7BECF2 /* Pods */,
+				5820051BFAE429BB67915832 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,6 +98,8 @@
 			children = (
 				3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */,
 				3E4B8E5B2ABFE6B60010028C /* ContentView.swift */,
+				3E5FC2922ABFF4F100EBD86B /* MVVM */,
+				3E5FC2962ABFF56E00EBD86B /* Network */,
 				3E4B8E5D2ABFE6B80010028C /* Assets.xcassets */,
 				3E4B8E5F2ABFE6B80010028C /* Preview Content */,
 			);
@@ -67,6 +114,144 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		3E5FC2922ABFF4F100EBD86B /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2952ABFF51100EBD86B /* Model */,
+				3E5FC2942ABFF50D00EBD86B /* View */,
+				3E5FC2932ABFF50300EBD86B /* ViewModel */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		3E5FC2932ABFF50300EBD86B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2B92AC060C500EBD86B /* TabViewModel.swift */,
+				3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */,
+				3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3E5FC2942ABFF50D00EBD86B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2BD2AC0851400EBD86B /* MainView.swift */,
+				3E5FC2BF2AC0851E00EBD86B /* Home */,
+				3E5FC2B72AC03B5900EBD86B /* Shelf */,
+				3E5FC2C22AC08ED600EBD86B /* Add */,
+				3E5FC2B82AC05E4200EBD86B /* Mine */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E5FC2952ABFF51100EBD86B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2B32AC02FC600EBD86B /* Book.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3E5FC2962ABFF56E00EBD86B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2972ABFF56E00EBD86B /* Apis */,
+				3E5FC2992ABFF56E00EBD86B /* Extension */,
+				3E5FC29D2ABFF56E00EBD86B /* Config */,
+				3E5FC2A02ABFF56E00EBD86B /* Plugin */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3E5FC2972ABFF56E00EBD86B /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2982ABFF56E00EBD86B /* SearchAPI.swift */,
+			);
+			path = Apis;
+			sourceTree = "<group>";
+		};
+		3E5FC2992ABFF56E00EBD86B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC29A2ABFF56E00EBD86B /* MoyaResult+Extension.swift */,
+				3E5FC29B2ABFF56E00EBD86B /* MoyaProviderType+Extension.swift */,
+				3E5FC29C2ABFF56E00EBD86B /* Response+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3E5FC29D2ABFF56E00EBD86B /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC29E2ABFF56E00EBD86B /* NetWorking.swift */,
+				3E5FC29F2ABFF56E00EBD86B /* ApiConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		3E5FC2A02ABFF56E00EBD86B /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2A12ABFF56E00EBD86B /* TokenPlugin.swift */,
+				3E5FC2A22ABFF56E00EBD86B /* NetworkLoggerPlugin.swift */,
+				3E5FC2A32ABFF56E00EBD86B /* WarningPlugin.swift */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		3E5FC2B72AC03B5900EBD86B /* Shelf */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2AD2AC020A200EBD86B /* LocalBookshelfView.swift */,
+				3E5FC2B52AC03B5100EBD86B /* BookItemView.swift */,
+			);
+			path = Shelf;
+			sourceTree = "<group>";
+		};
+		3E5FC2B82AC05E4200EBD86B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2AF2AC020F800EBD86B /* MineView.swift */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		3E5FC2BF2AC0851E00EBD86B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2902ABFEA1800EBD86B /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3E5FC2C22AC08ED600EBD86B /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				3E5FC2C32AC08EF400EBD86B /* AddBookView.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		5820051BFAE429BB67915832 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAC57864D78BD213AF7BECF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */,
+				14B1E245D87BD8DD275875C5 /* Pods-XHomeLibrary.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +259,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E4B8E642ABFE6B80010028C /* Build configuration list for PBXNativeTarget "XHomeLibrary" */;
 			buildPhases = (
+				0EE92502E5216C69DBAEE8A2 /* [CP] Check Pods Manifest.lock */,
 				3E4B8E522ABFE6B60010028C /* Sources */,
 				3E4B8E532ABFE6B60010028C /* Frameworks */,
 				3E4B8E542ABFE6B60010028C /* Resources */,
+				7A86F3E0C314BFEA9419BCFC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,13 +319,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0EE92502E5216C69DBAEE8A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XHomeLibrary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A86F3E0C314BFEA9419BCFC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3E4B8E522ABFE6B60010028C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E5FC2C12AC08D0A00EBD86B /* LocalBookshelfViewModel.swift in Sources */,
+				3E5FC2B42AC02FC600EBD86B /* Book.swift in Sources */,
+				3E5FC2AE2AC020A200EBD86B /* LocalBookshelfView.swift in Sources */,
+				3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */,
+				3E5FC2A72ABFF56E00EBD86B /* Response+Extension.swift in Sources */,
+				3E5FC2A52ABFF56E00EBD86B /* MoyaResult+Extension.swift in Sources */,
+				3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */,
+				3E5FC2C42AC08EF400EBD86B /* AddBookView.swift in Sources */,
+				3E5FC2B02AC020F800EBD86B /* MineView.swift in Sources */,
+				3E5FC2912ABFEA1800EBD86B /* HomeView.swift in Sources */,
+				3E5FC2AC2ABFF56E00EBD86B /* WarningPlugin.swift in Sources */,
+				3E5FC2A82ABFF56E00EBD86B /* NetWorking.swift in Sources */,
+				3E5FC2A62ABFF56E00EBD86B /* MoyaProviderType+Extension.swift in Sources */,
 				3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */,
+				3E5FC2A42ABFF56E00EBD86B /* SearchAPI.swift in Sources */,
 				3E4B8E5A2ABFE6B60010028C /* XHomeLibraryApp.swift in Sources */,
+				3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */,
+				3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */,
+				3E5FC2B62AC03B5100EBD86B /* BookItemView.swift in Sources */,
+				3E5FC2BA2AC060C500EBD86B /* TabViewModel.swift in Sources */,
+				3E5FC2A92ABFF56E00EBD86B /* ApiConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +514,7 @@
 		};
 		3E4B8E652ABFE6B80010028C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -273,12 +522,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"XHomeLibrary/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,6 +545,7 @@
 		};
 		3E4B8E662ABFE6B80010028C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14B1E245D87BD8DD275875C5 /* Pods-XHomeLibrary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,12 +553,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"XHomeLibrary/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
