@@ -15,7 +15,7 @@ struct MainView: View {
             TabView(selection: $tabVM.tab) {
                 HomeView()
                     .padding(.vertical, 1)
-                    .background(Color.gray.opacity(0.3))
+                    .background(Color.xgrayBg)
                     .tabItem {
                         TabViewModel.Tab.home.icon
                         TabViewModel.Tab.home.title
@@ -24,7 +24,7 @@ struct MainView: View {
 
                 LocalBookshelfView()
                     .padding(.vertical, 1)
-                    .background(Color.gray.opacity(0.3))
+                    .background(Color.xgrayBg)
                     .tabItem {
                         TabViewModel.Tab.bookshelf.icon
                         TabViewModel.Tab.bookshelf.title
@@ -33,7 +33,7 @@ struct MainView: View {
 
                 AddBookView()
                     .padding(.vertical, 1)
-                    .background(Color.gray.opacity(0.3))
+                    .background(Color.xgrayBg)
                     .tabItem {
                         TabViewModel.Tab.add.icon
                         TabViewModel.Tab.add.title

@@ -15,6 +15,10 @@ struct HomeView: View {
             header
 
             Spacer()
+
+            honeycomb
+
+            Spacer()
         }
         .padding(.horizontal)
     }
@@ -49,8 +53,65 @@ struct HomeView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
     }
+
+    var honeycomb: some View {
+        ForEach(0...shelfVM.recBooks.count, id: \.self) { bookIndex in
+            if bookIndex == 1 {
+                HStack(spacing: 20) {
+                    ForEach(0...bookIndex, id: \.self) { i in
+                        Image(shelfVM.recBooks[i].cover)
+                            .resizable()
+                            .modifier(HoneycombImageModifer())
+                    }
+                }
+            } else if bookIndex == 4 {
+                HStack(spacing: 20) {
+                    ForEach(2...bookIndex, id: \.self) { i in
+                        Image(shelfVM.recBooks[i].cover)
+                            .resizable()
+                            .modifier(HoneycombImageModifer())
+                    }
+                }
+            } else if bookIndex == 6 {
+                HStack(spacing: 20) {
+                    ForEach(5...bookIndex, id: \.self) { i in
+                        Image(shelfVM.recBooks[i].cover)
+                            .resizable()
+                            .modifier(HoneycombImageModifer())
+                    }
+                }
+            } else if bookIndex == 9 {
+                HStack(spacing: 20) {
+                    ForEach(7...bookIndex, id: \.self) { i in
+                        Image(shelfVM.recBooks[i].cover)
+                            .resizable()
+                            .modifier(HoneycombImageModifer())
+                    }
+                }
+            } else if bookIndex == 11 {
+                HStack(spacing: 20) {
+                    ForEach(10...bookIndex, id: \.self) { i in
+                        Image(shelfVM.recBooks[i].cover)
+                            .resizable()
+                            .modifier(HoneycombImageModifer())
+                    }
+                }
+            }
+        }
+
+//        return HStack(spacing: 20) {
+//            Image("book-cover-1")
+//                .resizable()
+//                .modifier(HoneycombImageModifer())
+//
+//            Image("book-cover-0")
+//                .resizable()
+//                .modifier(HoneycombImageModifer())
+//        }
+    }
 }
 
 #Preview {
     HomeView()
+        .background(Color.xgrayBg)
 }

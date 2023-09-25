@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3BC259E906A3443CBBA34DB2 /* Pods_XHomeLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */; };
+		3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */; };
+		3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A72AC1DDBF003A2C1B /* XColor.swift */; };
 		3E4B8E5A2ABFE6B60010028C /* XHomeLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */; };
 		3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8E5B2ABFE6B60010028C /* ContentView.swift */; };
 		3E4B8E5E2ABFE6B80010028C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B8E5D2ABFE6B80010028C /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		14B1E245D87BD8DD275875C5 /* Pods-XHomeLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.release.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.release.xcconfig"; sourceTree = "<group>"; };
 		243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHomeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneycombImageModifier.swift; sourceTree = "<group>"; };
+		3E0E47A72AC1DDBF003A2C1B /* XColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XColor.swift; sourceTree = "<group>"; };
 		3E4B8E562ABFE6B60010028C /* XHomeLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHomeLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XHomeLibraryApp.swift; sourceTree = "<group>"; };
 		3E4B8E5B2ABFE6B60010028C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E0E47A32AC1DAAA003A2C1B /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				3E0E47A42AC1DABD003A2C1B /* ViewModifier */,
+				3E0E47A72AC1DDBF003A2C1B /* XColor.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		3E0E47A42AC1DABD003A2C1B /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 		3E4B8E4D2ABFE6B60010028C = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +120,7 @@
 				3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */,
 				3E4B8E5B2ABFE6B60010028C /* ContentView.swift */,
 				3E5FC2922ABFF4F100EBD86B /* MVVM */,
+				3E0E47A32AC1DAAA003A2C1B /* Tool */,
 				3E5FC2962ABFF56E00EBD86B /* Network */,
 				3E4B8E5D2ABFE6B80010028C /* Assets.xcassets */,
 				3E4B8E5F2ABFE6B80010028C /* Preview Content */,
@@ -375,6 +397,7 @@
 				3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */,
 				3E5FC2C42AC08EF400EBD86B /* AddBookView.swift in Sources */,
 				3E5FC2B02AC020F800EBD86B /* MineView.swift in Sources */,
+				3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */,
 				3E5FC2912ABFEA1800EBD86B /* HomeView.swift in Sources */,
 				3E5FC2AC2ABFF56E00EBD86B /* WarningPlugin.swift in Sources */,
 				3E5FC2A82ABFF56E00EBD86B /* NetWorking.swift in Sources */,
@@ -385,6 +408,7 @@
 				3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */,
 				3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */,
 				3E5FC2B62AC03B5100EBD86B /* BookItemView.swift in Sources */,
+				3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */,
 				3E5FC2BA2AC060C500EBD86B /* TabViewModel.swift in Sources */,
 				3E5FC2A92ABFF56E00EBD86B /* ApiConfig.swift in Sources */,
 			);
