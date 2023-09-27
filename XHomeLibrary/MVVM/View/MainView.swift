@@ -49,7 +49,7 @@ struct MainView: View {
 //                    }
 //                    .tag(TabViewModel.Tab.mine)
             }
-//            .navigationTitle(tabVM.getCurrentTab().title)
+            .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
 //                Image(systemName: "text.badge.plus")

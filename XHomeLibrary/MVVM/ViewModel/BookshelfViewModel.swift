@@ -8,13 +8,17 @@
 import SwiftUI
 
 class BookshelfViewModel: ObservableObject {
+    // 是否展示书架
+    @Published var show : Bool = false
+    
     // 搜索栏参数
     @Published var selectedLoc: Location = .all
     @Published var keyword: String = ""
-
     // 书架
     @Published var books: [Book] = []
-    // 推荐
+    
+    
+    // 首页推荐
     @Published var recBooks: [Book] = []
 
     init() {
@@ -84,12 +88,19 @@ extension BookshelfViewModel {
         }
     }
     
+    func goShelf() {
+        self.show = true
+    }
     
-    func getTotal() -> Int {
+    func goBack() {
+        self.show = false
+    }
+    
+    func getShelfTotal() -> Int {
         return self.books.count
     }
     
-    func isEmpty() -> Bool {
+    func isShelfEmpty() -> Bool {
         return self.books.isEmpty
     }
     

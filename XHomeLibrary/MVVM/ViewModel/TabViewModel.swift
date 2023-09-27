@@ -34,11 +34,11 @@ class TabViewModel: ObservableObject {
             case .home:
                 return Text("首页")
             case .bookshelf:
-                return Text("书架")
+                return Text("本地书架")
 //            case .mine:
 //                return Text("我的")
             case .add:
-                return Text("新增")
+                return Text("新增图书")
             }
         }
     }
