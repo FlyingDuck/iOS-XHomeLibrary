@@ -163,8 +163,8 @@
 			children = (
 				3E5FC2BD2AC0851400EBD86B /* MainView.swift */,
 				3E5FC2BF2AC0851E00EBD86B /* Home */,
-				3E5FC2B72AC03B5900EBD86B /* Shelf */,
 				3E5FC2C22AC08ED600EBD86B /* Add */,
+				3E5FC2B72AC03B5900EBD86B /* Shelf */,
 				3E5FC2B82AC05E4200EBD86B /* Mine */,
 			);
 			path = View;

@@ -9,13 +9,14 @@ import SwiftUI
 
 struct Book {
     var id: String = ""
-    var name: String = "佚名"
+    var name: String = ""
     var author: String = ""
     var publisher: String = ""
     var location: BookshelfViewModel.Location = .all
     var cover: String = ""
     var isbn: String = ""
     var description: String = ""
+    
     var local : Bool = false
 }
 

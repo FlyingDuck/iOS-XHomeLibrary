@@ -13,4 +13,5 @@ extension Color {
 //    static let xgrayBg : Color = Color("xgray-bg")
 //    static let xgray : Color = Color("xgray")
     static let xgrayBg : Color = Color.gray.opacity(0.3)
+    static let xwhiteCard : Color = Color.white.opacity(0.5)
 }

@@ -14,6 +14,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 header
+                    .padding(.top)
                 honeycomb.padding(.top, 100)
                 Spacer()
             }

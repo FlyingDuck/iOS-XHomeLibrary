@@ -11,19 +11,21 @@ struct LocalBookshelfView: View {
     @StateObject var shelfVM: LocalBookshelfViewModel = .init()
 
     var body: some View {
-        VStack {
-            // 头部：搜索栏
-            header
-
-            if shelfVM.isEmpty() {
-                emptylist
-            } else {
-                // 书籍列表
-                booklist
+        NavigationView {
+            VStack {
+                // 头部：搜索栏
+                header
+                
+                if shelfVM.isEmpty() {
+                    emptylist
+                } else {
+                    // 书籍列表
+                    booklist
+                }
             }
+            .padding(.horizontal)
+            .background(Color.xgrayBg)
         }
-        .padding(.horizontal)
-//        .background(Color.gray.opacity(0.3))
     }
 
     var header: some View {
@@ -88,5 +90,5 @@ struct LocalBookshelfView: View {
 
 #Preview {
     LocalBookshelfView()
-        .background(Color.gray.opacity(0.3))
+        .background(Color.xgrayBg.opacity(0.5))
 }

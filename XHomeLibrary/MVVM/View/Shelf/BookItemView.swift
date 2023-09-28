@@ -59,7 +59,7 @@ struct BookItemView: View {
         .padding(.horizontal, 5)
 //        .frame(width: UIScreen.main.bounds.width, height: 200, alignment:  .center)
         .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/5)
-        .background(Color.white.opacity(0.8))
+        .background(Color.xwhiteCard)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 }

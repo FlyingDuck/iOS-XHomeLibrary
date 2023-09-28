@@ -15,30 +15,33 @@ struct MainView: View {
             TabView(selection: $tabVM.tab) {
                 HomeView()
                     .padding(.vertical, 1)
-                    .background(Color.xgrayBg)
+                    .background(Color.xgrayBg.opacity(0.5))
                     .tabItem {
                         TabViewModel.Tab.home.icon
                         TabViewModel.Tab.home.title
                     }
                     .tag(TabViewModel.Tab.home)
 
+                AddBookView()
+                    .padding(.vertical, 1)
+                    .background(Color.xgrayBg.opacity(0.5))
+                    .tabItem {
+                        TabViewModel.Tab.add.icon
+                        TabViewModel.Tab.add.title
+                    }
+                    .tag(TabViewModel.Tab.add)
+                    .environmentObject(tabVM)
+                
                 LocalBookshelfView()
                     .padding(.vertical, 1)
-                    .background(Color.xgrayBg)
+                    .background(Color.xgrayBg.opacity(0.5))
                     .tabItem {
                         TabViewModel.Tab.bookshelf.icon
                         TabViewModel.Tab.bookshelf.title
                     }
                     .tag(TabViewModel.Tab.bookshelf)
 
-                AddBookView()
-                    .padding(.vertical, 1)
-                    .background(Color.xgrayBg)
-                    .tabItem {
-                        TabViewModel.Tab.add.icon
-                        TabViewModel.Tab.add.title
-                    }
-                    .tag(TabViewModel.Tab.add)
+                
 
 //                MineView()
 //                    .padding(.vertical, 1)
