@@ -45,16 +45,6 @@ struct MainView: View {
             }
             .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-//                Image(systemName: "text.badge.plus")
-            }
-            .sheet(isPresented: $bookWatcher.showBookDetail) {
-                // dismiss do nothing
-            } content: {
-                if bookWatcher.showBookDetail {
-                    BookDetailView(book: bookWatcher.showBook!)
-                }
-            }
         }
     }
 }

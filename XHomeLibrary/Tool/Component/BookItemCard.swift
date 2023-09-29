@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BookItemView: View {
+struct BookItemCard: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
 
     var book: Book
@@ -57,22 +57,27 @@ struct BookItemView: View {
                 Button(action: {
                     bookWatcher.setShowBook(book: book)
                 }, label: {
-                    Label("", systemImage: "chevron.right")
-                        .foregroundColor(Color.accentColor.opacity(0.7))
+//                    Label("", systemImage: "chevron.right")
+                    Label("", systemImage: "poweron")
+//                    Label("", systemImage: "ellipsis")
+//                        .rotationEffect(Angle(degrees: 90))
+                        .font(.system(size: 20))
+                        .foregroundColor(Color.black.opacity(0.2))
                         .frame(maxHeight: .infinity)
-                        .padding(.horizontal, 10)
+                        .padding(.horizontal, 5)
                         .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
+                        .shadow(color: .white, radius: 5, x: 10, y: 10)
                 })
             }
         }
         .padding(.horizontal, 5)
-        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/5)
+        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/5.5)
         .background(Color.xwhiteCard)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 }
 
 #Preview {
-    BookItemView(book: Book(id: "1", name: "古文观止 古文观止 古文观止 古文观止", author: "佚名 古文观止 古文观止 古文观止", publisher: "新华出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
+    BookItemCard(book: Book(id: "1", name: "古文观止 古文观止 古文观止 古文观止", author: "佚名 古文观止 古文观止 古文观止", publisher: "新华出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
         .background(Color.green)
 }

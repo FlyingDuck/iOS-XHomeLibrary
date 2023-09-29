@@ -138,7 +138,7 @@ struct BookDetailView: View {
             NavigationLink {
                 BookEditView(bookVM: BookViewModel(book: self.book))
                     .navigationBarTitle("图书编辑")
-                    
+                    .interactiveDismissDisabled()  // 禁止滑动关闭sheet
             } label: {
                 Label("去编辑", systemImage: "square.and.pencil")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)

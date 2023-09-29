@@ -8,24 +8,33 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var bookWatcher = BookWatcher.shared
     @StateObject var shelfVM: BookshelfViewModel = .init()
-
+    
     var body: some View {
         NavigationView {
             VStack {
-                header
-                    .padding(.top, 5)
+                header.padding(.top, 5)
                 HoneyCombView()
                     .background(Color.xgrayBg)
                     .environmentObject(shelfVM)
             }
             .background(Color.xgrayTab)
             .padding(.horizontal)
-            
         }
         .fullScreenCover(isPresented: $shelfVM.show, content: {
-            BookshelfView().environmentObject(shelfVM)
+            BookshelfView()
+                .environmentObject(shelfVM)
         })
+        .sheet(isPresented: $bookWatcher.showBookDetail) {
+            print("close home sheet")
+            bookWatcher.clear()
+        } content: {
+            if bookWatcher.showBookDetail {
+                BookDetailView(book: bookWatcher.showBook)
+//                    .interactiveDismissDisabled()  // 禁止滑动关闭sheet
+            }
+        }
     }
 
     var header: some View {
@@ -57,7 +66,6 @@ struct HomeView: View {
 //                    .padding(.horizontal, 20)
 //                    .frame(width: UIScreen.main.bounds.width, alignment: .trailing)
 //            }
-            
         }
     }
 }

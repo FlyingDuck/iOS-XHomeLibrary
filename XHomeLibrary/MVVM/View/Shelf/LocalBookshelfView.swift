@@ -29,7 +29,17 @@ struct LocalBookshelfView: View {
                 }
             }
             .background(Color.xgrayTab)
+            
         }
+        .toolbar(content: {
+            Button(action: {
+                // 上传
+            }, label: {
+                Image(systemName: "icloud.and.arrow.up")
+                    .font(.system(size: 15, weight: .light, design: .default))
+            })
+            .padding(.horizontal, 15)
+        })
     }
 
     var header: some View {
@@ -45,7 +55,7 @@ struct LocalBookshelfView: View {
                 Text("搜索")
             }
             .padding(.all, 10)
-            .background(Color.blue.opacity(0.6))
+            .background(Color.blue.opacity(0.5))
             .foregroundColor(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
@@ -62,9 +72,10 @@ struct LocalBookshelfView: View {
                     .italic(true)
                 Spacer()
             }
+            .padding(.top, 5)
 
             ForEach(shelfVM.books, id: \.self.id) { book in
-                BookItemView(book: book)
+                BookItemCard(book: book)
             }
 
             HStack {
@@ -95,6 +106,8 @@ struct LocalBookshelfView: View {
 }
 
 #Preview {
-    LocalBookshelfView()
-        .background(Color.red)
+    NavigationStack {
+        LocalBookshelfView()
+            .background(Color.red)
+    }
 }

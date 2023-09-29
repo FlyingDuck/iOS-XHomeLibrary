@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BookshelfView: View {
+    @ObservedObject var bookWatcher = BookWatcher.shared
+    
     @EnvironmentObject var shelfVM: BookshelfViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -22,35 +24,39 @@ struct BookshelfView: View {
                 }
             }
             .padding(.horizontal)
+            .background(Color.xgrayBg)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .toolbar {
-//                toolbar
+        }
+        .sheet(isPresented: $bookWatcher.showBookDetail) {
+            print("close book shelf sheet")
+            bookWatcher.clear()
+        } content: {
+            if bookWatcher.showBookDetail {
+                BookDetailView(book: bookWatcher.showBook)
             }
         }
     }
     
-    @ToolbarContentBuilder
-    var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
-            Image(systemName: "chevron.backward")
-//                .rotationEffect(Angle(degrees: 180))
-                .background(Color.gray.opacity(0.2))
-                .clipShape(Circle())
-                .onTapGesture {
-                    dismiss()
-                }
-        }
-        ToolbarItem(placement: .principal) {
-            Text("云书架")
-                .font(.system(size: 20, weight: .regular, design: .rounded))
-        }
-//        ToolbarItem(placement: .navigationBarTrailing) {
-//            Image(systemName: "ellipsis").rotationEffect(Angle(degrees: 90))
+//    @ToolbarContentBuilder
+//    var toolbar: some ToolbarContent {
+//        ToolbarItem(placement: .navigationBarLeading) {
+//            Image(systemName: "chevron.backward")
+//                .background(Color.gray.opacity(0.2))
+//                .clipShape(Circle())
+//                .onTapGesture {
+//                    dismiss()
+//                }
 //        }
-    }
+//        ToolbarItem(placement: .principal) {
+//            Text("云书架")
+//                .font(.system(size: 20, weight: .regular, design: .rounded))
+//        }
+    ////        ToolbarItem(placement: .navigationBarTrailing) {
+    ////            Image(systemName: "ellipsis").rotationEffect(Angle(degrees: 90))
+    ////        }
+//    }
     
-    
-    var header : some View {
+    var header: some View {
         HStack {
             Image(systemName: "chevron.backward")
                 .font(.system(size: 20))
@@ -60,6 +66,8 @@ struct BookshelfView: View {
 //                .clipShape(Circle())
                 .onTapGesture {
                     dismiss()
+                    shelfVM.clear()
+                    bookWatcher.clear()
                 }
             
             HStack(spacing: 2) {
@@ -80,7 +88,7 @@ struct BookshelfView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             }
             Button {
-                // todo
+                shelfVM.search()
             } label: {
                 Text("搜索")
             }
@@ -102,7 +110,7 @@ struct BookshelfView: View {
             }
 
             ForEach(shelfVM.books, id: \.self.id) { book in
-                BookItemView(book: book)
+                BookItemCard(book: book)
             }
 
             HStack {
@@ -130,7 +138,6 @@ struct BookshelfView: View {
         }
         .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
     }
-    
 }
 
 #Preview {

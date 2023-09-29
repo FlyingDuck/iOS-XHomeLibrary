@@ -19,15 +19,6 @@ struct BookEditView: View {
         .scrollIndicators(.hidden)
     }
     
-    var toolbar: some View {
-        Button {
-            // todo something
-        } label: {
-            Image(systemName: "barcode.viewfinder")
-                .font(.system(size: 20, weight: .regular, design: .monospaced))
-        }
-    }
-    
     var baseInfo: some View {
         VStack(spacing: 30) {
             HStack {
@@ -35,13 +26,34 @@ struct BookEditView: View {
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .leading)
                 Spacer()
-                Button {
-                    // todo something
-                } label: {
-//                    Image(systemName: "camera.viewfinder")
-                    Image(systemName: "photo.artframe")
-                        .font(.system(size: 100, weight: .ultraLight, design: .monospaced))
-                        .foregroundColor(.gray.opacity(0.5))
+                
+                if bookVM.book.cover.isEmpty {
+                    Button {
+                        // todo something
+                    } label: {
+                        Image(systemName: "photo.artframe")
+                            .font(.system(size: 100, weight: .ultraLight, design: .monospaced))
+                            .foregroundColor(.gray.opacity(0.5))
+                            .frame(maxHeight: .infinity)
+                    }
+                } else {
+                    HStack {
+                        Image(bookVM.book.cover)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100)
+                            .overlay {
+                                Button(action: {
+                                    print("tap to change picture")
+                                }, label: {
+                                    Image(systemName: "camera.viewfinder")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(.accentColor.opacity(0.2))
+                                        .frame(width: 100)
+                                })
+                            }
+                    }
                 }
                 
                 Spacer()
@@ -51,66 +63,20 @@ struct BookEditView: View {
                 } label: {
                     Image(systemName: "barcode.viewfinder")
                         .font(.system(size: 30, weight: .regular, design: .monospaced))
+                        .foregroundColor(.accentColor.opacity(0.7))
                 }
             }
+            .frame(height: 150)
             
-            HStack(spacing: 15) {
-                Text("书名")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .frame(width: 50, alignment: .leading)
-                VStack(spacing: 2) {
-                    TextField("", text: $bookVM.book.name)
-                        .padding(.horizontal, 10)
-                    Rectangle()
-                        .fill(Color.gray)
-                        .frame(height: 1)
-                }
-            }
-
-            HStack(spacing: 15) {
-                Text("作者")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .frame(width: 50, alignment: .leading)
-                VStack(spacing: 2) {
-                    TextField("", text: $bookVM.book.author)
-                        .padding(.horizontal, 10)
-                    Rectangle()
-                        .fill(Color.gray)
-                        .frame(height: 1)
-                }
-            }
-            
-            HStack(spacing: 15) {
-                Text("出版社")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .frame(width: 50, alignment: .leading)
-                VStack(spacing: 2) {
-                    TextField("", text: $bookVM.book.publisher)
-                        .padding(.horizontal, 10)
-                    Rectangle()
-                        .fill(Color.gray)
-                        .frame(height: 1)
-                }
-            }
-            
-            HStack(spacing: 15) {
-                Text("ISBN")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                    .frame(width: 50, alignment: .leading)
-                VStack(spacing: 2) {
-                    TextField("", text: $bookVM.book.isbn)
-                        .keyboardType(.numberPad)
-                        .padding(.horizontal, 10)
-                    Rectangle()
-                        .fill(Color.gray)
-                        .frame(height: 1)
-                }
-            }
+            TextInputRow(title: "书名", text: $bookVM.book.name)
+            TextInputRow(title: "作者", text: $bookVM.book.author)
+            TextInputRow(title: "出版社", text: $bookVM.book.publisher)
+            TextInputRow(title: "ISBN", text: $bookVM.book.isbn)
+//                .keyboardType(.numberPad)
         }
         .padding(.all, 20)
         .background(Color.xwhiteCard)
         .frame(width: UIScreen.main.bounds.width)
-//        .textFieldStyle(.roundedBorder)
     }
     
     var additionalInfo: some View {
@@ -166,6 +132,6 @@ struct BookEditView: View {
     BookEditView()
         .environmentObject(BookViewModel(
             //        book: .init()
-                    book: Book(id: "1", name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息")
-                ))
+            book: Book(id: "1", name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息")
+        ))
 }

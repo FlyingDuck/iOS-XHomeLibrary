@@ -48,6 +48,14 @@ class BookshelfViewModel: ObservableObject {
 }
 
 extension BookshelfViewModel {
+    
+    func clear() {
+        self.show = false
+        self.books = []
+        self.keyword = ""
+        self.selectedLoc = .all
+    }
+    
     func search() {
         let books = [
             Book(id: "1", name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息"),
@@ -60,7 +68,7 @@ extension BookshelfViewModel {
             Book(id: "8", name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息"),
             Book(id: "9", name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息"),
         ]
-        if self.keyword == "empty" {
+        if self.keyword.isEmpty {
             self.books = []
         } else {
             self.books = books.shuffled()

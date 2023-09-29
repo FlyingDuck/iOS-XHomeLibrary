@@ -11,16 +11,20 @@ class BookWatcher: ObservableObject {
     static let shared = BookWatcher()
 
     @Published var showBookDetail: Bool = false
-    @Published var showBook: Book?
+    @Published var showBook: Book = .init()
 }
 
 extension BookWatcher {
+    func clear() {
+        self.showBookDetail = false
+    }
+    
     func getShowBook() -> Book {
-        return self.showBook ?? .init()
+        return self.showBook
     }
 
     func setShowBook(book: Book) {
-        self.showBook = book
         self.showBookDetail = true
+        self.showBook = book
     }
 }
