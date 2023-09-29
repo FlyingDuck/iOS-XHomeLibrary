@@ -22,34 +22,34 @@ struct BookItemCard: View {
 
             VStack(alignment: .leading, spacing: 10) {
                 Text("\(book.name)")
-                    .font(.system(size: 20, weight: .heavy, design: .rounded))
+                    .font(.system(size: 16, weight: .heavy, design: .rounded))
                 Text("\(book.author)")
-                    .font(.system(size: 15, weight: .regular, design: .rounded))
+                    .font(.system(size: 12, weight: .regular, design: .rounded))
                 Spacer()
                 Text("\(book.publisher)")
-                    .font(.system(size: 15, weight: .light, design: .rounded))
+                    .font(.system(size: 12, weight: .light, design: .rounded))
                     .italic()
 
                 HStack {
                     Image(systemName: "mappin.and.ellipse")
-                        .font(.system(size: 15))
+                        .font(.system(size: 12))
                         .foregroundColor(Color.gray)
                     Text("\(book.location.descripte)")
-                        .font(.system(size: 15, weight: .light, design: .rounded))
+                        .font(.system(size: 12, weight: .light, design: .rounded))
                         .foregroundColor(Color.gray)
 
                     if book.local {
                         Spacer()
 //                        Image(systemName: "externaldrive.fill.badge.timemachine")
                         Image(systemName: "clock.badge.exclamationmark")
-                            .font(.system(size: 15))
+                            .font(.system(size: 12))
                             .foregroundColor(Color.orange.opacity(0.6))
                     }
                 }
             }
             .frame(maxWidth: 3 * UIScreen.main.bounds.width/5, alignment: .leading)
             .lineLimit(1)
-            .padding(.vertical, 40)
+            .padding(.vertical, 30)
 
             Spacer()
 
@@ -71,7 +71,7 @@ struct BookItemCard: View {
             }
         }
         .padding(.horizontal, 5)
-        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/5.5)
+        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/6)
         .background(Color.xwhiteCard)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }

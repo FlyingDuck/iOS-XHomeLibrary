@@ -23,7 +23,7 @@ struct BookEditView: View {
         VStack(spacing: 30) {
             HStack {
                 Text("封面")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .leading)
                 Spacer()
                 
@@ -83,7 +83,7 @@ struct BookEditView: View {
         VStack(spacing: 20) {
             HStack {
                 Text("藏地")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .leading)
                 Picker("选择器", selection: $bookVM.book.location) {
                     Text("北京").tag(BookshelfViewModel.Location.beijing)
@@ -93,9 +93,10 @@ struct BookEditView: View {
             
             HStack(alignment: .top) {
                 Text("备注")
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .topLeading)
                 TextEditor(text: $bookVM.book.description)
+                    .font(.system(size: 12))
                     .frame(height: 150)
                     .border(Color.gray, width: 1)
 //                    .padding(.horizontal)

@@ -22,7 +22,7 @@ struct BookDetailView: View {
                 pageTitle
                 
                 baseInfo
-                divider
+//                divider
                 additionalInfo
                 footer
             }
@@ -40,42 +40,51 @@ struct BookDetailView: View {
     
     var baseInfo: some View {
         HStack {
-            VStack {
+            VStack(alignment: .leading) {
                 Image(book.cover)
                     .resizable()
                     .scaledToFit()
+                    .frame(width: 140)
+                
+                HStack() {
+                    Image(systemName: "mappin.and.ellipse")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color.gray)
+                    Text("\(book.location.descripte)")
+                        .font(.system(size: 12, weight: .thin, design: .rounded))
+    //                    .foregroundColor(Color.gray)
+                }
             }
             
-            Divider().padding(.vertical)
+            Divider().padding(.all)
             
-            VStack(alignment: .leading, spacing: 60) {
-                VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .center, spacing: 60) {
+                VStack(alignment: .center, spacing: 20) {
                     Text(book.name)
-                        .font(.system(size: 20, weight: .heavy, design: .rounded))
+                        .font(.system(size: 15, weight: .heavy, design: .rounded))
                         .lineLimit(2)
                     Text(book.author)
-                        .font(.system(size: 15, weight: .regular, design: .rounded))
+                        .font(.system(size: 12, weight: .regular, design: .rounded))
                         .lineLimit(1)
                 }
-                VStack(alignment: .leading) {
+                VStack(alignment: .center, spacing: 10) {
                     Text(book.publisher)
-                        .font(.system(size: 15, weight: .light, design: .rounded))
+                        .font(.system(size: 12, weight: .thin, design: .rounded))
                         .lineLimit(1)
                     HStack {
                         Image(systemName: "barcode")
-                            .font(.system(size: 13, weight: .thin, design: .rounded))
+                            .font(.system(size: 10, weight: .thin, design: .rounded))
                             .foregroundColor(.gray)
                         Text(book.isbn)
-                            .font(.system(size: 15, weight: .thin, design: .rounded))
+                            .font(.system(size: 12, weight: .thin, design: .rounded))
                             .italic()
                             .lineLimit(1)
                     }
                 }
             }
-            .padding(.vertical, 20)
         }
-        .padding()
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3.2)
+        .padding(.all)
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3.2, alignment: .leading)
         .background(Color.xwhiteCard)
     }
     
@@ -96,16 +105,15 @@ struct BookDetailView: View {
     }
     
     var additionalInfo: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Image(systemName: "mappin.and.ellipse")
-                    .font(.system(size: 15))
-                    .foregroundColor(Color.gray)
-                Text("\(book.location.descripte)")
-                    .font(.system(size: 15, weight: .light, design: .rounded))
+        VStack(alignment: .leading) {
+//            HStack() {
+//                Image(systemName: "mappin.and.ellipse")
+//                    .font(.system(size: 15))
 //                    .foregroundColor(Color.gray)
-            }
-            .padding(.horizontal)
+//                Text("\(book.location.descripte)")
+//                    .font(.system(size: 15, weight: .light, design: .rounded))
+//            }
+//            .padding(.horizontal)
             
             HStack(alignment: .top) {
                 if book.description.isEmpty {

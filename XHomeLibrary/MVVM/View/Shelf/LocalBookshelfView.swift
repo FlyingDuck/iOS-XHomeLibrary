@@ -29,21 +29,23 @@ struct LocalBookshelfView: View {
                 }
             }
             .background(Color.xgrayTab)
+//            .toolbar(content: {
+//
+//            })
             
         }
-        .toolbar(content: {
-            Button(action: {
-                // 上传
-            }, label: {
-                Image(systemName: "icloud.and.arrow.up")
-                    .font(.system(size: 15, weight: .light, design: .default))
-            })
-            .padding(.horizontal, 15)
-        })
+        
     }
 
     var header: some View {
         HStack {
+            Button(action: {
+                // 上传
+            }, label: {
+                Image(systemName: "icloud.and.arrow.up")
+                    .font(.system(size: 18, weight: .light, design: .default))
+            })
+            
             TextField("输入书名...", text: $shelfVM.keyword)
                 .padding(10)
                 .background(Color.xgrayBg)
