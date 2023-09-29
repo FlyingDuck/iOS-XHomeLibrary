@@ -16,8 +16,8 @@ struct MainView: View {
         NavigationStack {
             TabView(selection: $tabVM.tab) {
                 HomeView()
-//                    .padding(.vertical, 1)
-//                    .background(Color.xgrayTab)
+                    .padding(.vertical, 1)
+                    .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.home.icon
                         TabViewModel.Tab.home.title
@@ -25,7 +25,7 @@ struct MainView: View {
                     .tag(TabViewModel.Tab.home)
 
                 BookAddPageView()
-//                    .padding(.vertical, 1)
+                    .padding(.vertical, 1)
                     .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.add.icon

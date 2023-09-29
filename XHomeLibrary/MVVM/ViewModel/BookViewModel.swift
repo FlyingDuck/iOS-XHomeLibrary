@@ -8,5 +8,18 @@
 import SwiftUI
 
 class BookViewModel: ObservableObject {
-    @Published var book: Book = .init(location: .beijing)
+    @Published var book: Book
+    
+    init(book: Book) {
+        self.book = book
+    }
 }
+
+extension BookViewModel {
+    
+    
+    
+}
+
+
+

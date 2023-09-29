@@ -11,11 +11,10 @@ struct BookAddPageView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                }.frame(width: UIScreen.main.bounds.width, height: 1)
+//                HStack {}.frame(width: UIScreen.main.bounds.width, height: 1)
                 BookEditView()
-                
             }
+            .background(Color.xgrayBg)
         }
     }
 }

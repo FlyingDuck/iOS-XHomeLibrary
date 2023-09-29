@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BookDetailView: View {
+//    @Environment(\.dismiss) var dismiss
+    
     var book: Book
     
     init(book: Book) {
@@ -15,20 +17,21 @@ struct BookDetailView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            pageTitle
-            
-            baseInfo
-            divider
-            additionalInfo
-            footer
-            
+        NavigationView {
+            VStack(spacing: 0) {
+                pageTitle
+                
+                baseInfo
+                divider
+                additionalInfo
+                footer
+            }
+            .frame(maxHeight: UIScreen.main.bounds.height)
+            .background(Color.xwhiteCard)
         }
-        .frame(maxHeight: UIScreen.main.bounds.height)
-        .background(Color.xwhiteCard)
     }
     
-    var pageTitle : some View {
+    var pageTitle: some View {
         HStack {
             Text("图书详情").font(.headline)
         }
@@ -130,24 +133,41 @@ struct BookDetailView: View {
         .frame(width: UIScreen.main.bounds.width)
     }
     
-    
-    var footer : some View {
-        
+    var footer: some View {
         HStack {
-            Button {
-                // todo something
+            NavigationLink {
+                BookEditView(bookVM: BookViewModel(book: self.book))
+                    .navigationBarTitle("图书编辑")
+                    
             } label: {
                 Label("去编辑", systemImage: "square.and.pencil")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)
                     .padding(.vertical)
                     .background(Color.xwhiteCard)
-                    .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
+//                    .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 15.0, style: .continuous)
+                            .stroke(Color.accentColor.opacity(0.8), lineWidth: 1)
+                            .padding(.horizontal)
+                    }
             }
-            .overlay {
-                RoundedRectangle(cornerRadius: 15.0, style: .continuous)
-                    .stroke(Color.accentColor.opacity(0.8), lineWidth: 1)
-                    .padding(.horizontal)
-            }
+            
+
+//            Button {
+//                // 1. 先关闭窗口
+//                dismiss()
+//            } label: {
+//                Label("去编辑", systemImage: "square.and.pencil")
+//                    .frame(width: UIScreen.main.bounds.width, alignment: .center)
+//                    .padding(.vertical)
+//                    .background(Color.xwhiteCard)
+//                    .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
+//            }
+//            .overlay {
+//                RoundedRectangle(cornerRadius: 15.0, style: .continuous)
+//                    .stroke(Color.accentColor.opacity(0.8), lineWidth: 1)
+//                    .padding(.horizontal)
+//            }
         }
         .padding(.vertical)
     }

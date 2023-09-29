@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookItemView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
-    
+
     var book: Book
 
     var body: some View {
@@ -30,14 +30,14 @@ struct BookItemView: View {
                     .font(.system(size: 15, weight: .light, design: .rounded))
                     .italic()
 
-                HStack() {
+                HStack {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 15))
                         .foregroundColor(Color.gray)
                     Text("\(book.location.descripte)")
                         .font(.system(size: 15, weight: .light, design: .rounded))
                         .foregroundColor(Color.gray)
-                    
+
                     if book.local {
                         Spacer()
 //                        Image(systemName: "externaldrive.fill.badge.timemachine")
@@ -45,28 +45,27 @@ struct BookItemView: View {
                             .font(.system(size: 15))
                             .foregroundColor(Color.orange.opacity(0.6))
                     }
-                    
                 }
             }
-            .frame(maxWidth: 3*UIScreen.main.bounds.width/5, alignment: .leading)
+            .frame(maxWidth: 3 * UIScreen.main.bounds.width/5, alignment: .leading)
             .lineLimit(1)
             .padding(.vertical, 40)
 
             Spacer()
 
             VStack {
-                Image(systemName: "chevron.right")
-                    .foregroundColor(Color.gray.opacity(0.7))
-                    .padding(.horizontal, 10)
-                    .onTapGesture {
-                        bookWatcher.setShowBook(book: book)
-                    }
+                Button(action: {
+                    bookWatcher.setShowBook(book: book)
+                }, label: {
+                    Label("", systemImage: "chevron.right")
+                        .foregroundColor(Color.accentColor.opacity(0.7))
+                        .frame(maxHeight: .infinity)
+                        .padding(.horizontal, 10)
+                        .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
+                })
             }
-            .frame(height: .infinity)
-            
         }
         .padding(.horizontal, 5)
-//        .frame(width: UIScreen.main.bounds.width, height: 200, alignment:  .center)
         .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/5)
         .background(Color.xwhiteCard)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
@@ -75,5 +74,5 @@ struct BookItemView: View {
 
 #Preview {
     BookItemView(book: Book(id: "1", name: "古文观止 古文观止 古文观止 古文观止", author: "佚名 古文观止 古文观止 古文观止", publisher: "新华出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
-        .background(Color.red)
+        .background(Color.green)
 }

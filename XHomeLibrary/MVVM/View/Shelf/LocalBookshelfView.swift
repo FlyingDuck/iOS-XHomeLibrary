@@ -14,17 +14,21 @@ struct LocalBookshelfView: View {
         NavigationView {
             VStack {
                 // 头部：搜索栏
-                header.padding(.top, 5)
+                header
+                    .padding(.top, 5)
+                    .padding(.horizontal)
                 
                 if shelfVM.isEmpty() {
                     emptylist
                 } else {
                     // 书籍列表
                     booklist
+                        .padding(.horizontal)
+                        .background(Color.xgrayBg)
+//                        .frame(width: UIScreen.main.bounds.width)
                 }
             }
-            .padding(.horizontal)
-            .background(Color.xgrayBg)
+            .background(Color.xgrayTab)
         }
     }
 
@@ -32,7 +36,7 @@ struct LocalBookshelfView: View {
         HStack {
             TextField("输入书名...", text: $shelfVM.keyword)
                 .padding(10)
-                .background(Color.gray.opacity(0.3))
+                .background(Color.xgrayBg)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 
             Button {
@@ -45,6 +49,8 @@ struct LocalBookshelfView: View {
             .foregroundColor(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
+//        .background(Color.xgrayTab)
+        
     }
 
     var booklist: some View {
@@ -90,5 +96,5 @@ struct LocalBookshelfView: View {
 
 #Preview {
     LocalBookshelfView()
-        .background(Color.xgrayBg.opacity(0.5))
+        .background(Color.red)
 }

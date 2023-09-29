@@ -13,11 +13,15 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                header.padding(.top, 5)
-                HoneyCombView().environmentObject(shelfVM)
+                header
+                    .padding(.top, 5)
+                HoneyCombView()
+                    .background(Color.xgrayBg)
+                    .environmentObject(shelfVM)
             }
+            .background(Color.xgrayTab)
             .padding(.horizontal)
-            .background(Color.xgrayBg)
+            
         }
         .fullScreenCover(isPresented: $shelfVM.show, content: {
             BookshelfView().environmentObject(shelfVM)
@@ -30,7 +34,7 @@ struct HomeView: View {
                 HStack(spacing: 2) {
                     TextField("输入书名...", text: $shelfVM.keyword)
                         .padding(10)
-                        .background(Color.gray.opacity(0.3))
+                        .background(Color.xgrayBg)
                         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
                 Button {

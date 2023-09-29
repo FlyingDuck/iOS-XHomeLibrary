@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookEditView: View {
-    @StateObject var bookVM: BookViewModel = .init()
+    @StateObject var bookVM: BookViewModel = .init(book: .init())
 
     var body: some View {
         ScrollView {
@@ -16,7 +16,6 @@ struct BookEditView: View {
             additionalInfo
             footer
         }
-        .background(Color.xgrayBg)
         .scrollIndicators(.hidden)
     }
     
@@ -165,4 +164,8 @@ struct BookEditView: View {
 
 #Preview {
     BookEditView()
+        .environmentObject(BookViewModel(
+            //        book: .init()
+                    book: Book(id: "1", name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息")
+                ))
 }

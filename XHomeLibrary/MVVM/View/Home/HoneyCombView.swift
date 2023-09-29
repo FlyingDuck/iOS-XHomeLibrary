@@ -39,7 +39,7 @@ struct HoneyCombView: View {
             ScrollView {
                 HStack {
                     // 占位
-                }.frame(width: UIScreen.main.bounds.width, height: 10)
+                }.frame(width: UIScreen.main.bounds.width, height: 40)
 
                 ForEach(0...shelfVM.recBooks.count, id: \.self) { bookIndex in
 
@@ -96,7 +96,7 @@ struct HoneyCombView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .padding(.top, 40)
+//        .padding(.top, 40)
     }
 }
 
