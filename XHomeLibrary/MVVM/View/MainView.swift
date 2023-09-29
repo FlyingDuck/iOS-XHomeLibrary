@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var bookWatcher = BookWatcher.shared
+
     @StateObject var tabVM: TabViewModel = .init()
 
     var body: some View {
@@ -22,7 +24,7 @@ struct MainView: View {
                     }
                     .tag(TabViewModel.Tab.home)
 
-                AddBookView()
+                BookAddPageView()
 //                    .padding(.vertical, 1)
                     .background(Color.xgrayTab)
                     .tabItem {
@@ -40,20 +42,18 @@ struct MainView: View {
                         TabViewModel.Tab.bookshelf.title
                     }
                     .tag(TabViewModel.Tab.bookshelf)
-
-//                MineView()
-//                    .padding(.vertical, 1)
-//                    .background(Color.gray.opacity(0.3))
-//                    .tabItem {
-//                        TabViewModel.Tab.mine.icon
-//                        TabViewModel.Tab.mine.title
-//                    }
-//                    .tag(TabViewModel.Tab.mine)
             }
             .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
 //                Image(systemName: "text.badge.plus")
+            }
+            .sheet(isPresented: $bookWatcher.showBookDetail) {
+                // dismiss do nothing
+            } content: {
+                if bookWatcher.showBookDetail {
+                    BookDetailView(book: bookWatcher.showBook!)
+                }
             }
         }
     }

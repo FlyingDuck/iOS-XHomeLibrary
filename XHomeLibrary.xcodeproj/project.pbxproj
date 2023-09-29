@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3BC259E906A3443CBBA34DB2 /* Pods_XHomeLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */; };
-		3E013A892AC66C1D00647B3D /* EditBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A882AC66C1D00647B3D /* EditBookView.swift */; };
+		3E013A892AC66C1D00647B3D /* BookEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A882AC66C1D00647B3D /* BookEditView.swift */; };
 		3E013A8B2AC66C8700647B3D /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A8A2AC66C8700647B3D /* BookViewModel.swift */; };
 		3E013A8D2AC66F9800647B3D /* HoneyCombView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A8C2AC66F9800647B3D /* HoneyCombView.swift */; };
+		3E013A902AC67BAD00647B3D /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A8F2AC67BAD00647B3D /* BookDetailView.swift */; };
+		3E013A922AC67DB800647B3D /* NotificationWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A912AC67DB800647B3D /* NotificationWatcher.swift */; };
+		3E013A942AC67E2800647B3D /* BookWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A932AC67E2800647B3D /* BookWatcher.swift */; };
 		3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */; };
 		3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A72AC1DDBF003A2C1B /* XColor.swift */; };
 		3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */; };
@@ -36,15 +39,18 @@
 		3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */; };
 		3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2BD2AC0851400EBD86B /* MainView.swift */; };
 		3E5FC2C12AC08D0A00EBD86B /* LocalBookshelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */; };
-		3E5FC2C42AC08EF400EBD86B /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C32AC08EF400EBD86B /* AddBookView.swift */; };
+		3E5FC2C42AC08EF400EBD86B /* BookAddPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		14B1E245D87BD8DD275875C5 /* Pods-XHomeLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.release.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.release.xcconfig"; sourceTree = "<group>"; };
 		243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHomeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E013A882AC66C1D00647B3D /* EditBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookView.swift; sourceTree = "<group>"; };
+		3E013A882AC66C1D00647B3D /* BookEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEditView.swift; sourceTree = "<group>"; };
 		3E013A8A2AC66C8700647B3D /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		3E013A8C2AC66F9800647B3D /* HoneyCombView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyCombView.swift; sourceTree = "<group>"; };
+		3E013A8F2AC67BAD00647B3D /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		3E013A912AC67DB800647B3D /* NotificationWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWatcher.swift; sourceTree = "<group>"; };
+		3E013A932AC67E2800647B3D /* BookWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWatcher.swift; sourceTree = "<group>"; };
 		3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneycombImageModifier.swift; sourceTree = "<group>"; };
 		3E0E47A72AC1DDBF003A2C1B /* XColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XColor.swift; sourceTree = "<group>"; };
 		3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfView.swift; sourceTree = "<group>"; };
@@ -71,7 +77,7 @@
 		3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfViewModel.swift; sourceTree = "<group>"; };
 		3E5FC2BD2AC0851400EBD86B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBookshelfViewModel.swift; sourceTree = "<group>"; };
-		3E5FC2C32AC08EF400EBD86B /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAddPageView.swift; sourceTree = "<group>"; };
 		8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.debug.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +96,7 @@
 		3E013A8E2AC67AC400647B3D /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				3E013A8F2AC67BAD00647B3D /* BookDetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -168,6 +175,8 @@
 				3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */,
 				3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */,
 				3E013A8A2AC66C8700647B3D /* BookViewModel.swift */,
+				3E013A912AC67DB800647B3D /* NotificationWatcher.swift */,
+				3E013A932AC67E2800647B3D /* BookWatcher.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -271,8 +280,8 @@
 		3E5FC2C22AC08ED600EBD86B /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				3E5FC2C32AC08EF400EBD86B /* AddBookView.swift */,
-				3E013A882AC66C1D00647B3D /* EditBookView.swift */,
+				3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */,
+				3E013A882AC66C1D00647B3D /* BookEditView.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -413,11 +422,13 @@
 				3E5FC2AE2AC020A200EBD86B /* LocalBookshelfView.swift in Sources */,
 				3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */,
 				3E5FC2A72ABFF56E00EBD86B /* Response+Extension.swift in Sources */,
+				3E013A942AC67E2800647B3D /* BookWatcher.swift in Sources */,
+				3E013A902AC67BAD00647B3D /* BookDetailView.swift in Sources */,
 				3E5FC2A52ABFF56E00EBD86B /* MoyaResult+Extension.swift in Sources */,
-				3E013A892AC66C1D00647B3D /* EditBookView.swift in Sources */,
+				3E013A892AC66C1D00647B3D /* BookEditView.swift in Sources */,
 				3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */,
 				3E013A8D2AC66F9800647B3D /* HoneyCombView.swift in Sources */,
-				3E5FC2C42AC08EF400EBD86B /* AddBookView.swift in Sources */,
+				3E5FC2C42AC08EF400EBD86B /* BookAddPageView.swift in Sources */,
 				3E5FC2B02AC020F800EBD86B /* MineView.swift in Sources */,
 				3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */,
 				3E5FC2912ABFEA1800EBD86B /* HomeView.swift in Sources */,
@@ -435,6 +446,7 @@
 				3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */,
 				3E5FC2BA2AC060C500EBD86B /* TabViewModel.swift in Sources */,
 				3E5FC2A92ABFF56E00EBD86B /* ApiConfig.swift in Sources */,
+				3E013A922AC67DB800647B3D /* NotificationWatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

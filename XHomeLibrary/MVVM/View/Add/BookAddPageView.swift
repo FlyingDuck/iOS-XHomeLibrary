@@ -7,17 +7,22 @@
 
 import SwiftUI
 
-struct AddBookView: View {
+struct BookAddPageView: View {
     var body: some View {
         NavigationView {
-            EditBookView()
+            VStack {
+                HStack {
+                }.frame(width: UIScreen.main.bounds.width, height: 1)
+                BookEditView()
+                
+            }
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        AddBookView()
+        BookAddPageView()
             .background(Color.xgrayBg)
     }
 }

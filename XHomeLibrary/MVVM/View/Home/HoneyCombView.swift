@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HoneyCombView: View {
     @EnvironmentObject var shelfVM: BookshelfViewModel
+    @ObservedObject var bookWatcher = BookWatcher.shared
 
     var body: some View {
         if shelfVM.recBooks.count != 0 {
             honeycomb
+
         } else {
             // 空页面
             VStack {
@@ -38,15 +40,18 @@ struct HoneyCombView: View {
                 HStack {
                     // 占位
                 }.frame(width: UIScreen.main.bounds.width, height: 10)
-                
+
                 ForEach(0...shelfVM.recBooks.count, id: \.self) { bookIndex in
-                    
+
                     if bookIndex == 1 {
                         HStack(spacing: 20) {
                             ForEach(0...bookIndex, id: \.self) { i in
                                 Image(shelfVM.recBooks[i].cover)
                                     .resizable()
                                     .modifier(HoneycombImageModifer())
+                                    .onTapGesture {
+                                        bookWatcher.setShowBook(book: shelfVM.recBooks[i])
+                                    }
                             }
                         }
                         .frame(width: UIScreen.main.bounds.width)
@@ -92,7 +97,6 @@ struct HoneyCombView: View {
             .scrollIndicators(.hidden)
         }
         .padding(.top, 40)
-        
     }
 }
 

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BookItemView: View {
+    @ObservedObject var bookWatcher = BookWatcher.shared
+    
     var book: Book
 
     var body: some View {
@@ -23,11 +25,11 @@ struct BookItemView: View {
                     .font(.system(size: 20, weight: .heavy, design: .rounded))
                 Text("\(book.author)")
                     .font(.system(size: 15, weight: .regular, design: .rounded))
+                Spacer()
                 Text("\(book.publisher)")
                     .font(.system(size: 15, weight: .light, design: .rounded))
                     .italic()
 
-                Spacer()
                 HStack() {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 15))
@@ -52,9 +54,16 @@ struct BookItemView: View {
 
             Spacer()
 
-            Image(systemName: "chevron.right")
-                .foregroundColor(Color.gray.opacity(0.7))
-                .padding(.horizontal, 10)
+            VStack {
+                Image(systemName: "chevron.right")
+                    .foregroundColor(Color.gray.opacity(0.7))
+                    .padding(.horizontal, 10)
+                    .onTapGesture {
+                        bookWatcher.setShowBook(book: book)
+                    }
+            }
+            .frame(height: .infinity)
+            
         }
         .padding(.horizontal, 5)
 //        .frame(width: UIScreen.main.bounds.width, height: 200, alignment:  .center)

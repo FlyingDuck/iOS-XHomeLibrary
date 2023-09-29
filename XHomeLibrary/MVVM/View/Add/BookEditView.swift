@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditBookView: View {
+struct BookEditView: View {
     @StateObject var bookVM: BookViewModel = .init()
 
     var body: some View {
@@ -15,11 +15,9 @@ struct EditBookView: View {
             baseInfo
             additionalInfo
             footer
-                
         }
         .background(Color.xgrayBg)
         .scrollIndicators(.hidden)
-        
     }
     
     var toolbar: some View {
@@ -33,7 +31,7 @@ struct EditBookView: View {
     
     var baseInfo: some View {
         VStack(spacing: 30) {
-            HStack() {
+            HStack {
                 Text("封面")
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .leading)
@@ -55,7 +53,6 @@ struct EditBookView: View {
                     Image(systemName: "barcode.viewfinder")
                         .font(.system(size: 30, weight: .regular, design: .monospaced))
                 }
-                
             }
             
             HStack(spacing: 15) {
@@ -152,15 +149,20 @@ struct EditBookView: View {
                 Label("保存", systemImage: "checkmark")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)
                     .padding(.vertical)
-                    .background(Color.xwhiteCard)
+//                    .background(Color.xwhiteCard)
                     .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
             }
+            .overlay {
+                RoundedRectangle(cornerRadius: 15.0, style: .continuous)
+                    .stroke(Color.accentColor.opacity(0.8), lineWidth: 1)
+                    .padding(.horizontal)
+            }
         }
-        .padding(.bottom)
+        .padding(.vertical)
 //        .shadow(color: .white, radius: 5, x: 2, y: 2)
     }
 }
 
 #Preview {
-    EditBookView()
+    BookEditView()
 }
