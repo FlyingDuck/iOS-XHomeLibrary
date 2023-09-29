@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3BC259E906A3443CBBA34DB2 /* Pods_XHomeLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */; };
+		3E013A892AC66C1D00647B3D /* EditBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A882AC66C1D00647B3D /* EditBookView.swift */; };
+		3E013A8B2AC66C8700647B3D /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A8A2AC66C8700647B3D /* BookViewModel.swift */; };
+		3E013A8D2AC66F9800647B3D /* HoneyCombView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A8C2AC66F9800647B3D /* HoneyCombView.swift */; };
 		3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */; };
 		3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A72AC1DDBF003A2C1B /* XColor.swift */; };
 		3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */; };
@@ -39,6 +42,9 @@
 /* Begin PBXFileReference section */
 		14B1E245D87BD8DD275875C5 /* Pods-XHomeLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.release.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.release.xcconfig"; sourceTree = "<group>"; };
 		243B8E70B926AA63D6D49F25 /* Pods_XHomeLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHomeLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E013A882AC66C1D00647B3D /* EditBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookView.swift; sourceTree = "<group>"; };
+		3E013A8A2AC66C8700647B3D /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		3E013A8C2AC66F9800647B3D /* HoneyCombView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyCombView.swift; sourceTree = "<group>"; };
 		3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneycombImageModifier.swift; sourceTree = "<group>"; };
 		3E0E47A72AC1DDBF003A2C1B /* XColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XColor.swift; sourceTree = "<group>"; };
 		3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfView.swift; sourceTree = "<group>"; };
@@ -81,6 +87,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E013A8E2AC67AC400647B3D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		3E0E47A32AC1DAAA003A2C1B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +167,7 @@
 				3E5FC2B92AC060C500EBD86B /* TabViewModel.swift */,
 				3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */,
 				3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */,
+				3E013A8A2AC66C8700647B3D /* BookViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -164,6 +178,7 @@
 				3E5FC2BD2AC0851400EBD86B /* MainView.swift */,
 				3E5FC2BF2AC0851E00EBD86B /* Home */,
 				3E5FC2C22AC08ED600EBD86B /* Add */,
+				3E013A8E2AC67AC400647B3D /* Detail */,
 				3E5FC2B72AC03B5900EBD86B /* Shelf */,
 				3E5FC2B82AC05E4200EBD86B /* Mine */,
 			);
@@ -247,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				3E5FC2902ABFEA1800EBD86B /* HomeView.swift */,
+				3E013A8C2AC66F9800647B3D /* HoneyCombView.swift */,
 				3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */,
 			);
 			path = Home;
@@ -256,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				3E5FC2C32AC08EF400EBD86B /* AddBookView.swift */,
+				3E013A882AC66C1D00647B3D /* EditBookView.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -397,12 +414,15 @@
 				3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */,
 				3E5FC2A72ABFF56E00EBD86B /* Response+Extension.swift in Sources */,
 				3E5FC2A52ABFF56E00EBD86B /* MoyaResult+Extension.swift in Sources */,
+				3E013A892AC66C1D00647B3D /* EditBookView.swift in Sources */,
 				3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */,
+				3E013A8D2AC66F9800647B3D /* HoneyCombView.swift in Sources */,
 				3E5FC2C42AC08EF400EBD86B /* AddBookView.swift in Sources */,
 				3E5FC2B02AC020F800EBD86B /* MineView.swift in Sources */,
 				3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */,
 				3E5FC2912ABFEA1800EBD86B /* HomeView.swift in Sources */,
 				3E5FC2AC2ABFF56E00EBD86B /* WarningPlugin.swift in Sources */,
+				3E013A8B2AC66C8700647B3D /* BookViewModel.swift in Sources */,
 				3E5FC2A82ABFF56E00EBD86B /* NetWorking.swift in Sources */,
 				3E5FC2A62ABFF56E00EBD86B /* MoyaProviderType+Extension.swift in Sources */,
 				3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */,

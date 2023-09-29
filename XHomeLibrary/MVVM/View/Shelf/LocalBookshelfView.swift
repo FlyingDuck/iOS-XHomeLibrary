@@ -14,7 +14,7 @@ struct LocalBookshelfView: View {
         NavigationView {
             VStack {
                 // 头部：搜索栏
-                header
+                header.padding(.top, 5)
                 
                 if shelfVM.isEmpty() {
                     emptylist

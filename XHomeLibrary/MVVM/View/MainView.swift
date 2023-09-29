@@ -14,8 +14,8 @@ struct MainView: View {
         NavigationStack {
             TabView(selection: $tabVM.tab) {
                 HomeView()
-                    .padding(.vertical, 1)
-                    .background(Color.xgrayBg.opacity(0.5))
+//                    .padding(.vertical, 1)
+//                    .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.home.icon
                         TabViewModel.Tab.home.title
@@ -23,25 +23,23 @@ struct MainView: View {
                     .tag(TabViewModel.Tab.home)
 
                 AddBookView()
-                    .padding(.vertical, 1)
-                    .background(Color.xgrayBg.opacity(0.5))
+//                    .padding(.vertical, 1)
+                    .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.add.icon
                         TabViewModel.Tab.add.title
                     }
                     .tag(TabViewModel.Tab.add)
                     .environmentObject(tabVM)
-                
+
                 LocalBookshelfView()
                     .padding(.vertical, 1)
-                    .background(Color.xgrayBg.opacity(0.5))
+                    .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.bookshelf.icon
                         TabViewModel.Tab.bookshelf.title
                     }
                     .tag(TabViewModel.Tab.bookshelf)
-
-                
 
 //                MineView()
 //                    .padding(.vertical, 1)
