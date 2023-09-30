@@ -34,7 +34,7 @@ struct BookItemCard: View {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 12))
                         .foregroundColor(Color.gray)
-                    Text("\(book.location.descripte)")
+                    Text("\(book.location.displayName)")
                         .font(.system(size: 12, weight: .light, design: .rounded))
                         .foregroundColor(Color.gray)
 
@@ -62,7 +62,7 @@ struct BookItemCard: View {
 //                    Label("", systemImage: "ellipsis")
 //                        .rotationEffect(Angle(degrees: 90))
                         .font(.system(size: 20))
-                        .foregroundColor(Color.white.opacity(0.8))
+                        .foregroundColor(Color.accentColor.opacity(0.3))
                         .shadow(radius: 10)
                         .frame(maxHeight: .infinity)
                         .padding(.horizontal, 5)
@@ -79,7 +79,7 @@ struct BookItemCard: View {
 }
 
 #Preview {
-    BookItemCard(book: Book(id: "1", name: "古文观止 古文观止 古文观止 古文观止", author: "佚名 古文观止 古文观止 古文观止", publisher: "新华出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
+    BookItemCard(book: Book(name: "古文观止 古文观止 古文观止 古文观止", author: "佚名 古文观止 古文观止 古文观止", publisher: "新华出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
         .background(Color.xgrayTab)
 //        .background(Color.green)
 }

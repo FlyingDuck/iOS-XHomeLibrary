@@ -11,7 +11,7 @@ class BookWatcher: ObservableObject {
     static let shared = BookWatcher()
 
     @Published var showBookDetail: Bool = false
-    @Published var showBook: Book = .init()
+    @Published var showBook: Book = Book.newEmptyBook()
 }
 
 extension BookWatcher {

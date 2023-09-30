@@ -5,11 +5,16 @@
 //  Created by dongshujin on 2023/9/29.
 //
 
+import CoreData
 import SwiftUI
 
 struct BookEditView: View {
-    @StateObject var bookVM: BookViewModel = .init(book: .init())
-
+    @ObservedObject var bookVM: BookViewModel
+    
+    init(book: Book = Book.newEmptyBook(), context: NSManagedObjectContext) {
+        self.bookVM = BookViewModel(book: book, context: context)
+    }
+    
     var body: some View {
         ScrollView {
             baseInfo
@@ -82,7 +87,6 @@ struct BookEditView: View {
                 }
             }
             .padding(.leading)
-            
         }
         .padding(.all, 20)
         .background(Color.xwhiteCard)
@@ -96,8 +100,8 @@ struct BookEditView: View {
                     .font(.system(size: 12, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .leading)
                 Picker("选择器", selection: $bookVM.book.location) {
-                    Text("北京").tag(BookshelfViewModel.Location.beijing)
-                    Text("唐山").tag(BookshelfViewModel.Location.tangshan)
+                    Text("北京").tag(Location.beijing)
+                    Text("唐山").tag(Location.tangshan)
                 }.pickerStyle(.segmented)
             }
             
@@ -120,7 +124,7 @@ struct BookEditView: View {
     var footer: some View {
         HStack {
             Button {
-                // todo something
+                bookVM.addNewBook()
             } label: {
                 Label("保存", systemImage: "checkmark")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)
@@ -140,9 +144,7 @@ struct BookEditView: View {
 }
 
 #Preview {
-    BookEditView()
-        .environmentObject(BookViewModel(
-            //        book: .init()
-            book: Book(id: "1", name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息")
-        ))
+    BookEditView(
+        book: Book(name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: ""),
+        context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
 }

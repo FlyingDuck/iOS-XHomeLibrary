@@ -72,8 +72,8 @@ struct BookshelfView: View {
             
             HStack(spacing: 2) {
                 Picker("选择器", selection: $shelfVM.selectedLoc) {
-                    ForEach(BookshelfViewModel.Location.allCases) { location in
-                        Text(location.descripte).tag(location)
+                    ForEach(Location.allCases) { location in
+                        Text(location.displayName).tag(location)
                     }
                 }
                 .pickerStyle(.menu)

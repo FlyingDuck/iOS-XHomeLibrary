@@ -52,7 +52,7 @@ public class NetworkingLogger: PluginType, NetworkStatusProtocol {
                 case let .requestParameters(parameters, _), let .uploadCompositeMultipart(_, parameters):
                     print("请求参数 : ", parameters)
                 default:
-                    if let requestBody = request.httpBody {
+                    if request.httpBody != nil {
 //                        let decrypt = requestBody.parameterString()
 //                        print("请求参数 : \(decrypt)")
                     }

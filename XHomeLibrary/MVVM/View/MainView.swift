@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.managedObjectContext) private var context
+    
     @ObservedObject var bookWatcher = BookWatcher.shared
 
     @StateObject var tabVM: TabViewModel = .init()
@@ -34,7 +36,7 @@ struct MainView: View {
                     .tag(TabViewModel.Tab.add)
                     .environmentObject(tabVM)
 
-                LocalBookshelfView()
+                LocalBookshelfView(context: context)
                     .padding(.vertical, 1)
                     .background(Color.xgrayTab)
                     .tabItem {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookDetailView: View {
 //    @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) private var context
     
     var book: Book
     
@@ -53,7 +54,7 @@ struct BookDetailView: View {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 12))
                         .foregroundColor(Color.gray)
-                    Text("\(book.location.descripte)")
+                    Text("\(book.location.displayName)")
                         .font(.system(size: 12, weight: .thin, design: .rounded))
     //                    .foregroundColor(Color.gray)
                 }
@@ -147,7 +148,7 @@ struct BookDetailView: View {
     var footer: some View {
         HStack {
             NavigationLink {
-                BookEditView(bookVM: BookViewModel(book: self.book))
+                BookEditView(book: self.book, context: context)
                     .navigationBarTitle("图书编辑")
                     .interactiveDismissDisabled()  // 禁止滑动关闭sheet
             } label: {
@@ -186,5 +187,5 @@ struct BookDetailView: View {
 
 #Preview {
     BookDetailView(book:
-        Book(id: "6", name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"))
+        Book(name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"))
 }

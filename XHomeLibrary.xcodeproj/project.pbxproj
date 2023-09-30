@@ -16,6 +16,8 @@
 		3E013A942AC67E2800647B3D /* BookWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A932AC67E2800647B3D /* BookWatcher.swift */; };
 		3E013A972AC70DDC00647B3D /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A962AC70DDC00647B3D /* UnderlineTextField.swift */; };
 		3E013A992AC70F9600647B3D /* TextInputRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A982AC70F9600647B3D /* TextInputRow.swift */; };
+		3E013A9C2AC80D8200647B3D /* Library.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A9A2AC80D8200647B3D /* Library.xcdatamodeld */; };
+		3E013AA02AC8510F00647B3D /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A9F2AC8510F00647B3D /* PersistenceController.swift */; };
 		3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */; };
 		3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A72AC1DDBF003A2C1B /* XColor.swift */; };
 		3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */; };
@@ -55,6 +57,8 @@
 		3E013A932AC67E2800647B3D /* BookWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWatcher.swift; sourceTree = "<group>"; };
 		3E013A962AC70DDC00647B3D /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
 		3E013A982AC70F9600647B3D /* TextInputRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputRow.swift; sourceTree = "<group>"; };
+		3E013A9B2AC80D8200647B3D /* Library.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Library.xcdatamodel; sourceTree = "<group>"; };
+		3E013A9F2AC8510F00647B3D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneycombImageModifier.swift; sourceTree = "<group>"; };
 		3E0E47A72AC1DDBF003A2C1B /* XColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XColor.swift; sourceTree = "<group>"; };
 		3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfView.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		3E4B8E4D2ABFE6B60010028C = {
 			isa = PBXGroup;
 			children = (
+				3E013A9A2AC80D8200647B3D /* Library.xcdatamodeld */,
 				3E4B8E5D2ABFE6B80010028C /* Assets.xcassets */,
 				3E4B8E582ABFE6B60010028C /* XHomeLibrary */,
 				3E4B8E572ABFE6B60010028C /* Products */,
@@ -156,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */,
+				3E013A9F2AC8510F00647B3D /* PersistenceController.swift */,
 				3E4B8E5B2ABFE6B60010028C /* ContentView.swift */,
 				3E5FC2922ABFF4F100EBD86B /* MVVM */,
 				3E0E47A32AC1DAAA003A2C1B /* Tool */,
@@ -454,11 +460,13 @@
 				3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */,
 				3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */,
 				3E5FC2A42ABFF56E00EBD86B /* SearchAPI.swift in Sources */,
+				3E013A9C2AC80D8200647B3D /* Library.xcdatamodeld in Sources */,
 				3E4B8E5A2ABFE6B60010028C /* XHomeLibraryApp.swift in Sources */,
 				3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */,
 				3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */,
 				3E013A992AC70F9600647B3D /* TextInputRow.swift in Sources */,
 				3E5FC2B62AC03B5100EBD86B /* BookItemCard.swift in Sources */,
+				3E013AA02AC8510F00647B3D /* PersistenceController.swift in Sources */,
 				3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */,
 				3E5FC2BA2AC060C500EBD86B /* TabViewModel.swift in Sources */,
 				3E5FC2A92ABFF56E00EBD86B /* ApiConfig.swift in Sources */,
@@ -674,6 +682,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3E013A9A2AC80D8200647B3D /* Library.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3E013A9B2AC80D8200647B3D /* Library.xcdatamodel */,
+			);
+			currentVersion = 3E013A9B2AC80D8200647B3D /* Library.xcdatamodel */;
+			path = Library.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3E4B8E4E2ABFE6B60010028C /* Project object */;
 }

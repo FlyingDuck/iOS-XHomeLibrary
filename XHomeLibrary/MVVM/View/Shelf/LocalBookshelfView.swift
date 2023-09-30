@@ -5,10 +5,15 @@
 //  Created by dongshujin on 2023/9/24.
 //
 
+import CoreData
 import SwiftUI
 
 struct LocalBookshelfView: View {
-    @StateObject var shelfVM: LocalBookshelfViewModel = .init()
+    @ObservedObject private var shelfVM: LocalBookshelfViewModel
+
+    init(context: NSManagedObjectContext) {
+        self.shelfVM = LocalBookshelfViewModel(context: context)
+    }
 
     var body: some View {
         NavigationView {
@@ -17,7 +22,7 @@ struct LocalBookshelfView: View {
                 header
                     .padding(.top, 5)
                     .padding(.horizontal)
-                
+
                 if shelfVM.isEmpty() {
                     emptylist
                 } else {
@@ -29,9 +34,7 @@ struct LocalBookshelfView: View {
                 }
             }
             .background(Color.xgrayTab)
-            
         }
-        
     }
 
     var header: some View {
@@ -42,7 +45,7 @@ struct LocalBookshelfView: View {
                 Image(systemName: "icloud.and.arrow.up")
                     .font(.system(size: 18, weight: .light, design: .default))
             })
-            
+
             TextField("输入书名...", text: $shelfVM.keyword)
                 .padding(10)
                 .background(Color.xgrayBg)
@@ -59,7 +62,6 @@ struct LocalBookshelfView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
 //        .background(Color.xgrayTab)
-        
     }
 
     var booklist: some View {
@@ -105,8 +107,13 @@ struct LocalBookshelfView: View {
 }
 
 #Preview {
+    
+
     NavigationStack {
-        LocalBookshelfView()
+        @Environment(\.managedObjectContext) var context
+        
+        LocalBookshelfView(context: context)
+            .environment(\.managedObjectContext, context)
             .background(Color.red)
     }
 }

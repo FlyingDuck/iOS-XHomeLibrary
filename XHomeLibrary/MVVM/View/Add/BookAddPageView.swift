@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct BookAddPageView: View {
+    @Environment(\.managedObjectContext) private var context
+
     var body: some View {
         NavigationView {
             VStack {
 //                HStack {}.frame(width: UIScreen.main.bounds.width, height: 1)
-                BookEditView()
+                BookEditView(book: Book.newEmptyBook(), context: context)
             }
             .background(Color.xgrayBg)
         }
