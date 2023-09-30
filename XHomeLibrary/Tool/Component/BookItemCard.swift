@@ -62,7 +62,8 @@ struct BookItemCard: View {
 //                    Label("", systemImage: "ellipsis")
 //                        .rotationEffect(Angle(degrees: 90))
                         .font(.system(size: 20))
-                        .foregroundColor(Color.black.opacity(0.2))
+                        .foregroundColor(Color.white.opacity(0.8))
+                        .shadow(radius: 10)
                         .frame(maxHeight: .infinity)
                         .padding(.horizontal, 5)
                         .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
@@ -79,5 +80,6 @@ struct BookItemCard: View {
 
 #Preview {
     BookItemCard(book: Book(id: "1", name: "古文观止 古文观止 古文观止 古文观止", author: "佚名 古文观止 古文观止 古文观止", publisher: "新华出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
-        .background(Color.green)
+        .background(Color.xgrayTab)
+//        .background(Color.green)
 }

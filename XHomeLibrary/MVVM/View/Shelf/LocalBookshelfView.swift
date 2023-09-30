@@ -29,9 +29,6 @@ struct LocalBookshelfView: View {
                 }
             }
             .background(Color.xgrayTab)
-//            .toolbar(content: {
-//
-//            })
             
         }
         

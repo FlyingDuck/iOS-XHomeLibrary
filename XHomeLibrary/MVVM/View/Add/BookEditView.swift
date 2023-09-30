@@ -14,65 +14,75 @@ struct BookEditView: View {
         ScrollView {
             baseInfo
             additionalInfo
+            
+            Spacer()
             footer
         }
         .scrollIndicators(.hidden)
     }
     
     var baseInfo: some View {
-        VStack(spacing: 30) {
-            HStack {
-                Text("封面")
-                    .font(.system(size: 12, weight: .bold, design: .rounded))
-                    .frame(width: 50, alignment: .leading)
-                Spacer()
-                
-                if bookVM.book.cover.isEmpty {
-                    Button {
-                        // todo something
-                    } label: {
-                        Image(systemName: "photo.artframe")
-                            .font(.system(size: 100, weight: .ultraLight, design: .monospaced))
-                            .foregroundColor(.gray.opacity(0.5))
-                            .frame(maxHeight: .infinity)
+        HStack {
+            VStack(spacing: 30) {
+                HStack {
+                    Text("封面")
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .frame(width: 50, alignment: .leading)
+                    Spacer()
+                    
+                    if bookVM.book.cover.isEmpty {
+                        Button {
+                            // todo something
+                        } label: {
+                            Image(systemName: "photo.artframe")
+                                .font(.system(size: 100, weight: .ultraLight, design: .monospaced))
+                                .foregroundColor(.gray.opacity(0.5))
+                                .frame(maxHeight: .infinity)
+                        }
+                    } else {
+                        HStack {
+                            Image(bookVM.book.cover)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100)
+                                .overlay {
+                                    Button(action: {
+                                        print("tap to change picture")
+                                    }, label: {
+                                        Image(systemName: "camera.viewfinder")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundColor(.accentColor.opacity(0.2))
+                                            .frame(width: 100)
+                                    })
+                                }
+                        }
                     }
-                } else {
-                    HStack {
-                        Image(bookVM.book.cover)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                            .overlay {
-                                Button(action: {
-                                    print("tap to change picture")
-                                }, label: {
-                                    Image(systemName: "camera.viewfinder")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .foregroundColor(.accentColor.opacity(0.2))
-                                        .frame(width: 100)
-                                })
-                            }
-                    }
+                    Spacer()
                 }
+                .frame(height: 150)
                 
-                Spacer()
-                Divider()
+                TextInputRow(title: "书名", text: $bookVM.book.name)
+                TextInputRow(title: "作者", text: $bookVM.book.author)
+                TextInputRow(title: "出版社", text: $bookVM.book.publisher)
+                TextInputRow(title: "ISBN", text: $bookVM.book.isbn)
+                    .keyboardType(.numberPad)
+            }
+            
+            HStack {
+                Divider().background(Color.white.opacity(0.2))
                 Button {
                     // todo something
                 } label: {
                     Image(systemName: "barcode.viewfinder")
                         .font(.system(size: 30, weight: .regular, design: .monospaced))
                         .foregroundColor(.accentColor.opacity(0.7))
+                        .shadow(color: .accentColor, radius: 10, x: 0, y: 0)
+                        .frame(maxHeight: .infinity)
                 }
             }
-            .frame(height: 150)
+            .padding(.leading)
             
-            TextInputRow(title: "书名", text: $bookVM.book.name)
-            TextInputRow(title: "作者", text: $bookVM.book.author)
-            TextInputRow(title: "出版社", text: $bookVM.book.publisher)
-            TextInputRow(title: "ISBN", text: $bookVM.book.isbn)
-//                .keyboardType(.numberPad)
         }
         .padding(.all, 20)
         .background(Color.xwhiteCard)

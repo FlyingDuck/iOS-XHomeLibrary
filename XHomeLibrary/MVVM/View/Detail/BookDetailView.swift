@@ -19,15 +19,18 @@ struct BookDetailView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                pageTitle
+//                pageTitle
                 
                 baseInfo
 //                divider
                 additionalInfo
+                Spacer()
                 footer
             }
             .frame(maxHeight: UIScreen.main.bounds.height)
             .background(Color.xwhiteCard)
+            .navigationBarTitle("图书详情")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

@@ -45,6 +45,15 @@ struct MainView: View {
             }
             .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $bookWatcher.showBookDetail) {
+                print("close home sheet")
+                bookWatcher.clear()
+            } content: {
+                if bookWatcher.showBookDetail {
+                    BookDetailView(book: bookWatcher.showBook)
+    //                    .interactiveDismissDisabled()  // 禁止滑动关闭sheet
+                }
+            }
         }
     }
 }
