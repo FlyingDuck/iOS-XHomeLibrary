@@ -32,12 +32,12 @@ extension LocalShelfViewModel {
         
         var bookEntities: [BookEntity] = []
         
-        let request = NSFetchRequest<BookEntity>(entityName: "BookEntity")
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \BookEntity.updateTime, ascending: false)]
-        if !self.keyword.isEmpty {
-            request.predicate = NSPredicate(format: "name CONTAINS[c] %@", self.keyword)
-        }
+        let request : NSFetchRequest = BookEntity.fetchRequest()
         do {
+            request.sortDescriptors = [NSSortDescriptor(keyPath: \BookEntity.updateTime, ascending: false)]
+            if !self.keyword.isEmpty {
+                request.predicate = NSPredicate(format: "name CONTAINS[c] %@", self.keyword)
+            }
             bookEntities = try getContext().fetch(request)
         } catch let err {
             print(err.localizedDescription)
@@ -50,23 +50,6 @@ extension LocalShelfViewModel {
         }
         
         self.books = books
-        
-//        let books = [
-//            Book(id: "1", name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息"),
-//            Book(id: "2", name: "古文观止", author: "佚名", publisher: "新华出版社出版社出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true),
-//            Book(id: "3", name: "不知道叫什么书名", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
-//            Book(id: "4", name: "古文观止", author: "佚名·托夫斯基", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息"),
-//            Book(id: "5", name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
-//            Book(id: "6", name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
-//            Book(id: "7", name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true),
-//            Book(id: "8", name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息"),
-//            Book(id: "9", name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息"),
-//        ]
-//        if self.keyword == "empty" {
-//            self.books = []
-//        } else {
-//            self.books = books.shuffled()
-//        }
     }
     
     func getTotal() -> Int {

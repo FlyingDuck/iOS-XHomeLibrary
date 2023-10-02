@@ -69,9 +69,8 @@ struct MainView: View {
 
 #Preview {
     Group {
-        @Environment(\.managedObjectContext) var context
+        let context = PersistenceController.shared.container.viewContext
         MainView(context: context)
-        //        .environmentObject(LocalShelfViewModel(context: context))
                 .environment(\.managedObjectContext, context)
     }
 }
