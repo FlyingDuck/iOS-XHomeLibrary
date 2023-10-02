@@ -11,4 +11,5 @@ target 'XHomeLibrary' do
   pod 'Moya/Combine', '~> 15.0'#
   pod 'KakaJSON'# JSON处理
   pod 'SwiftyJSON'# JSON处理
+  pod 'Kingfisher'
 end

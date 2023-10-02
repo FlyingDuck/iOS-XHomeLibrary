@@ -5,6 +5,7 @@
 //  Created by dongshujin on 2023/9/24.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct BookItemCard: View {
@@ -14,68 +15,81 @@ struct BookItemCard: View {
 
     var body: some View {
         HStack {
-            Image(book.cover)
-                .resizable()
-                .scaledToFit()
-//                .frame(width: 100, height: 180, alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                .padding(.all, 10)
-
-            VStack(alignment: .leading, spacing: 10) {
-                Text("\(book.name)")
-                    .font(.system(size: 16, weight: .heavy, design: .rounded))
-                Text("\(book.author)")
-                    .font(.system(size: 12, weight: .regular, design: .rounded))
-                Spacer()
-                Text("\(book.publisher)")
-                    .font(.system(size: 10, weight: .light, design: .rounded))
-                    .italic()
-                    .underline()
-                HStack {
-                    Image(systemName: "mappin.and.ellipse")
-                        .font(.system(size: 10))
-                        .foregroundColor(Color.gray)
-                    Text("\(book.location.displayName)")
-                        .font(.system(size: 10, weight: .light, design: .rounded))
-                        .foregroundColor(Color.gray)
-
-                    if book.local {
-                        Spacer()
-//                        Image(systemName: "externaldrive.fill.badge.timemachine")
-                        Image(systemName: "clock.badge.exclamationmark")
-                            .font(.system(size: 12))
-                            .foregroundColor(Color.orange.opacity(0.6))
-                    }
-                }
-            }
-            .frame(maxWidth: 3 * UIScreen.main.bounds.width/5, alignment: .leading)
-            .lineLimit(1)
-            .padding(.vertical, 30)
-
+            cover
+            info
             Spacer()
-
-            VStack {
-                Button(action: {
-                    bookWatcher.setShowBook(book: book)
-                }, label: {
-//                    Label("", systemImage: "chevron.right")
-                    Label("", systemImage: "poweron")
-//                    Label("", systemImage: "ellipsis")
-//                        .rotationEffect(Angle(degrees: 90))
-                        .font(.system(size: 20))
-                        .foregroundColor(Color.accentColor.opacity(0.3))
-                        .shadow(radius: 10)
-                        .frame(maxHeight: .infinity)
-                        .padding(.horizontal, 5)
-                        .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
-                        .shadow(color: .white, radius: 5, x: 10, y: 10)
-                })
-            }
+            operationArea
         }
         .padding(.horizontal, 5)
         .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/6)
         .background(Color.xwhiteCard)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+
+    var cover: some View {
+        KFImage(URL(string: book.cover))
+            .placeholder {
+                Image(systemName: "questionmark.app.dashed")
+                    .foregroundColor(.gray.opacity(0.4))
+            }
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 100)
+            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+            .padding(.all, 10)
+    }
+    
+    var info: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("\(book.name)")
+                .font(.system(size: 16, weight: .heavy, design: .rounded))
+            Text("\(book.author)")
+                .font(.system(size: 12, weight: .regular, design: .rounded))
+            Spacer()
+            Text("\(book.publisher)")
+                .font(.system(size: 10, weight: .light, design: .rounded))
+                .italic()
+                .underline()
+            HStack {
+                Image(systemName: "mappin.and.ellipse")
+                    .font(.system(size: 10))
+                    .foregroundColor(Color.gray)
+                Text("\(book.location.displayName)")
+                    .font(.system(size: 10, weight: .light, design: .rounded))
+                    .foregroundColor(Color.gray)
+
+                if book.local {
+                    Spacer()
+//                        Image(systemName: "externaldrive.fill.badge.timemachine")
+                    Image(systemName: "clock.badge.exclamationmark")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color.orange.opacity(0.6))
+                }
+            }
+        }
+        .frame(maxWidth: 3 * UIScreen.main.bounds.width/5, alignment: .leading)
+        .lineLimit(1)
+        .padding(.vertical, 30)
+    }
+    
+    var operationArea : some View {
+        VStack {
+            Button(action: {
+                bookWatcher.setShowBook(book: book)
+            }, label: {
+//                    Label("", systemImage: "chevron.right")
+                Label("", systemImage: "poweron")
+//                    Label("", systemImage: "ellipsis")
+//                        .rotationEffect(Angle(degrees: 90))
+                    .font(.system(size: 20))
+                    .foregroundColor(Color.accentColor.opacity(0.3))
+                    .shadow(radius: 10)
+                    .frame(maxHeight: .infinity)
+                    .padding(.horizontal, 5)
+                    .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
+                    .shadow(color: .white, radius: 5, x: 10, y: 10)
+            })
+        }
     }
 }
 

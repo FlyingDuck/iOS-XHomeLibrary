@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Kingfisher
 import SwiftUI
 
 struct BookDetailView: View {
@@ -43,12 +44,25 @@ struct BookDetailView: View {
     var baseInfo: some View {
         HStack {
             VStack(alignment: .center, spacing: 5) {
-                Image(bookVM.book.cover)
+//                Image(bookVM.book.cover)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 140)
+//                    .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                
+                KFImage(URL(string: bookVM.book.cover))
+                    .placeholder {
+                        Image(systemName: "questionmark.app.dashed")
+                            .resizable()
+                            .foregroundColor(.gray.opacity(0.2))
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                    }
                     .resizable()
-                    .scaledToFit()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 140)
                     .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                
+                    
                 HStack {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 10))

@@ -16,17 +16,13 @@ struct LocalShelfView: View {
             VStack {
                 // 头部：搜索栏
                 header
-                    .padding(.top, 5)
-                    .padding(.horizontal)
-
                 if shelfVM.isEmpty() {
+                    // 空页面
                     emptylist
                 } else {
                     // 书籍列表
                     booklist
-                        .padding(.horizontal)
-                        .background(Color.xgrayBg)
-//                        .frame(width: UIScreen.main.bounds.width)
+                        
                 }
             }
             .background(Color.xgrayTab)
@@ -57,7 +53,8 @@ struct LocalShelfView: View {
             .foregroundColor(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
-//        .background(Color.xgrayTab)
+        .padding(.top, 5)
+        .padding(.horizontal)
     }
 
     var booklist: some View {
@@ -81,6 +78,7 @@ struct LocalShelfView: View {
                     .foregroundColor(Color.gray.opacity(0.5))
                 Text("到底了")
                     .font(.system(size: 12, weight: .thin, design: .default))
+                    .foregroundColor(Color.gray)
                     .italic()
                 Rectangle()
                     .frame(maxWidth: .infinity, maxHeight: 1, alignment: .center)
@@ -88,6 +86,8 @@ struct LocalShelfView: View {
             }.padding(.top)
         }
         .scrollIndicators(.hidden)
+        .padding(.horizontal)
+        .background(Color.xgrayBg)
     }
 
     var emptylist: some View {
@@ -106,7 +106,7 @@ struct LocalShelfView: View {
     
 
     NavigationStack {
-        @Environment(\.managedObjectContext) var context
+        let context = PersistenceController.shared.container.viewContext
         
         LocalShelfView()
             .environmentObject(LocalShelfViewModel(context: context))
