@@ -8,7 +8,7 @@
 import CoreData
 import SwiftUI
 
-class LocalBookshelfViewModel: ObservableObject {
+class LocalShelfViewModel: ObservableObject {
     // 搜索栏参数
     @Published var keyword: String = ""
     // 书架
@@ -16,6 +16,7 @@ class LocalBookshelfViewModel: ObservableObject {
 
     var managedObjectContext: NSManagedObjectContext
     init(context: NSManagedObjectContext) {
+        print("init LocalShelfViewModel")
         self.managedObjectContext = context
         self.search()
     }
@@ -25,25 +26,17 @@ class LocalBookshelfViewModel: ObservableObject {
     }
 }
 
-extension LocalBookshelfViewModel {
-//    func saveContext() {
-//        let context = self.getContext()
-//        if !context.hasChanges {
-//            return
-//        }
-//        
-//        do {
-//            try context.save()
-//        } catch let err {
-//            print(err.localizedDescription)
-//        }
-//    }
-    
+extension LocalShelfViewModel {
     func search() {
+        print("[LocalShelfVM] start to search books")
+        
         var bookEntities: [BookEntity] = []
         
         let request = NSFetchRequest<BookEntity>(entityName: "BookEntity")
         request.sortDescriptors = [NSSortDescriptor(keyPath: \BookEntity.updateTime, ascending: false)]
+        if !self.keyword.isEmpty {
+            request.predicate = NSPredicate(format: "name CONTAINS[c] %@", self.keyword)
+        }
         do {
             bookEntities = try getContext().fetch(request)
         } catch let err {

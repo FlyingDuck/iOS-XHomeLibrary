@@ -38,6 +38,8 @@ extension BookshelfViewModel {
     }
     
     func search() {
+        print("[ShelfVM] start to search books")
+        
         let books = [
             Book( name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息"),
             Book(name: "古文观止", author: "佚名", publisher: "新华出版社出版社出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true),
@@ -57,6 +59,8 @@ extension BookshelfViewModel {
     }
     
     func recommand() {
+        print("[ShelfVM] start to recommand books")
+        
         let books = [
             Book(name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: "还没有描述信息"),
             Book(name: "古文观止", author: "佚名", publisher: "新华出版社出版社出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true),

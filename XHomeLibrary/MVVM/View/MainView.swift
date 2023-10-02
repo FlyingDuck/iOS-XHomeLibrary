@@ -5,14 +5,19 @@
 //  Created by dongshujin on 2023/9/24.
 //
 
+import CoreData
 import SwiftUI
 
 struct MainView: View {
     @Environment(\.managedObjectContext) private var context
-    
     @ObservedObject var bookWatcher = BookWatcher.shared
-
     @StateObject var tabVM: TabViewModel = .init()
+    @ObservedObject private var localShelfVM: LocalShelfViewModel
+
+    init(context: NSManagedObjectContext) {
+        print("init MainView")
+        self.localShelfVM = LocalShelfViewModel(context: context)
+    }
 
     var body: some View {
         NavigationStack {
@@ -34,9 +39,10 @@ struct MainView: View {
                         TabViewModel.Tab.add.title
                     }
                     .tag(TabViewModel.Tab.add)
-                    .environmentObject(tabVM)
+                    .environmentObject(self.localShelfVM)
 
-                LocalBookshelfView(context: context)
+                LocalShelfView()
+                    .badge(localShelfVM.getTotal())
                     .padding(.vertical, 1)
                     .background(Color.xgrayTab)
                     .tabItem {
@@ -44,6 +50,7 @@ struct MainView: View {
                         TabViewModel.Tab.bookshelf.title
                     }
                     .tag(TabViewModel.Tab.bookshelf)
+                    .environmentObject(self.localShelfVM)
             }
             .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
@@ -53,7 +60,7 @@ struct MainView: View {
             } content: {
                 if bookWatcher.showBookDetail {
                     BookDetailView(book: bookWatcher.showBook, context: context)
-    //                    .interactiveDismissDisabled()  // 禁止滑动关闭sheet
+                    //                    .interactiveDismissDisabled()  // 禁止滑动关闭sheet
                 }
             }
         }
@@ -61,5 +68,10 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    Group {
+        @Environment(\.managedObjectContext) var context
+        MainView(context: context)
+        //        .environmentObject(LocalShelfViewModel(context: context))
+                .environment(\.managedObjectContext, context)
+    }
 }

@@ -35,14 +35,14 @@
 		3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2A12ABFF56E00EBD86B /* TokenPlugin.swift */; };
 		3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2A22ABFF56E00EBD86B /* NetworkLoggerPlugin.swift */; };
 		3E5FC2AC2ABFF56E00EBD86B /* WarningPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2A32ABFF56E00EBD86B /* WarningPlugin.swift */; };
-		3E5FC2AE2AC020A200EBD86B /* LocalBookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2AD2AC020A200EBD86B /* LocalBookshelfView.swift */; };
+		3E5FC2AE2AC020A200EBD86B /* LocalShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2AD2AC020A200EBD86B /* LocalShelfView.swift */; };
 		3E5FC2B02AC020F800EBD86B /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2AF2AC020F800EBD86B /* MineView.swift */; };
 		3E5FC2B42AC02FC600EBD86B /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2B32AC02FC600EBD86B /* Book.swift */; };
 		3E5FC2B62AC03B5100EBD86B /* BookItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2B52AC03B5100EBD86B /* BookItemCard.swift */; };
 		3E5FC2BA2AC060C500EBD86B /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2B92AC060C500EBD86B /* TabViewModel.swift */; };
 		3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */; };
 		3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2BD2AC0851400EBD86B /* MainView.swift */; };
-		3E5FC2C12AC08D0A00EBD86B /* LocalBookshelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */; };
+		3E5FC2C12AC08D0A00EBD86B /* LocalShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C02AC08D0A00EBD86B /* LocalShelfViewModel.swift */; };
 		3E5FC2C42AC08EF400EBD86B /* BookAddPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,14 +77,14 @@
 		3E5FC2A12ABFF56E00EBD86B /* TokenPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPlugin.swift; sourceTree = "<group>"; };
 		3E5FC2A22ABFF56E00EBD86B /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		3E5FC2A32ABFF56E00EBD86B /* WarningPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningPlugin.swift; sourceTree = "<group>"; };
-		3E5FC2AD2AC020A200EBD86B /* LocalBookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBookshelfView.swift; sourceTree = "<group>"; };
+		3E5FC2AD2AC020A200EBD86B /* LocalShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalShelfView.swift; sourceTree = "<group>"; };
 		3E5FC2AF2AC020F800EBD86B /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
 		3E5FC2B32AC02FC600EBD86B /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		3E5FC2B52AC03B5100EBD86B /* BookItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemCard.swift; sourceTree = "<group>"; };
 		3E5FC2B92AC060C500EBD86B /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfViewModel.swift; sourceTree = "<group>"; };
 		3E5FC2BD2AC0851400EBD86B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBookshelfViewModel.swift; sourceTree = "<group>"; };
+		3E5FC2C02AC08D0A00EBD86B /* LocalShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalShelfViewModel.swift; sourceTree = "<group>"; };
 		3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAddPageView.swift; sourceTree = "<group>"; };
 		8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.debug.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				3E5FC2B92AC060C500EBD86B /* TabViewModel.swift */,
-				3E5FC2C02AC08D0A00EBD86B /* LocalBookshelfViewModel.swift */,
+				3E5FC2C02AC08D0A00EBD86B /* LocalShelfViewModel.swift */,
 				3E5FC2BB2AC0648600EBD86B /* BookshelfViewModel.swift */,
 				3E013A8A2AC66C8700647B3D /* BookViewModel.swift */,
 				3E013A912AC67DB800647B3D /* NotificationWatcher.swift */,
@@ -274,7 +274,7 @@
 		3E5FC2B72AC03B5900EBD86B /* Shelf */ = {
 			isa = PBXGroup;
 			children = (
-				3E5FC2AD2AC020A200EBD86B /* LocalBookshelfView.swift */,
+				3E5FC2AD2AC020A200EBD86B /* LocalShelfView.swift */,
 			);
 			path = Shelf;
 			sourceTree = "<group>";
@@ -437,9 +437,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E5FC2C12AC08D0A00EBD86B /* LocalBookshelfViewModel.swift in Sources */,
+				3E5FC2C12AC08D0A00EBD86B /* LocalShelfViewModel.swift in Sources */,
 				3E5FC2B42AC02FC600EBD86B /* Book.swift in Sources */,
-				3E5FC2AE2AC020A200EBD86B /* LocalBookshelfView.swift in Sources */,
+				3E5FC2AE2AC020A200EBD86B /* LocalShelfView.swift in Sources */,
 				3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */,
 				3E5FC2A72ABFF56E00EBD86B /* Response+Extension.swift in Sources */,
 				3E013A942AC67E2800647B3D /* BookWatcher.swift in Sources */,

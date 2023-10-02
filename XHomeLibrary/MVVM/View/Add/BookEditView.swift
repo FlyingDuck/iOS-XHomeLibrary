@@ -11,10 +11,7 @@ import SwiftUI
 struct BookEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var bookVM: BookViewModel
-    
-//    init(book: Book = Book.newEmptyBook(), context: NSManagedObjectContext) {
-//        self.bookVM = BookViewModel(book: book, context: context)
-//    }
+    @EnvironmentObject private var localShelfVM: LocalShelfViewModel
     
     var body: some View {
         ScrollView {
@@ -126,6 +123,7 @@ struct BookEditView: View {
                 if self.bookVM.book.isNew() {
                     self.bookVM.addNewBook()
                     self.bookVM.resetBook()
+                    self.localShelfVM.search()
                 } else {
                     self.bookVM.updateBook()
                     self.presentationMode.wrappedValue.dismiss()

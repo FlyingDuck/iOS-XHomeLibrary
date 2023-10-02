@@ -8,12 +8,8 @@
 import CoreData
 import SwiftUI
 
-struct LocalBookshelfView: View {
-    @ObservedObject private var shelfVM: LocalBookshelfViewModel
-
-    init(context: NSManagedObjectContext) {
-        self.shelfVM = LocalBookshelfViewModel(context: context)
-    }
+struct LocalShelfView: View {
+    @EnvironmentObject private var shelfVM: LocalShelfViewModel
 
     var body: some View {
         NavigationView {
@@ -112,7 +108,8 @@ struct LocalBookshelfView: View {
     NavigationStack {
         @Environment(\.managedObjectContext) var context
         
-        LocalBookshelfView(context: context)
+        LocalShelfView()
+            .environmentObject(LocalShelfViewModel(context: context))
             .environment(\.managedObjectContext, context)
             .background(Color.red)
     }
