@@ -10,6 +10,10 @@ import SwiftUI
 
 struct LocalShelfView: View {
     @EnvironmentObject private var shelfVM: LocalShelfViewModel
+    
+    init() {
+        print("init LocalShelfView")
+    }
 
     var body: some View {
         NavigationView {

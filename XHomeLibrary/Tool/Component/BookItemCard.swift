@@ -27,18 +27,35 @@ struct BookItemCard: View {
     }
 
     var cover: some View {
-        KFImage(URL(string: book.cover))
-            .placeholder {
-                Image(systemName: "questionmark.app.dashed")
-                    .foregroundColor(.gray.opacity(0.4))
+        VStack {
+            if !book.isLocal() {
+                KFImage(URL(string: book.cover))
+                    .placeholder {
+                        Image(systemName: "questionmark.app.dashed")
+                            .foregroundColor(.gray.opacity(0.4))
+                    }
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                    .padding(.all, 10)
+            } else {
+                let image = UIImage(contentsOfFile: book.cover)
+                if image != nil {
+                    Image(uiImage: image!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                        .padding(.all, 10)
+                } else {
+                    Image(systemName: "questionmark.app.dashed")
+                        .foregroundColor(.gray.opacity(0.4))
+                }
             }
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 100)
-            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-            .padding(.all, 10)
+        }
     }
-    
+
     var info: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("\(book.name)")
@@ -71,8 +88,8 @@ struct BookItemCard: View {
         .lineLimit(1)
         .padding(.vertical, 30)
     }
-    
-    var operationArea : some View {
+
+    var operationArea: some View {
         VStack {
             Button(action: {
                 bookWatcher.setShowBook(book: book)
@@ -94,7 +111,7 @@ struct BookItemCard: View {
 }
 
 #Preview {
-    BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
+    BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
         .background(Color.xgrayTab)
 //        .background(Color.green)
 }

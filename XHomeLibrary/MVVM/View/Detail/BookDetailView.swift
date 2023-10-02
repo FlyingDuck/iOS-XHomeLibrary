@@ -19,10 +19,7 @@ struct BookDetailView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-//                pageTitle
-                
                 baseInfo
-//                divider
                 additionalInfo
                 Spacer()
                 footer
@@ -34,35 +31,30 @@ struct BookDetailView: View {
         }
     }
     
-    var pageTitle: some View {
-        HStack {
-            Text("图书详情").font(.headline)
-        }
-        .padding(.vertical, 30)
-    }
-    
     var baseInfo: some View {
         HStack {
             VStack(alignment: .center, spacing: 5) {
-//                Image(bookVM.book.cover)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 140)
-//                    .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                
-                KFImage(URL(string: bookVM.book.cover))
-                    .placeholder {
-                        Image(systemName: "questionmark.app.dashed")
-                            .resizable()
-                            .foregroundColor(.gray.opacity(0.2))
-                            .scaledToFit()
-                            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                    }
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 140)
-                    .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                    
+                if !bookVM.book.isLocal() {
+                    KFImage(URL(string: bookVM.book.cover))
+                        .placeholder {
+                            Image(systemName: "questionmark.app.dashed")
+                                .resizable()
+                                .foregroundColor(.gray.opacity(0.2))
+                                .scaledToFit()
+                                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                        }
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 140)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                } else {
+                    Image(uiImage: bookVM.getLocalBookCoverUIImage())
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 140)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                }
+            
                 HStack {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 10))
@@ -124,7 +116,8 @@ struct BookDetailView: View {
     
     var additionalInfo: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .top) {
+//            HStack(alignment: .top) {
+            ScrollView {
                 if bookVM.book.description.isEmpty {
                     Text("关于《\(bookVM.book.name)》, Ta 什么也没写")
                         .font(.system(size: 14, weight: .light))
@@ -176,9 +169,10 @@ struct BookDetailView: View {
 }
 
 #Preview {
-//    BookDetailView(book:
-//        Book(name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"))
-    
-    BookDetailView(book: Book(name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
-                   context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+    Group {
+        let context = PersistenceController.shared.container.viewContext
+        
+        BookDetailView(book: Book(name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
+                       context: context)
+    }
 }

@@ -10,6 +10,10 @@ import SwiftUI
 class TabViewModel: ObservableObject {
     @Published var tab: Tab = .home
     
+    init() {
+        print("init TabViewModel")
+    }
+    
     enum Tab: CaseIterable {
         case home
         case bookshelf

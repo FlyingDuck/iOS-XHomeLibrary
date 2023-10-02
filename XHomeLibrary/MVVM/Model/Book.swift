@@ -53,21 +53,12 @@ struct Book {
     var local: Bool = false
     
     init(id : String = "", name: String, author: String, publisher: String, location: Location, cover: String, isbn: String, description: String, local: Bool = false) {
-//        if id.isEmpty {
-//            self.id = UUID().uuidString
-//        } else {
-//            self.id = id
-//        }
         self.id = id
         self.name = name
         self.author = author
         self.publisher = publisher
         self.location = location
-        if cover.isEmpty {
-            self.cover = "0" // todo 暂时使用本地图片代替
-        } else {
-            self.cover = cover
-        }
+        self.cover = cover
         self.isbn = isbn
         self.description = description
         self.local = local
@@ -76,11 +67,25 @@ struct Book {
 
 extension Book {
     static func newEmptyBook() -> Book {
-        return .init(name: "", author: "", publisher: "", location: Location.beijing, cover: "", isbn: "", description: "", local: false)
+        return .init(name: "", author: "", publisher: "", location: Location.beijing, cover: "", isbn: "", description: "", local: true)
     }
     
     func isNew() -> Bool {
         return self.id.isEmpty
+    }
+    
+    func isLocal() -> Bool {
+        if cover.isEmpty {
+            return local
+        }
+        if isRemoteCoverImage() {
+            return false
+        }
+        return true
+    }
+    
+    private func isRemoteCoverImage() -> Bool {
+        return !cover.isEmpty && cover.hasPrefix("http")
     }
     
     func trans2NewEntity(context: NSManagedObjectContext) -> BookEntity {
@@ -123,7 +128,7 @@ extension BookEntity {
         return book
     }
     
-    func toBook() -> Book {
+    private func toBook() -> Book {
         var location: Location
         
         switch self.location {

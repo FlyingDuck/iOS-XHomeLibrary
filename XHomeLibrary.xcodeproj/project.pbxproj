@@ -44,6 +44,9 @@
 		3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2BD2AC0851400EBD86B /* MainView.swift */; };
 		3E5FC2C12AC08D0A00EBD86B /* LocalShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C02AC08D0A00EBD86B /* LocalShelfViewModel.swift */; };
 		3E5FC2C42AC08EF400EBD86B /* BookAddPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */; };
+		3E91C2992ACAAE5A009CDF90 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91C2982ACAAE5A009CDF90 /* ImagePicker.swift */; };
+		3E91C29B2ACAB013009CDF90 /* ImagePickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91C29A2ACAB013009CDF90 /* ImagePickerTest.swift */; };
+		3E91C29E2ACACC46009CDF90 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +89,9 @@
 		3E5FC2BD2AC0851400EBD86B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3E5FC2C02AC08D0A00EBD86B /* LocalShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalShelfViewModel.swift; sourceTree = "<group>"; };
 		3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAddPageView.swift; sourceTree = "<group>"; };
+		3E91C2982ACAAE5A009CDF90 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		3E91C29A2ACAB013009CDF90 /* ImagePickerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerTest.swift; sourceTree = "<group>"; };
+		3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.debug.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +121,7 @@
 				3E5FC2B52AC03B5100EBD86B /* BookItemCard.swift */,
 				3E013A982AC70F9600647B3D /* TextInputRow.swift */,
 				3E013A962AC70DDC00647B3D /* UnderlineTextField.swift */,
+				3E91C2982ACAAE5A009CDF90 /* ImagePicker.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -166,6 +173,7 @@
 				3E5FC2922ABFF4F100EBD86B /* MVVM */,
 				3E0E47A32AC1DAAA003A2C1B /* Tool */,
 				3E5FC2962ABFF56E00EBD86B /* Network */,
+				3E91C29C2ACAC5D9009CDF90 /* DevDemo */,
 				3E4B8E5F2ABFE6B80010028C /* Preview Content */,
 			);
 			path = XHomeLibrary;
@@ -208,8 +216,8 @@
 				3E5FC2BD2AC0851400EBD86B /* MainView.swift */,
 				3E5FC2BF2AC0851E00EBD86B /* Home */,
 				3E5FC2C22AC08ED600EBD86B /* Add */,
-				3E013A8E2AC67AC400647B3D /* Detail */,
 				3E5FC2B72AC03B5900EBD86B /* Shelf */,
+				3E013A8E2AC67AC400647B3D /* Detail */,
 				3E5FC2B82AC05E4200EBD86B /* Mine */,
 			);
 			path = View;
@@ -302,8 +310,17 @@
 			children = (
 				3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */,
 				3E013A882AC66C1D00647B3D /* BookEditView.swift */,
+				3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */,
 			);
 			path = Add;
+			sourceTree = "<group>";
+		};
+		3E91C29C2ACAC5D9009CDF90 /* DevDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3E91C29A2ACAB013009CDF90 /* ImagePickerTest.swift */,
+			);
+			path = DevDemo;
 			sourceTree = "<group>";
 		};
 		5820051BFAE429BB67915832 /* Frameworks */ = {
@@ -438,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E5FC2C12AC08D0A00EBD86B /* LocalShelfViewModel.swift in Sources */,
+				3E91C29E2ACACC46009CDF90 /* PhotoPickerView.swift in Sources */,
 				3E5FC2B42AC02FC600EBD86B /* Book.swift in Sources */,
 				3E5FC2AE2AC020A200EBD86B /* LocalShelfView.swift in Sources */,
 				3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */,
@@ -454,6 +472,7 @@
 				3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */,
 				3E5FC2912ABFEA1800EBD86B /* HomeView.swift in Sources */,
 				3E5FC2AC2ABFF56E00EBD86B /* WarningPlugin.swift in Sources */,
+				3E91C2992ACAAE5A009CDF90 /* ImagePicker.swift in Sources */,
 				3E013A8B2AC66C8700647B3D /* BookViewModel.swift in Sources */,
 				3E5FC2A82ABFF56E00EBD86B /* NetWorking.swift in Sources */,
 				3E5FC2A62ABFF56E00EBD86B /* MoyaProviderType+Extension.swift in Sources */,
@@ -461,6 +480,7 @@
 				3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */,
 				3E5FC2A42ABFF56E00EBD86B /* SearchAPI.swift in Sources */,
 				3E013A9C2AC80D8200647B3D /* Library.xcdatamodeld in Sources */,
+				3E91C29B2ACAB013009CDF90 /* ImagePickerTest.swift in Sources */,
 				3E4B8E5A2ABFE6B60010028C /* XHomeLibraryApp.swift in Sources */,
 				3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */,
 				3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */,
@@ -609,6 +629,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = HiBook;
+				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要您的照相机权限来拍摄照片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -641,6 +662,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = HiBook;
+				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要您的照相机权限来拍摄照片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -13,10 +13,12 @@ struct MainView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
     @StateObject var tabVM: TabViewModel = .init()
     @ObservedObject private var localShelfVM: LocalShelfViewModel
+    @ObservedObject var bookVM : BookViewModel
 
     init(context: NSManagedObjectContext) {
         print("init MainView")
         self.localShelfVM = LocalShelfViewModel(context: context)
+        self.bookVM = BookViewModel(book: Book.newEmptyBook(), context: context)
     }
 
     var body: some View {
@@ -40,6 +42,7 @@ struct MainView: View {
                     }
                     .tag(TabViewModel.Tab.add)
                     .environmentObject(self.localShelfVM)
+                    .environmentObject(self.bookVM)
 
                 LocalShelfView()
                     .badge(localShelfVM.getTotal())
@@ -54,13 +57,15 @@ struct MainView: View {
             }
             .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $bookWatcher.showBookDetail) {
+            .sheet(isPresented: $bookWatcher.showSheet) {
                 print("close home sheet")
                 bookWatcher.clear()
             } content: {
                 if bookWatcher.showBookDetail {
                     BookDetailView(book: bookWatcher.showBook, context: context)
-                    //                    .interactiveDismissDisabled()  // 禁止滑动关闭sheet
+                } else if bookWatcher.showPhotoPicker {
+                    PhotoPickerView()
+                        .environmentObject(bookVM)
                 }
             }
         }
@@ -71,6 +76,6 @@ struct MainView: View {
     Group {
         let context = PersistenceController.shared.container.viewContext
         MainView(context: context)
-                .environment(\.managedObjectContext, context)
+            .environment(\.managedObjectContext, context)
     }
 }

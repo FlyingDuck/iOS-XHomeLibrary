@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var bookWatcher = BookWatcher.shared
+//    @ObservedObject var bookWatcher = BookWatcher.shared
     @StateObject var shelfVM: BookshelfViewModel = .init()
+    
+    init() {
+        print("init homeView")
+    }
     
     var body: some View {
         NavigationView {

@@ -9,22 +9,27 @@ import SwiftUI
 
 struct BookAddPageView: View {
     @Environment(\.managedObjectContext) private var context
+    @EnvironmentObject private var bookVM : BookViewModel
+    
+    init() {
+        print("init BookAddPageView")
+    }
 
     var body: some View {
-        NavigationView {
-            VStack {
-//                HStack {}.frame(width: UIScreen.main.bounds.width, height: 1)
-                BookEditView()
-                    .environmentObject(BookViewModel(book: Book.newEmptyBook(), context: context))
-            }
-            .background(Color.xgrayBg)
+        VStack {
+            BookEditView(editing: false)
+                .environmentObject(bookVM)
         }
+        .background(Color.xgrayBg)
     }
 }
 
 #Preview {
     NavigationStack {
+        let context = PersistenceController.shared.container.viewContext
         BookAddPageView()
             .background(Color.xgrayBg)
+            .environment(\.managedObjectContext, context)
+            .environmentObject(BookViewModel(book: Book.newEmptyBook(), context: context))
     }
 }

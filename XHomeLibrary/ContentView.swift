@@ -12,9 +12,14 @@ struct ContentView: View {
     
     var body: some View {
         MainView(context: context)
+//        ImagePickerTest()
     }
 }
 
 #Preview {
-    ContentView()
+    Group {
+        let context = PersistenceController.shared.container.viewContext
+        ContentView()
+            .environment(\.managedObjectContext, context)
+    }
 }
