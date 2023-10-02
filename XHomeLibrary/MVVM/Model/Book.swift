@@ -53,11 +53,12 @@ struct Book {
     var local: Bool = false
     
     init(id : String = "", name: String, author: String, publisher: String, location: Location, cover: String, isbn: String, description: String, local: Bool = false) {
-        if id.isEmpty {
-            self.id = UUID().uuidString
-        } else {
-            self.id = id
-        }
+//        if id.isEmpty {
+//            self.id = UUID().uuidString
+//        } else {
+//            self.id = id
+//        }
+        self.id = id
         self.name = name
         self.author = author
         self.publisher = publisher
@@ -78,7 +79,11 @@ extension Book {
         return .init(name: "", author: "", publisher: "", location: Location.beijing, cover: "", isbn: "", description: "", local: false)
     }
     
-    func trans2Entity(context: NSManagedObjectContext) -> BookEntity {
+    func isNew() -> Bool {
+        return self.id.isEmpty
+    }
+    
+    func trans2NewEntity(context: NSManagedObjectContext) -> BookEntity {
         let bookEntity: BookEntity = .init(context: context)
         bookEntity.id = self.id
         bookEntity.name = self.name
@@ -90,6 +95,19 @@ extension Book {
         bookEntity.desc = self.description
         return bookEntity
     }
+    
+    func trans2UpdateEntity(bookEntity: BookEntity) {
+        // id 不变
+        bookEntity.name = self.name
+        bookEntity.author = self.author
+        bookEntity.publisher = self.publisher
+        bookEntity.location = self.location.entityName
+        bookEntity.cover = self.cover
+        bookEntity.isbn = self.isbn
+        bookEntity.desc = self.description
+    }
+    
+    
 }
 
 extension BookEntity {

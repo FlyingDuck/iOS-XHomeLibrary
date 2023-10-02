@@ -14,7 +14,8 @@ struct BookAddPageView: View {
         NavigationView {
             VStack {
 //                HStack {}.frame(width: UIScreen.main.bounds.width, height: 1)
-                BookEditView(book: Book.newEmptyBook(), context: context)
+                BookEditView()
+                    .environmentObject(BookViewModel(book: Book.newEmptyBook(), context: context))
             }
             .background(Color.xgrayBg)
         }

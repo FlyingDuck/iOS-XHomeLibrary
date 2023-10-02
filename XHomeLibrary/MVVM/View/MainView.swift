@@ -52,7 +52,7 @@ struct MainView: View {
                 bookWatcher.clear()
             } content: {
                 if bookWatcher.showBookDetail {
-                    BookDetailView(book: bookWatcher.showBook)
+                    BookDetailView(book: bookWatcher.showBook, context: context)
     //                    .interactiveDismissDisabled()  // 禁止滑动关闭sheet
                 }
             }

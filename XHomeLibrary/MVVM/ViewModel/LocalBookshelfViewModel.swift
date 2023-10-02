@@ -17,35 +17,35 @@ class LocalBookshelfViewModel: ObservableObject {
     var managedObjectContext: NSManagedObjectContext
     init(context: NSManagedObjectContext) {
         self.managedObjectContext = context
+        self.search()
+    }
+    
+    func getContext() -> NSManagedObjectContext {
+        return self.managedObjectContext
     }
 }
 
 extension LocalBookshelfViewModel {
-    func getContext() -> NSManagedObjectContext {
-        return self.managedObjectContext
-    }
-    
-    func saveContext() {
-        let context = self.getContext()
-        if !context.hasChanges {
-            return
-        }
-        
-        do {
-            try context.save()
-        } catch let err {
-            print(err.localizedDescription)
-        }
-    }
+//    func saveContext() {
+//        let context = self.getContext()
+//        if !context.hasChanges {
+//            return
+//        }
+//        
+//        do {
+//            try context.save()
+//        } catch let err {
+//            print(err.localizedDescription)
+//        }
+//    }
     
     func search() {
-        let context = self.getContext()
-
         var bookEntities: [BookEntity] = []
         
         let request = NSFetchRequest<BookEntity>(entityName: "BookEntity")
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \BookEntity.updateTime, ascending: false)]
         do {
-            bookEntities = try context.fetch(request)
+            bookEntities = try getContext().fetch(request)
         } catch let err {
             print(err.localizedDescription)
         }

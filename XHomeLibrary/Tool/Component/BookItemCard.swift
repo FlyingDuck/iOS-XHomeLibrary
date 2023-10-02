@@ -18,6 +18,7 @@ struct BookItemCard: View {
                 .resizable()
                 .scaledToFit()
 //                .frame(width: 100, height: 180, alignment: .center)
+                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 .padding(.all, 10)
 
             VStack(alignment: .leading, spacing: 10) {
@@ -27,15 +28,15 @@ struct BookItemCard: View {
                     .font(.system(size: 12, weight: .regular, design: .rounded))
                 Spacer()
                 Text("\(book.publisher)")
-                    .font(.system(size: 12, weight: .light, design: .rounded))
+                    .font(.system(size: 10, weight: .light, design: .rounded))
                     .italic()
-
+                    .underline()
                 HStack {
                     Image(systemName: "mappin.and.ellipse")
-                        .font(.system(size: 12))
+                        .font(.system(size: 10))
                         .foregroundColor(Color.gray)
                     Text("\(book.location.displayName)")
-                        .font(.system(size: 12, weight: .light, design: .rounded))
+                        .font(.system(size: 10, weight: .light, design: .rounded))
                         .foregroundColor(Color.gray)
 
                     if book.local {
@@ -79,7 +80,7 @@ struct BookItemCard: View {
 }
 
 #Preview {
-    BookItemCard(book: Book(name: "古文观止 古文观止 古文观止 古文观止", author: "佚名 古文观止 古文观止 古文观止", publisher: "新华出版社出版社出版社出版社出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
+    BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true))
         .background(Color.xgrayTab)
 //        .background(Color.green)
 }

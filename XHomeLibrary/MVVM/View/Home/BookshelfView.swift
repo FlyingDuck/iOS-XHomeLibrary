@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct BookshelfView: View {
+    @Environment(\.managedObjectContext) private var context
     @ObservedObject var bookWatcher = BookWatcher.shared
-    
     @EnvironmentObject var shelfVM: BookshelfViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -32,7 +32,7 @@ struct BookshelfView: View {
             bookWatcher.clear()
         } content: {
             if bookWatcher.showBookDetail {
-                BookDetailView(book: bookWatcher.showBook)
+                BookDetailView(book: bookWatcher.showBook, context: context)
             }
         }
     }

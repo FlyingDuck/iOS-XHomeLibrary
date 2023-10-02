@@ -3,12 +3,13 @@
     <entity name="BookEntity" representedClassName="BookEntity" syncable="YES" codeGenerationType="class">
         <attribute name="author" attributeType="String" defaultValueString="佚名"/>
         <attribute name="cover" optional="YES" attributeType="String"/>
-        <attribute name="createTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createTime" attributeType="Date" defaultDateTimeInterval="717901860" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="isbn" attributeType="String" defaultValueString="xxxxxx"/>
         <attribute name="location" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="publisher" attributeType="String" defaultValueString="无"/>
+        <attribute name="updateTime" attributeType="Date" defaultDateTimeInterval="717901860" usesScalarValueType="NO"/>
     </entity>
 </model>

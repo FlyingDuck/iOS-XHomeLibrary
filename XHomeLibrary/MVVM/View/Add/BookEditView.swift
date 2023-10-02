@@ -9,11 +9,12 @@ import CoreData
 import SwiftUI
 
 struct BookEditView: View {
-    @ObservedObject var bookVM: BookViewModel
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var bookVM: BookViewModel
     
-    init(book: Book = Book.newEmptyBook(), context: NSManagedObjectContext) {
-        self.bookVM = BookViewModel(book: book, context: context)
-    }
+//    init(book: Book = Book.newEmptyBook(), context: NSManagedObjectContext) {
+//        self.bookVM = BookViewModel(book: book, context: context)
+//    }
     
     var body: some View {
         ScrollView {
@@ -70,8 +71,7 @@ struct BookEditView: View {
                 TextInputRow(title: "书名", text: $bookVM.book.name)
                 TextInputRow(title: "作者", text: $bookVM.book.author)
                 TextInputRow(title: "出版社", text: $bookVM.book.publisher)
-                TextInputRow(title: "ISBN", text: $bookVM.book.isbn)
-                    .keyboardType(.numberPad)
+                TextInputRow(title: "ISBN", text: $bookVM.book.isbn).keyboardType(.numberPad)
             }
             
             HStack {
@@ -100,8 +100,8 @@ struct BookEditView: View {
                     .font(.system(size: 12, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .leading)
                 Picker("选择器", selection: $bookVM.book.location) {
-                    Text("北京").tag(Location.beijing)
-                    Text("唐山").tag(Location.tangshan)
+                    Text(Location.beijing.displayName).tag(Location.beijing)
+                    Text(Location.tangshan.displayName).tag(Location.tangshan)
                 }.pickerStyle(.segmented)
             }
             
@@ -113,7 +113,6 @@ struct BookEditView: View {
                     .font(.system(size: 12))
                     .frame(height: 150)
                     .border(Color.gray, width: 1)
-//                    .padding(.horizontal)
             }
         }
         .padding(.all, 20)
@@ -124,12 +123,18 @@ struct BookEditView: View {
     var footer: some View {
         HStack {
             Button {
-                bookVM.addNewBook()
+                if self.bookVM.book.isNew() {
+                    self.bookVM.addNewBook()
+                    self.bookVM.resetBook()
+                } else {
+                    self.bookVM.updateBook()
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+                
             } label: {
                 Label("保存", systemImage: "checkmark")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)
                     .padding(.vertical)
-//                    .background(Color.xwhiteCard)
                     .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
             }
             .overlay {
@@ -144,7 +149,8 @@ struct BookEditView: View {
 }
 
 #Preview {
-    BookEditView(
-        book: Book(name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: ""),
-        context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+    BookEditView()
+        .environmentObject(BookViewModel(book: Book(name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "book-cover-1", isbn: "123478747585", description: ""),
+                                         context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+        )
 }
