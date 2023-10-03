@@ -38,11 +38,10 @@ struct BookDetailView: View {
                 if !bookVM.book.isLocal() {
                     KFImage(URL(string: bookVM.book.cover))
                         .placeholder {
-                            Image(systemName: "questionmark.app.dashed")
-                                .resizable()
-                                .foregroundColor(.gray.opacity(0.2))
-                                .scaledToFit()
-                                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                            Image(systemName: "questionmark")
+                                .font(.system(size: 40, weight: .light, design: .monospaced))
+                                .foregroundColor(.orange.opacity(0.4))
+                                .frame(width: 140)
                         }
                         .resizable()
                         .aspectRatio(contentMode: .fit)

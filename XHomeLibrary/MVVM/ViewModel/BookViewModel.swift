@@ -16,18 +16,18 @@ class BookViewModel: ObservableObject {
     // 图片处理
     // - 本地图片
     private static let localImageSavingDir = "XHomeLib"
-    @Published var localImagePath: String
+    @Published var localImage: UIImage
     // - 网络图片
     @Published var remoteImageURL: String
 
     init(book: Book, context: NSManagedObjectContext) {
         self.managedObjectContext = context
         self.book = book
-        self.localImagePath = ""
+        self.localImage = UIImage()
         self.remoteImageURL = ""
         if !book.cover.isEmpty {
             if book.isLocal() {
-                self.localImagePath = book.cover
+                self.localImage = UIImage(contentsOfFile: book.cover) ?? UIImage()
             } else {
                 self.remoteImageURL = book.cover
             }
@@ -44,21 +44,17 @@ extension BookViewModel {
     func reset() {
         print("[BookVM] reset book to empty")
         book = Book.newEmptyBook()
-        localImagePath = ""
+        localImage = UIImage()
         remoteImageURL = ""
     }
 
     func getLocalBookCoverUIImage() -> UIImage {
-        if localImagePath.isEmpty {
-            return UIImage()
-        } else {
-            return UIImage(contentsOfFile: localImagePath) ?? UIImage()
-        }
+        return localImage
     }
 
     func updateLocalBook() {
-        if !localImagePath.isEmpty {
-            let imageFilepath = BookViewModel.saveImage2Local(tmpFilePath: localImagePath)
+        if !(localImage.size == .zero) {
+            let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
             book.cover = imageFilepath
         }
 
@@ -72,7 +68,7 @@ extension BookViewModel {
     }
 
     func addLocalBook() {
-        let imageFilepath = BookViewModel.saveImage2Local(tmpFilePath: localImagePath)
+        let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
 
         book.cover = imageFilepath
 
@@ -101,35 +97,55 @@ extension BookViewModel {
         return bookEntities.first
     }
 
-    static func saveImage2Local(tmpFilePath: String) -> String {
-        if tmpFilePath.isEmpty {
+    static func saveImage2Local(localImage: UIImage) -> String {
+        if localImage.size == .zero {
             return ""
         }
 
         let BuildingPropertyDir = localImageSavingDir
-        guard let image = UIImage(contentsOfFile: tmpFilePath) else {
-            return ""
-        }
-
-//        if image.size == .zero {
-//            return ""
-//        }
 
         // 创建图片文件目录
         let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
-        let dir = filePath+"/images/"+BuildingPropertyDir+"/"
+        let dir = filePath + "/images/" + BuildingPropertyDir + "/"
         let filemanager = FileManager.default
         try! filemanager.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
         print("images dir: \(dir)")
 
         // 提取图片文件名
-        let components = tmpFilePath.components(separatedBy: "/")
-        let newFilepath = dir+components.last!
+        let newFilepath = dir + UUID().uuidString + ".jpeg"
         print("saving image path: \(newFilepath)")
 
         // 写入新的目录
-        let data: Data = image.pngData()!
+        let data: Data = localImage.pngData()!
         try! data.write(to: URL(fileURLWithPath: newFilepath))
         return newFilepath
     }
+
+//    static func saveImage2Local(tmpFilePath: String) -> String {
+//        if tmpFilePath.isEmpty {
+//            return ""
+//        }
+//
+//        let BuildingPropertyDir = localImageSavingDir
+//        guard let image = UIImage(contentsOfFile: tmpFilePath) else {
+//            return ""
+//        }
+//
+//        // 创建图片文件目录
+//        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
+//        let dir = filePath+"/images/"+BuildingPropertyDir+"/"
+//        let filemanager = FileManager.default
+//        try! filemanager.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
+//        print("images dir: \(dir)")
+//
+//        // 提取图片文件名
+//        let components = tmpFilePath.components(separatedBy: "/")
+//        let newFilepath = dir+components.last!
+//        print("saving image path: \(newFilepath)")
+//
+//        // 写入新的目录
+//        let data: Data = image.pngData()!
+//        try! data.write(to: URL(fileURLWithPath: newFilepath))
+//        return newFilepath
+//    }
 }

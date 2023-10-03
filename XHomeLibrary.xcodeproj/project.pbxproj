@@ -49,6 +49,7 @@
 		3E91C29E2ACACC46009CDF90 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */; };
 		3ED7416D2ACBFD5C00B22309 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7416C2ACBFD5C00B22309 /* UIApplicationExtension.swift */; };
 		3ED7416F2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7416E2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift */; };
+		3ED741712ACC3F4800B22309 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED741702ACC3F4800B22309 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		3ED7416C2ACBFD5C00B22309 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		3ED7416E2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGesture.swift; sourceTree = "<group>"; };
+		3ED741702ACC3F4800B22309 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.debug.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,10 +135,11 @@
 		3E0E47A32AC1DAAA003A2C1B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				3E013A952AC70DBD00647B3D /* Component */,
-				3E0E47A42AC1DABD003A2C1B /* ViewModifier */,
 				3E0E47A72AC1DDBF003A2C1B /* XColor.swift */,
 				3ED7416C2ACBFD5C00B22309 /* UIApplicationExtension.swift */,
+				3ED741702ACC3F4800B22309 /* UIImageExtension.swift */,
+				3E013A952AC70DBD00647B3D /* Component */,
+				3E0E47A42AC1DABD003A2C1B /* ViewModifier */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				3E013A8B2AC66C8700647B3D /* BookViewModel.swift in Sources */,
 				3E5FC2A82ABFF56E00EBD86B /* NetWorking.swift in Sources */,
 				3E5FC2A62ABFF56E00EBD86B /* MoyaProviderType+Extension.swift in Sources */,
+				3ED741712ACC3F4800B22309 /* UIImageExtension.swift in Sources */,
 				3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */,
 				3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */,
 				3E5FC2A42ABFF56E00EBD86B /* SearchAPI.swift in Sources */,

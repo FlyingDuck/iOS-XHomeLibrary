@@ -10,10 +10,15 @@ import SwiftUI
 struct PhotoPickerView: View {
 //    @Binding var image: UIImage
     @EnvironmentObject var bookVM: BookViewModel
+    var sourceType: UIImagePickerController.SourceType
+    
+    init(sourceType: UIImagePickerController.SourceType = .photoLibrary) {
+        self.sourceType = sourceType
+    }
 
     var body: some View {
         VStack {
-            ImagePicker(sourceType: .photoLibrary, selectedImagePath: $bookVM.localImagePath) { image in
+            ImagePicker(sourceType: sourceType, selectedImage: $bookVM.localImage) { image in
                 print("handle selected image: size=\(image.size)")
             }
         }
@@ -26,7 +31,7 @@ struct PhotoPickerView: View {
 #Preview {
     NavigationView {
         let context = PersistenceController.shared.container.viewContext
-        PhotoPickerView()
+        PhotoPickerView(sourceType: .photoLibrary)
             .environmentObject(BookViewModel(
                 book: Book.newEmptyBook(),
                 context: context)

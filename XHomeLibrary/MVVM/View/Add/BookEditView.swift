@@ -9,11 +9,19 @@ import CoreData
 import Kingfisher
 import SwiftUI
 
+// enum PickerSource {
+//    case camera
+//    case photoLibrary
+// }
+
 struct BookEditView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var bookVM: BookViewModel
     @EnvironmentObject private var localShelfVM: LocalShelfViewModel
+    
+//    @State private var activeSheet: PickerSource?
+//    @State private var showDialog: Bool = false
     
     var editing: Bool // 是否是编辑页，false-新增页
     
@@ -32,6 +40,14 @@ struct BookEditView: View {
         }
         .scrollIndicators(.hidden)
         .dismissKeyboard()
+//        .confirmationDialog("选择图片来源", isPresented: $showDialog, titleVisibility: .visible) {
+//            Button("相机") {
+//                activeSheet = .camera
+//            }
+//            Button("相册") {
+//                activeSheet = .photoLibrary
+//            }
+//        } message: {}
     }
     
     var baseInfo: some View {
@@ -43,63 +59,62 @@ struct BookEditView: View {
                         .frame(width: 50, alignment: .leading)
                     Spacer()
                     
-                    if self.editing {
+                    HStack(spacing: 40) {
                         if bookVM.book.isLocal() {
-                            Image(uiImage: bookVM.getLocalBookCoverUIImage())
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100)
-                                .overlay {
-                                    NavigationLink(destination: {
-                                        PhotoPickerView()
-                                            .environmentObject(bookVM)
-                                    }, label: {
-                                        Image(systemName: "camera.viewfinder")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .foregroundColor(.accentColor.opacity(0.2))
-                                            .frame(width: 100)
-                                    })
-                                }
+                            let image = bookVM.getLocalBookCoverUIImage()
+                            if image.size == .zero {
+                                Image(systemName: "questionmark")
+                                    .font(.system(size: 40, weight: .light, design: .monospaced))
+                                    .foregroundColor(.orange.opacity(0.4))
+                                    .frame(width: 100)
+                            } else {
+                                Image(uiImage: bookVM.getLocalBookCoverUIImage())
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                            }
                         } else {
                             KFImage(URL(string: bookVM.book.cover))
-                                .placeholder {}
+                                .placeholder {
+                                    Image(systemName: "questionmark")
+                                        .font(.system(size: 40, weight: .light, design: .monospaced))
+                                        .foregroundColor(.orange.opacity(0.4))
+                                        .frame(width: 100)
+                                }
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 100)
                                 .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                                .overlay {
-                                    NavigationLink(destination: {
-                                        PhotoPickerView()
-                                            .environmentObject(bookVM)
-                                    }, label: {
-                                        Image(systemName: "camera.viewfinder")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .foregroundColor(.accentColor.opacity(0.2))
-                                            .frame(width: 100)
-                                    })
-                                }
                         }
-                    } else {
-                        Image(uiImage: bookVM.getLocalBookCoverUIImage())
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                            .overlay {
-                                Button(action: {
-                                    print("goto photo picker")
-                                    bookWatcher.setShowPhotoPicker()
-                                }, label: {
-                                    Image(systemName: "camera.viewfinder")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .foregroundColor(.accentColor.opacity(0.2))
-                                        .frame(width: 100)
-                                })
-                            }
+                        
+                        VStack(spacing: 40) {
+                            NavigationLink(destination: {
+                                PhotoPickerView()
+                                    .environmentObject(bookVM)
+                            }, label: {
+                                Image(systemName: "photo.fill.on.rectangle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.accentColor.opacity(0.6))
+                                    .shadow(color: .accentColor, radius: 15, x: 0, y: 0)
+                                    .frame(width: 20)
+                            })
+                            
+                            NavigationLink(destination: {
+                                PhotoPickerView(sourceType: .camera)
+                                    .environmentObject(bookVM)
+                            }, label: {
+                                Image(systemName: "camera.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.accentColor.opacity(0.6))
+                                    .shadow(color: .accentColor, radius: 15, x: 0, y: 0)
+                                    .frame(width: 20)
+                            })
+                        }
                     }
-
+                    
                     Spacer()
                 }
                 .frame(height: 150)
@@ -190,10 +205,10 @@ struct BookEditView: View {
     NavigationView {
         VStack {
             let context = PersistenceController.shared.container.viewContext
-            BookEditView(editing: false)
+            BookEditView(editing: true)
                 .environmentObject(BookViewModel(
                     //                    book: Book.newEmptyBook(),
-                    book: Book(name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: ""),
+                    book: Book(name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "ttps://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: ""),
                     context: context)
                 )
         }
