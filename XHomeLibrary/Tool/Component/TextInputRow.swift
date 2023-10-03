@@ -14,12 +14,12 @@ struct TextInputRow: View {
     var body: some View {
         HStack(spacing: 15) {
             Text(title)
-                .font(.system(size: 12, weight: .bold, design: .rounded))
+                .font(.system(size: 15, weight: .bold, design: .rounded))
                 .frame(width: 50, alignment: .leading)
             VStack(spacing: 2) {
                 TextField("", text: $text)
                     .font(.system(size: 12))
-                    .padding(.horizontal, 10)
+//                    .padding(.horizontal, 10)
                 Rectangle()
                     .fill(Color.gray.opacity(0.5))
                     .frame(height: 1)

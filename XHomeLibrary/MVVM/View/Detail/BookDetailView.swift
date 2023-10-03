@@ -13,7 +13,8 @@ struct BookDetailView: View {
     @ObservedObject var bookVM: BookViewModel
     
     init(book: Book, context: NSManagedObjectContext) {
-        self.bookVM = BookViewModel(book: book, context: context)
+        print("init BookDetailView")
+        bookVM = .init(book: book, context: context)
     }
     
     var body: some View {
@@ -48,11 +49,19 @@ struct BookDetailView: View {
                         .frame(width: 140)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 } else {
-                    Image(uiImage: bookVM.getLocalBookCoverUIImage())
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 140)
-                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                    let image = bookVM.getLocalBookCoverUIImage()
+                    if image.size == .zero {
+                        Image(systemName: "questionmark")
+                            .font(.system(size: 40, weight: .light, design: .monospaced))
+                            .foregroundColor(.orange.opacity(0.4))
+                            .frame(width: 140)
+                    } else {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 140)
+                            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                    }
                 }
             
                 HStack {
@@ -171,8 +180,11 @@ struct BookDetailView: View {
 #Preview {
     Group {
         let context = PersistenceController.shared.container.viewContext
-        
         BookDetailView(book: Book(name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
                        context: context)
+//            .environmentObject(BookViewModel(
+//                book: Book(name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
+//                context: context
+//            ))
     }
 }

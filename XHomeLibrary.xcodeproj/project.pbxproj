@@ -47,6 +47,8 @@
 		3E91C2992ACAAE5A009CDF90 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91C2982ACAAE5A009CDF90 /* ImagePicker.swift */; };
 		3E91C29B2ACAB013009CDF90 /* ImagePickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91C29A2ACAB013009CDF90 /* ImagePickerTest.swift */; };
 		3E91C29E2ACACC46009CDF90 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */; };
+		3ED7416D2ACBFD5C00B22309 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7416C2ACBFD5C00B22309 /* UIApplicationExtension.swift */; };
+		3ED7416F2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7416E2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		3E91C2982ACAAE5A009CDF90 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3E91C29A2ACAB013009CDF90 /* ImagePickerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerTest.swift; sourceTree = "<group>"; };
 		3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		3ED7416C2ACBFD5C00B22309 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		3ED7416E2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGesture.swift; sourceTree = "<group>"; };
 		8E54C8D7C90959E45DF78300 /* Pods-XHomeLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHomeLibrary.debug.xcconfig"; path = "Target Support Files/Pods-XHomeLibrary/Pods-XHomeLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +136,7 @@
 				3E013A952AC70DBD00647B3D /* Component */,
 				3E0E47A42AC1DABD003A2C1B /* ViewModifier */,
 				3E0E47A72AC1DDBF003A2C1B /* XColor.swift */,
+				3ED7416C2ACBFD5C00B22309 /* UIApplicationExtension.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */,
+				3ED7416E2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 			files = (
 				3E5FC2C12AC08D0A00EBD86B /* LocalShelfViewModel.swift in Sources */,
 				3E91C29E2ACACC46009CDF90 /* PhotoPickerView.swift in Sources */,
+				3ED7416F2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift in Sources */,
 				3E5FC2B42AC02FC600EBD86B /* Book.swift in Sources */,
 				3E5FC2AE2AC020A200EBD86B /* LocalShelfView.swift in Sources */,
 				3E5FC2BC2AC0648600EBD86B /* BookshelfViewModel.swift in Sources */,
@@ -488,6 +495,7 @@
 				3E5FC2B62AC03B5100EBD86B /* BookItemCard.swift in Sources */,
 				3E013AA02AC8510F00647B3D /* PersistenceController.swift in Sources */,
 				3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */,
+				3ED7416D2ACBFD5C00B22309 /* UIApplicationExtension.swift in Sources */,
 				3E5FC2BA2AC060C500EBD86B /* TabViewModel.swift in Sources */,
 				3E5FC2A92ABFF56E00EBD86B /* ApiConfig.swift in Sources */,
 				3E013A922AC67DB800647B3D /* NotificationWatcher.swift in Sources */,
@@ -549,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -606,7 +614,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -625,6 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"XHomeLibrary/Preview Content\"";
+				DEVELOPMENT_TEAM = S7VDS77X43;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -658,6 +667,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"XHomeLibrary/Preview Content\"";
+				DEVELOPMENT_TEAM = S7VDS77X43;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

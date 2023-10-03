@@ -15,6 +15,7 @@ class BookViewModel: ObservableObject {
 
     // 图片处理
     // - 本地图片
+    private static let localImageSavingDir = "XHomeLib"
     @Published var localImagePath: String
     // - 网络图片
     @Published var remoteImageURL: String
@@ -55,14 +56,10 @@ extension BookViewModel {
         }
     }
 
-//    func uploadBookCover(image: UIImage) -> String {
-//        // todo 上传图片
-//        return ""
-//    }
-
     func updateLocalBook() {
         if !localImagePath.isEmpty {
-            book.cover = localImagePath
+            let imageFilepath = BookViewModel.saveImage2Local(tmpFilePath: localImagePath)
+            book.cover = imageFilepath
         }
 
         guard let bookEntity = fetchBookByID(id: book.id) else { return }
@@ -75,7 +72,9 @@ extension BookViewModel {
     }
 
     func addLocalBook() {
-        book.cover = localImagePath
+        let imageFilepath = BookViewModel.saveImage2Local(tmpFilePath: localImagePath)
+
+        book.cover = imageFilepath
 
         let bookEntity = book.trans2NewEntity(context: getContext())
         bookEntity.id = UUID().uuidString
@@ -100,5 +99,37 @@ extension BookViewModel {
             print(err.localizedDescription)
         }
         return bookEntities.first
+    }
+
+    static func saveImage2Local(tmpFilePath: String) -> String {
+        if tmpFilePath.isEmpty {
+            return ""
+        }
+
+        let BuildingPropertyDir = localImageSavingDir
+        guard let image = UIImage(contentsOfFile: tmpFilePath) else {
+            return ""
+        }
+
+//        if image.size == .zero {
+//            return ""
+//        }
+
+        // 创建图片文件目录
+        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
+        let dir = filePath+"/images/"+BuildingPropertyDir+"/"
+        let filemanager = FileManager.default
+        try! filemanager.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
+        print("images dir: \(dir)")
+
+        // 提取图片文件名
+        let components = tmpFilePath.components(separatedBy: "/")
+        let newFilepath = dir+components.last!
+        print("saving image path: \(newFilepath)")
+
+        // 写入新的目录
+        let data: Data = image.pngData()!
+        try! data.write(to: URL(fileURLWithPath: newFilepath))
+        return newFilepath
     }
 }

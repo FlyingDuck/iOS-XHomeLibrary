@@ -31,6 +31,7 @@ struct BookEditView: View {
             footer
         }
         .scrollIndicators(.hidden)
+        .dismissKeyboard()
     }
     
     var baseInfo: some View {
@@ -161,12 +162,13 @@ struct BookEditView: View {
                 // TODO: 这里还需要区分是本地上传还是远端上传
                 if self.editing {
                     self.bookVM.updateLocalBook()
+                    self.bookWatcher.setShowBook(book: bookVM.book)
                     self.presentationMode.wrappedValue.dismiss()
                 } else {
                     self.bookVM.addLocalBook()
                     self.bookVM.reset()
-                    self.localShelfVM.search()
                 }
+                self.localShelfVM.search()
             } label: {
                 Label("保存", systemImage: "checkmark")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)

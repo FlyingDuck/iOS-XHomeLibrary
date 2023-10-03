@@ -27,14 +27,14 @@ struct BookshelfView: View {
             .background(Color.xgrayBg)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         }
-        .sheet(isPresented: $bookWatcher.showBookDetail) {
-            print("close book shelf sheet")
-            bookWatcher.clear()
-        } content: {
-            if bookWatcher.showBookDetail {
-                BookDetailView(book: bookWatcher.showBook, context: context)
-            }
-        }
+//        .sheet(isPresented: $bookWatcher.showBookDetail) {
+//            print("close book shelf sheet")
+//            bookWatcher.clear()
+//        } content: {
+//            if bookWatcher.showBookDetail {
+//                BookDetailView(book: bookWatcher.showBook, context: context)
+//            }
+//        }
     }
     
 //    @ToolbarContentBuilder

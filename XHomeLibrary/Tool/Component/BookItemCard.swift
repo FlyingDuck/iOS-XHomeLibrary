@@ -31,8 +31,10 @@ struct BookItemCard: View {
             if !book.isLocal() {
                 KFImage(URL(string: book.cover))
                     .placeholder {
-                        Image(systemName: "questionmark.app.dashed")
-                            .foregroundColor(.gray.opacity(0.4))
+                        Image(systemName: "questionmark")
+                            .font(.system(size: 40, weight: .light, design: .monospaced))
+                            .foregroundColor(.orange.opacity(0.4))
+                            .frame(width: 100)
                     }
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -49,8 +51,10 @@ struct BookItemCard: View {
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                         .padding(.all, 10)
                 } else {
-                    Image(systemName: "questionmark.app.dashed")
-                        .foregroundColor(.gray.opacity(0.4))
+                    Image(systemName: "questionmark")
+                        .font(.system(size: 40, weight: .light, design: .monospaced))
+                        .foregroundColor(.orange.opacity(0.4))
+                        .frame(width: 100)
                 }
             }
         }
@@ -111,7 +115,7 @@ struct BookItemCard: View {
 }
 
 #Preview {
-    BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
+    BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "ttps://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
         .background(Color.xgrayTab)
 //        .background(Color.green)
 }

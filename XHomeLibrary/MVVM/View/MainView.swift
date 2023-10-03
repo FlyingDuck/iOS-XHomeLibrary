@@ -13,12 +13,12 @@ struct MainView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
     @StateObject var tabVM: TabViewModel = .init()
     @ObservedObject private var localShelfVM: LocalShelfViewModel
-    @ObservedObject var bookVM : BookViewModel
+    @ObservedObject var addingBookVM : BookViewModel
 
     init(context: NSManagedObjectContext) {
         print("init MainView")
         self.localShelfVM = LocalShelfViewModel(context: context)
-        self.bookVM = BookViewModel(book: Book.newEmptyBook(), context: context)
+        self.addingBookVM = BookViewModel(book: Book.newEmptyBook(), context: context)
     }
 
     var body: some View {
@@ -42,7 +42,7 @@ struct MainView: View {
                     }
                     .tag(TabViewModel.Tab.add)
                     .environmentObject(self.localShelfVM)
-                    .environmentObject(self.bookVM)
+                    .environmentObject(self.addingBookVM)
 
                 LocalShelfView()
                     .badge(localShelfVM.getTotal())
@@ -62,10 +62,11 @@ struct MainView: View {
                 bookWatcher.clear()
             } content: {
                 if bookWatcher.showBookDetail {
-                    BookDetailView(book: bookWatcher.showBook, context: context)
+                    BookDetailView(book: bookWatcher.getShowBook(), context: context)
+                        .environmentObject(self.localShelfVM)
                 } else if bookWatcher.showPhotoPicker {
                     PhotoPickerView()
-                        .environmentObject(bookVM)
+                        .environmentObject(self.addingBookVM)
                 }
             }
         }
