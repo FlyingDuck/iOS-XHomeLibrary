@@ -50,7 +50,7 @@ struct HoneyCombView: View {
                                     .resizable()
                                     .modifier(HoneycombImageModifer())
                                     .onTapGesture {
-                                        bookWatcher.setShowBook(book: shelfVM.recBooks[i])
+                                        bookWatcher.setBookDetail(book: shelfVM.recBooks[i])
                                     }
                             }
                         }

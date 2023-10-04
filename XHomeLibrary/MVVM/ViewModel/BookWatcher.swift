@@ -9,11 +9,9 @@ import SwiftUI
 
 class BookWatcher: ObservableObject {
     static let shared = BookWatcher()
-    
+
     @Published var showBookDetail: Bool = false
-    @Published var showPhotoPicker: Bool = false
-    @Published var showSheet: Bool = false
-    @Published var showBook: Book = .newEmptyBook()
+    @Published var bookDetail: Book = .newEmptyBook()
 }
 
 extension BookWatcher {
@@ -21,30 +19,18 @@ extension BookWatcher {
         // todo 判断网络状态
         return false
     }
-    
-    func refreshSheetStatus() {
-        self.showSheet = self.showBookDetail || self.showPhotoPicker
-    }
-    
+
     func clear() {
-        self.showBook = .newEmptyBook()
+        self.bookDetail = .newEmptyBook()
         self.showBookDetail = false
-        self.showPhotoPicker = false
-        self.showSheet = self.showBookDetail || self.showPhotoPicker
-    }
-    
-    func getShowBook() -> Book {
-        return self.showBook
     }
 
-    func setShowBook(book: Book) {
-        self.showBookDetail = true
-        self.showBook = book
-        self.refreshSheetStatus()
+    func getBookDetail() -> Book {
+        return self.bookDetail
     }
-    
-    func setShowPhotoPicker() {
-        self.showPhotoPicker = true
-        self.refreshSheetStatus()
+
+    func setBookDetail(book: Book) {
+        self.showBookDetail = true
+        self.bookDetail = book
     }
 }

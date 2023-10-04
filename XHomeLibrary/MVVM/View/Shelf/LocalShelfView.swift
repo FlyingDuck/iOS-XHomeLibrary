@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LocalShelfView: View {
     @EnvironmentObject private var shelfVM: LocalShelfViewModel
-    
+
     init() {
         print("init LocalShelfView")
     }
@@ -26,7 +26,6 @@ struct LocalShelfView: View {
                 } else {
                     // 书籍列表
                     booklist
-                        
                 }
             }
             .background(Color.xgrayTab)
@@ -108,11 +107,9 @@ struct LocalShelfView: View {
 }
 
 #Preview {
-    
-
     NavigationStack {
         let context = PersistenceController.shared.container.viewContext
-        
+
         LocalShelfView()
             .environmentObject(LocalShelfViewModel(context: context))
             .environment(\.managedObjectContext, context)

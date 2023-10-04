@@ -96,7 +96,7 @@ struct BookItemCard: View {
     var operationArea: some View {
         VStack {
             Button(action: {
-                bookWatcher.setShowBook(book: book)
+                bookWatcher.setBookDetail(book: book)
             }, label: {
 //                    Label("", systemImage: "chevron.right")
                 Label("", systemImage: "poweron")

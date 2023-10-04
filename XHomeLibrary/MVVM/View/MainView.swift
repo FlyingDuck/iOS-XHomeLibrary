@@ -13,7 +13,7 @@ struct MainView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
     @StateObject var tabVM: TabViewModel = .init()
     @ObservedObject private var localShelfVM: LocalShelfViewModel
-    @ObservedObject var addingBookVM : BookViewModel
+    @ObservedObject var addingBookVM: BookViewModel
 
     init(context: NSManagedObjectContext) {
         print("init MainView")
@@ -54,21 +54,16 @@ struct MainView: View {
                     }
                     .tag(TabViewModel.Tab.bookshelf)
                     .environmentObject(self.localShelfVM)
+                    .sheet(isPresented: $bookWatcher.showBookDetail) {
+                        print("close local shelf sheet")
+                        bookWatcher.clear()
+                    } content: {
+                        BookDetailView(book: bookWatcher.getBookDetail(), context: context)
+                            .environmentObject(self.localShelfVM)
+                    }
             }
             .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $bookWatcher.showSheet) {
-                print("close home sheet")
-                bookWatcher.clear()
-            } content: {
-                if bookWatcher.showBookDetail {
-                    BookDetailView(book: bookWatcher.getShowBook(), context: context)
-                        .environmentObject(self.localShelfVM)
-                } else if bookWatcher.showPhotoPicker {
-                    PhotoPickerView()
-                        .environmentObject(self.addingBookVM)
-                }
-            }
         }
     }
 }

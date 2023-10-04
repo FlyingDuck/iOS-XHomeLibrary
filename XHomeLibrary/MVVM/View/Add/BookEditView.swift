@@ -171,7 +171,7 @@ struct BookEditView: View {
                 // TODO: 这里还需要区分是本地上传还是远端上传
                 if self.editing {
                     self.bookVM.updateLocalBook()
-                    self.bookWatcher.setShowBook(book: bookVM.book)
+                    self.bookWatcher.setBookDetail(book: bookVM.book)
                     self.presentationMode.wrappedValue.dismiss()
                 } else {
                     self.bookVM.addLocalBook()
