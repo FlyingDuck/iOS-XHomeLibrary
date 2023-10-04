@@ -92,7 +92,7 @@ struct LocalShelfView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .padding(.horizontal, 5)
+        .padding(.horizontal, 10)
         .background(Color.xgrayBg)
         .refreshable {
             shelfVM.search()

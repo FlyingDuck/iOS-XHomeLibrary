@@ -54,17 +54,19 @@ struct MainView: View {
                     }
                     .tag(TabViewModel.Tab.bookshelf)
                     .environmentObject(self.localShelfVM)
-                    .sheet(isPresented: $bookWatcher.showBookDetail) {
-                        print("close local shelf sheet")
-                        bookWatcher.clear()
-                    } content: {
-                        BookDetailView(book: bookWatcher.getBookDetail(), context: context)
-                            .environmentObject(self.localShelfVM)
-                    }
             }
             .navigationTitle(tabVM.getCurrentTab().title)
             .navigationBarTitleDisplayMode(.inline)
         }
+        .sheet(isPresented: $bookWatcher.showBookDetail) {
+            print("close local shelf sheet")
+            bookWatcher.clear()
+        } content: {
+            BookDetailView(book: bookWatcher.getBookDetail(), context: context)
+                .environmentObject(self.localShelfVM)
+        }
+
+        
     }
 }
 
