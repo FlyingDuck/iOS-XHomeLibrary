@@ -20,7 +20,7 @@ struct BarcodeScannerTest: View {
             
             NavigationView {
                 NavigationLink {
-                    BarcodeScannerView(code: $code) { code in
+                    CodeScanner(code: $code) { code in
                         print("goto fetch data from network: code=\(code)")
                     }
                 } label: {
@@ -28,7 +28,7 @@ struct BarcodeScannerTest: View {
                         .font(.system(size: 50, weight: .regular, design: .monospaced))
                         .foregroundColor(.accentColor.opacity(0.7))
                         .shadow(color: .accentColor, radius: 10, x: 0, y: 0)
-//                        .frame(maxHeight: .infinity)
+                        .frame(maxHeight: .infinity)
                 }
                 
             }

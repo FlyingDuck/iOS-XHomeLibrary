@@ -9,20 +9,12 @@ import CoreData
 import Kingfisher
 import SwiftUI
 
-// enum PickerSource {
-//    case camera
-//    case photoLibrary
-// }
-
 struct BookEditView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var bookVM: BookViewModel
     @EnvironmentObject private var localShelfVM: LocalShelfViewModel
-    
-//    @State private var activeSheet: PickerSource?
-//    @State private var showDialog: Bool = false
-    
+  
     var editing: Bool // 是否是编辑页，false-新增页
     
     init(editing: Bool = true) {
@@ -34,20 +26,20 @@ struct BookEditView: View {
         ScrollView {
             baseInfo
             additionalInfo
-            
+                
             Spacer()
             footer
         }
         .scrollIndicators(.hidden)
         .dismissKeyboard()
-//        .confirmationDialog("选择图片来源", isPresented: $showDialog, titleVisibility: .visible) {
-//            Button("相机") {
-//                activeSheet = .camera
-//            }
-//            Button("相册") {
-//                activeSheet = .photoLibrary
-//            }
-//        } message: {}
+        //        .confirmationDialog("选择图片来源", isPresented: $showDialog, titleVisibility: .visible) {
+        //            Button("相机") {
+        //                activeSheet = .camera
+        //            }
+        //            Button("相册") {
+        //                activeSheet = .photoLibrary
+        //            }
+        //        } message: {}
     }
     
     var baseInfo: some View {
@@ -127,11 +119,13 @@ struct BookEditView: View {
             
             HStack {
                 Divider().background(Color.white.opacity(0.2))
-                Button {
-                    print("go to scan barcode")
+                
+                NavigationLink {
+                    CodeScannerView()
+                        .environmentObject(bookVM)
                 } label: {
                     Image(systemName: "barcode.viewfinder")
-                        .font(.system(size: 30, weight: .regular, design: .monospaced))
+                        .font(.system(size: 30, weight: .thin, design: .monospaced))
                         .foregroundColor(.accentColor.opacity(0.7))
                         .shadow(color: .accentColor, radius: 10, x: 0, y: 0)
                         .frame(maxHeight: .infinity)
@@ -182,8 +176,9 @@ struct BookEditView: View {
                 } else {
                     self.bookVM.addLocalBook()
                     self.bookVM.reset()
+                    self.bookWatcher.clear()
                 }
-                self.localShelfVM.search()
+                self.localShelfVM.refresh()
             } label: {
                 Label("保存", systemImage: "checkmark")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)

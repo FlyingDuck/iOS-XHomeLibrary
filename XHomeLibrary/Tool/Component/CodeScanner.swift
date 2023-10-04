@@ -8,7 +8,7 @@
 import BarcodeScanner
 import SwiftUI
 
-struct BarcodeScannerView: UIViewControllerRepresentable {
+struct CodeScanner: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var code: String
     let handleCode: (_ code: String) -> Void
@@ -17,7 +17,7 @@ struct BarcodeScannerView: UIViewControllerRepresentable {
         Coordinator(self)
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<BarcodeScannerView>) -> BarcodeScannerViewController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<CodeScanner>) -> BarcodeScannerViewController {
         let viewController = BarcodeScannerViewController()
         viewController.codeDelegate = context.coordinator
         viewController.errorDelegate = context.coordinator
@@ -25,12 +25,12 @@ struct BarcodeScannerView: UIViewControllerRepresentable {
         return viewController
     }
 
-    func updateUIViewController(_ uiViewController: BarcodeScannerViewController, context: UIViewControllerRepresentableContext<BarcodeScannerView>) {}
+    func updateUIViewController(_ uiViewController: BarcodeScannerViewController, context: UIViewControllerRepresentableContext<CodeScanner>) {}
 
     final class Coordinator: NSObject, BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
-        var parent: BarcodeScannerView
+        var parent: CodeScanner
 
-        init(_ parent: BarcodeScannerView) {
+        init(_ parent: CodeScanner) {
             self.parent = parent
         }
 
@@ -41,8 +41,8 @@ struct BarcodeScannerView: UIViewControllerRepresentable {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 self.parent.handleCode(code)
-                if code.hasSuffix("4") {
-                    controller.resetWithError(message: "还未接入网络")
+                if code.isEmpty {
+                    controller.resetWithError(message: "条形码错误")
                     print("set error")
                 } else {
                     print("will dismiss")

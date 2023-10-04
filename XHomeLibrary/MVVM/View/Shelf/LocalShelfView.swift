@@ -30,6 +30,7 @@ struct LocalShelfView: View {
                 }
             }
             .background(Color.xgrayTab)
+            .dismissKeyboard()
         }
     }
 

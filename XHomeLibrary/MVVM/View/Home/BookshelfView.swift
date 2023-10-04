@@ -12,7 +12,7 @@ struct BookshelfView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
     @EnvironmentObject var shelfVM: BookshelfViewModel
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -27,35 +27,8 @@ struct BookshelfView: View {
             .background(Color.xgrayBg)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         }
-//        .sheet(isPresented: $bookWatcher.showBookDetail) {
-//            print("close book shelf sheet")
-//            bookWatcher.clear()
-//        } content: {
-//            if bookWatcher.showBookDetail {
-//                BookDetailView(book: bookWatcher.showBook, context: context)
-//            }
-//        }
     }
-    
-//    @ToolbarContentBuilder
-//    var toolbar: some ToolbarContent {
-//        ToolbarItem(placement: .navigationBarLeading) {
-//            Image(systemName: "chevron.backward")
-//                .background(Color.gray.opacity(0.2))
-//                .clipShape(Circle())
-//                .onTapGesture {
-//                    dismiss()
-//                }
-//        }
-//        ToolbarItem(placement: .principal) {
-//            Text("云书架")
-//                .font(.system(size: 20, weight: .regular, design: .rounded))
-//        }
-    ////        ToolbarItem(placement: .navigationBarTrailing) {
-    ////            Image(systemName: "ellipsis").rotationEffect(Angle(degrees: 90))
-    ////        }
-//    }
-    
+
     var header: some View {
         HStack {
             Image(systemName: "chevron.backward")
@@ -69,7 +42,7 @@ struct BookshelfView: View {
                     shelfVM.clear()
                     bookWatcher.clear()
                 }
-            
+
             HStack(spacing: 2) {
                 Picker("选择器", selection: $shelfVM.selectedLoc) {
                     ForEach(Location.allCases) { location in
@@ -98,7 +71,7 @@ struct BookshelfView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
     }
-    
+
     var booklist: some View {
         ScrollView {
             HStack {

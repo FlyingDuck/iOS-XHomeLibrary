@@ -27,6 +27,7 @@ extension BookWatcher {
     }
     
     func clear() {
+        self.showBook = .newEmptyBook()
         self.showBookDetail = false
         self.showPhotoPicker = false
         self.showSheet = self.showBookDetail || self.showPhotoPicker

@@ -22,8 +22,8 @@
 		3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A72AC1DDBF003A2C1B /* XColor.swift */; };
 		3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */; };
 		3E47E6E32ACCEECA000CB4A0 /* BarcodeScannerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E22ACCEECA000CB4A0 /* BarcodeScannerTest.swift */; };
-		3E47E6E52ACCF42A000CB4A0 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E42ACCF42A000CB4A0 /* BarcodeViewController.swift */; };
-		3E47E6E72ACCFC73000CB4A0 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E62ACCFC73000CB4A0 /* BarcodeScannerView.swift */; };
+		3E47E6E72ACCFC73000CB4A0 /* CodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */; };
+		3E47E6E92ACD4155000CB4A0 /* CodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E82ACD4155000CB4A0 /* CodeScannerView.swift */; };
 		3E4B8E5A2ABFE6B60010028C /* XHomeLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */; };
 		3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8E5B2ABFE6B60010028C /* ContentView.swift */; };
 		3E4B8E5E2ABFE6B80010028C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B8E5D2ABFE6B80010028C /* Assets.xcassets */; };
@@ -72,8 +72,8 @@
 		3E0E47A72AC1DDBF003A2C1B /* XColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XColor.swift; sourceTree = "<group>"; };
 		3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfView.swift; sourceTree = "<group>"; };
 		3E47E6E22ACCEECA000CB4A0 /* BarcodeScannerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerTest.swift; sourceTree = "<group>"; };
-		3E47E6E42ACCF42A000CB4A0 /* BarcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeViewController.swift; sourceTree = "<group>"; };
-		3E47E6E62ACCFC73000CB4A0 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScanner.swift; sourceTree = "<group>"; };
+		3E47E6E82ACD4155000CB4A0 /* CodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScannerView.swift; sourceTree = "<group>"; };
 		3E4B8E562ABFE6B60010028C /* XHomeLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHomeLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XHomeLibraryApp.swift; sourceTree = "<group>"; };
 		3E4B8E5B2ABFE6B60010028C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 				3E013A982AC70F9600647B3D /* TextInputRow.swift */,
 				3E013A962AC70DDC00647B3D /* UnderlineTextField.swift */,
 				3E91C2982ACAAE5A009CDF90 /* ImagePicker.swift */,
-				3E47E6E62ACCFC73000CB4A0 /* BarcodeScannerView.swift */,
+				3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -145,7 +145,6 @@
 				3E0E47A72AC1DDBF003A2C1B /* XColor.swift */,
 				3ED7416C2ACBFD5C00B22309 /* UIApplicationExtension.swift */,
 				3ED741702ACC3F4800B22309 /* UIImageExtension.swift */,
-				3E47E6E42ACCF42A000CB4A0 /* BarcodeViewController.swift */,
 				3E013A952AC70DBD00647B3D /* Component */,
 				3E0E47A42AC1DABD003A2C1B /* ViewModifier */,
 			);
@@ -328,6 +327,7 @@
 				3E5FC2C32AC08EF400EBD86B /* BookAddPageView.swift */,
 				3E013A882AC66C1D00647B3D /* BookEditView.swift */,
 				3E91C29D2ACACC46009CDF90 /* PhotoPickerView.swift */,
+				3E47E6E82ACD4155000CB4A0 /* CodeScannerView.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -487,6 +487,7 @@
 				3E5FC2BE2AC0851400EBD86B /* MainView.swift in Sources */,
 				3E013A8D2AC66F9800647B3D /* HoneyCombView.swift in Sources */,
 				3E5FC2C42AC08EF400EBD86B /* BookAddPageView.swift in Sources */,
+				3E47E6E92ACD4155000CB4A0 /* CodeScannerView.swift in Sources */,
 				3E5FC2B02AC020F800EBD86B /* MineView.swift in Sources */,
 				3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */,
 				3E5FC2912ABFEA1800EBD86B /* HomeView.swift in Sources */,
@@ -499,7 +500,6 @@
 				3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */,
 				3E4B8E5C2ABFE6B60010028C /* ContentView.swift in Sources */,
 				3E5FC2A42ABFF56E00EBD86B /* SearchAPI.swift in Sources */,
-				3E47E6E52ACCF42A000CB4A0 /* BarcodeViewController.swift in Sources */,
 				3E013A9C2AC80D8200647B3D /* Library.xcdatamodeld in Sources */,
 				3E47E6E32ACCEECA000CB4A0 /* BarcodeScannerTest.swift in Sources */,
 				3E91C29B2ACAB013009CDF90 /* ImagePickerTest.swift in Sources */,
@@ -508,7 +508,7 @@
 				3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */,
 				3E013A992AC70F9600647B3D /* TextInputRow.swift in Sources */,
 				3E5FC2B62AC03B5100EBD86B /* BookItemCard.swift in Sources */,
-				3E47E6E72ACCFC73000CB4A0 /* BarcodeScannerView.swift in Sources */,
+				3E47E6E72ACCFC73000CB4A0 /* CodeScanner.swift in Sources */,
 				3E013AA02AC8510F00647B3D /* PersistenceController.swift in Sources */,
 				3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */,
 				3ED7416D2ACBFD5C00B22309 /* UIApplicationExtension.swift in Sources */,

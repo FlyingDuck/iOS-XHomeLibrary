@@ -16,11 +16,11 @@ struct BookAddPageView: View {
     }
 
     var body: some View {
-        VStack {
-            BookEditView(editing: false)
-                .environmentObject(bookVM)
-        }
-        .background(Color.xgrayBg)
+            VStack {
+                BookEditView(editing: false)
+                    .environmentObject(bookVM)
+            }
+            .background(Color.xgrayBg)
     }
 }
 

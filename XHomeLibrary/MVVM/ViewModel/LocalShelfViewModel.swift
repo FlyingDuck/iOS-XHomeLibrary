@@ -13,12 +13,14 @@ class LocalShelfViewModel: ObservableObject {
     @Published var keyword: String = ""
     // 书架
     @Published var books: [Book] = []
+    @Published var total: Int = 0
 
     var managedObjectContext: NSManagedObjectContext
     init(context: NSManagedObjectContext) {
         print("init LocalShelfViewModel")
         self.managedObjectContext = context
         self.search()
+        self.count()
     }
     
     func getContext() -> NSManagedObjectContext {
@@ -27,18 +29,23 @@ class LocalShelfViewModel: ObservableObject {
 }
 
 extension LocalShelfViewModel {
+    func refresh() {
+        self.search()
+        self.count()
+    }
+    
     func search() {
         print("[LocalShelfVM] start to search books")
         
         var bookEntities: [BookEntity] = []
         
-        let request : NSFetchRequest = BookEntity.fetchRequest()
+        let request: NSFetchRequest = BookEntity.fetchRequest()
         do {
             request.sortDescriptors = [NSSortDescriptor(keyPath: \BookEntity.updateTime, ascending: false)]
             if !self.keyword.isEmpty {
                 request.predicate = NSPredicate(format: "name CONTAINS[c] %@", self.keyword)
             }
-            bookEntities = try getContext().fetch(request)
+            bookEntities = try self.getContext().fetch(request)
         } catch let err {
             print(err.localizedDescription)
         }
@@ -53,10 +60,24 @@ extension LocalShelfViewModel {
     }
     
     func getTotal() -> Int {
-        return self.books.count
+        return self.total
     }
     
     func isEmpty() -> Bool {
         return self.books.isEmpty
+    }
+    
+    private func count() {
+        var bookEntities: [BookEntity] = []
+        
+        let request: NSFetchRequest = BookEntity.fetchRequest()
+        do {
+            request.sortDescriptors = [NSSortDescriptor(keyPath: \BookEntity.updateTime, ascending: false)]
+            bookEntities = try self.getContext().fetch(request)
+        } catch let err {
+            print(err.localizedDescription)
+        }
+        
+        self.total = bookEntities.count
     }
 }
