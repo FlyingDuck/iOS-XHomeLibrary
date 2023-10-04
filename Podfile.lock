@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.8.0)
+  - BarcodeScanner (5.0.0)
   - KakaJSON (1.1.2)
   - Kingfisher (7.9.1)
   - Moya (15.0.0):
@@ -36,6 +37,7 @@ PODS:
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - BarcodeScanner
   - KakaJSON
   - Kingfisher
   - Moya
@@ -46,6 +48,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BarcodeScanner
     - KakaJSON
     - Kingfisher
     - Moya
@@ -54,12 +57,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
+  BarcodeScanner: 2f5a53198eae49dc39bf61f2c1f05c04e01ff72d
   KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
   Kingfisher: 1d14e9f59cbe19389f591c929000332bf70efd32
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 9c85ced266d069951db909a397e32c4a5a1d760b
+PODFILE CHECKSUM: 144e2c466258f81acddd6b18cda188c8dff01abf
 
 COCOAPODS: 1.13.0

@@ -12,4 +12,5 @@ target 'XHomeLibrary' do
   pod 'KakaJSON'# JSON处理
   pod 'SwiftyJSON'# JSON处理
   pod 'Kingfisher'
+  pod 'BarcodeScanner'
 end
