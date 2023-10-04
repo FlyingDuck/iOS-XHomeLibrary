@@ -33,14 +33,6 @@ struct BookEditView: View {
         }
         .scrollIndicators(.hidden)
         .dismissKeyboard()
-        //        .confirmationDialog("选择图片来源", isPresented: $showDialog, titleVisibility: .visible) {
-        //            Button("相机") {
-        //                activeSheet = .camera
-        //            }
-        //            Button("相册") {
-        //                activeSheet = .photoLibrary
-        //            }
-        //        } message: {}
     }
     
     var baseInfo: some View {
@@ -171,7 +163,7 @@ struct BookEditView: View {
             Button {
                 // TODO: 这里还需要区分是本地上传还是远端上传
                 if self.editing {
-                    let editingAlert = SPAlertView(title: "操作成功", message: "正在修改《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
+                    let editingAlert = SPAlertView(title: "保存中", message: "正在修改《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
                     editingAlert.duration = .infinity
                     editingAlert.present()
                     
@@ -179,13 +171,13 @@ struct BookEditView: View {
                     self.bookWatcher.setBookDetail(book: bookVM.book)
                     self.localShelfVM.refresh()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         editingAlert.dismiss()
                         self.presentationMode.wrappedValue.dismiss()
                     }
                     
                 } else {
-                    let addingAlert = SPAlertView(title: "操作成功", message: "正在添加《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
+                    let addingAlert = SPAlertView(title: "保存中", message: "正在添加《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
                     addingAlert.duration = .infinity
                     addingAlert.present()
                     
@@ -194,25 +186,27 @@ struct BookEditView: View {
                     self.bookWatcher.clear()
                     self.localShelfVM.refresh()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         addingAlert.dismiss()
                     }
                 }
                 
             } label: {
-                Label("保存", systemImage: "checkmark")
-                    .frame(width: UIScreen.main.bounds.width, alignment: .center)
-                    .padding(.vertical)
-                    .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
+                HStack {
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 16))
+                    Text("保存")
+                        .font(.system(size: 16, weight: .regular, design: .default))
+                }
+                .padding(.all)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+                .background(Color.accentColor.opacity(0.8))
+                .foregroundColor(.white)
+                .cornerRadius(15)
             }
-            .overlay {
-                RoundedRectangle(cornerRadius: 15.0, style: .continuous)
-                    .stroke(Color.accentColor.opacity(0.8), lineWidth: 1)
-                    .padding(.horizontal)
-            }
+            
         }
-        .padding(.vertical)
-//        .shadow(color: .white, radius: 5, x: 2, y: 2)
+        .padding(.horizontal)
     }
 }
 

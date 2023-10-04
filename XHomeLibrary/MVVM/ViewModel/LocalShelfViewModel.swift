@@ -16,7 +16,7 @@ class LocalShelfViewModel: ObservableObject {
     @Published var total: Int = 0
 
     var managedObjectContext: NSManagedObjectContext
-    init(context: NSManagedObjectContext) {
+    init(books: [Book] = [], context: NSManagedObjectContext) {
         print("init LocalShelfViewModel")
         self.managedObjectContext = context
         self.search()
@@ -55,6 +55,18 @@ extension LocalShelfViewModel {
         for bookEntity in bookEntities {
             books.append(bookEntity.trans2LocalBook())
         }
+        
+//        books = [
+//            Book(id: UUID().uuidString, name: "古文观止观止观止观止观止观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息"),
+//            Book(id: UUID().uuidString, name: "古文观止", author: "佚名", publisher: "新华出版社出版社出版社出版社出版社出版社出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true),
+//            Book(id: UUID().uuidString, name: "不知道叫什么书名", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息"),
+//            Book(id: UUID().uuidString, name: "古文观止", author: "佚名·托夫斯基", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息"),
+//            Book(id: UUID().uuidString, name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息"),
+//            Book(id: UUID().uuidString, name: "失眠·夜看的哲学书", author: "张萨达", publisher: "新华出版社", location: .beijing, cover: "book-cover-2", isbn: "123478747585", description: "还没有描述信息"),
+//            Book(id: UUID().uuidString, name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息", local: true),
+//            Book(id: UUID().uuidString, name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息"),
+//            Book(id: UUID().uuidString, name: "古文观止", author: "李美霞", publisher: "新华出版社", location: .beijing, cover: "book-cover-0", isbn: "123478747585", description: "还没有描述信息"),
+//        ]
         
         self.books = books
     }

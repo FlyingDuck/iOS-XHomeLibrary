@@ -11,19 +11,29 @@ import SwiftUI
 struct BookItemCard: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
 
+//    @GestureState var isLongPressed = false // 用于刷新长按手势的状态
     var book: Book
 
     var body: some View {
+//        let longPressGesture = LongPressGesture() // 初始化一个长按手势，该手势一旦识别到长按的触摸状态，就会调用手势的结束事件。您甚至可以限制长按手势的时间长度
+//            .updating($isLongPressed) { value, state, transcation in // 通过调用updating方法，监听手势状态的变化
+//                print("updating: value=\(value), state=\(state), transcation=\(transcation)")
+//                state = value
+//            }
+//            .onEnded { value in
+//                print("onEnded: value=\(value)")
+//            }
+
         HStack {
             cover
             info
             Spacer()
             operationArea
         }
-        .padding(.horizontal, 5)
+        .padding(.all, 5)
         .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/6)
         .background(Color.xwhiteCard)
-        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 3, style: .continuous))
     }
 
     var cover: some View {
@@ -40,7 +50,6 @@ struct BookItemCard: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                    .padding(.all, 10)
             } else {
                 let image = UIImage(contentsOfFile: book.cover)
                 if image != nil {
@@ -49,7 +58,6 @@ struct BookItemCard: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                        .padding(.all, 10)
                 } else {
                     Image(systemName: "questionmark")
                         .font(.system(size: 40, weight: .light, design: .monospaced))
@@ -58,6 +66,7 @@ struct BookItemCard: View {
                 }
             }
         }
+        .shadow(color: .black.opacity(0.3), radius: 2, x: 3.0, y: 3.0)
     }
 
     var info: some View {
@@ -90,7 +99,7 @@ struct BookItemCard: View {
         }
         .frame(maxWidth: 3 * UIScreen.main.bounds.width/5, alignment: .leading)
         .lineLimit(1)
-        .padding(.vertical, 30)
+        .padding(.vertical, 10)
     }
 
     var operationArea: some View {
@@ -115,7 +124,33 @@ struct BookItemCard: View {
 }
 
 #Preview {
-    BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "ttps://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
-        .background(Color.xgrayTab)
-//        .background(Color.green)
+    ScrollView {
+        VStack(spacing: 4) {
+            BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
+            BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
+            BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
+        }
+    }
+    .scrollIndicators(.hidden)
+    .padding(.horizontal, 5)
+    .background(Color.xgrayBg)
+//    .refreshable {
+//
+//    }
+//
+//    List {
+//
+//        BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
+//            .background(Color.xgrayTab)
+//            .lineSpacing(0)
+//        BookItemCard(book: Book(name: "古文观止", author: "佚名", publisher: "新华出版社", location: .beijing, cover: "https://img2.baidu.com/it/u=3643635547,2549293047&fm=253&fmt=auto&app=138&f=JPEG", isbn: "123478747585", description: "还没有描述信息", local: true))
+//            .background(Color.xgrayTab)
+//            .lineSpacing(0)
+//    }
+//    .listStyle(.insetGrouped)
+//    .lineSpacing(0)
+//    .refreshable {
+//
+//    }
+//    .background(Color.red)
 }

@@ -26,14 +26,6 @@ struct HoneyCombView: View {
         }
     }
 
-    //    @ToolbarContentBuilder
-    //    var toolbar: some ToolbarContent {
-    //        ToolbarItem(placement: .principal) {
-    //            Text("首页")
-    //                .font(.system(size: 20, weight: .regular, design: .rounded))
-    //        }
-    //    }
-
     var honeycomb: some View {
         VStack(alignment: .center) {
             ScrollView {

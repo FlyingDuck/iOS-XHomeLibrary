@@ -63,35 +63,40 @@ struct LocalShelfView: View {
 
     var booklist: some View {
         ScrollView {
-            HStack {
-                Text("共找到 \(shelfVM.getTotal()) 条结果")
-                    .font(.system(size: 12, weight: .thin, design: .default))
-                    .underline(true, color: Color.gray)
-                    .italic(true)
-                Spacer()
+            VStack(spacing: 5) {
+                HStack {
+                    Text("共找到 \(shelfVM.getTotal()) 条结果")
+                        .font(.system(size: 12, weight: .thin, design: .default))
+                        .underline(true, color: Color.gray)
+                        .italic(true)
+                    Spacer()
+                }
+                .padding(.top, 5)
+                
+                ForEach(shelfVM.books, id: \.self.id) { book in
+                    BookItemCard(book: book)
+                }
+                
+                HStack {
+                    Rectangle()
+                        .frame(maxWidth: .infinity, maxHeight: 1, alignment: .center)
+                        .foregroundColor(Color.gray.opacity(0.5))
+                    Text("到底了")
+                        .font(.system(size: 12, weight: .thin, design: .default))
+                        .foregroundColor(Color.gray)
+                        .italic()
+                    Rectangle()
+                        .frame(maxWidth: .infinity, maxHeight: 1, alignment: .center)
+                        .foregroundColor(Color.gray.opacity(0.5))
+                }.padding(.horizontal)
             }
-            .padding(.top, 5)
-
-            ForEach(shelfVM.books, id: \.self.id) { book in
-                BookItemCard(book: book)
-            }
-
-            HStack {
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 1, alignment: .center)
-                    .foregroundColor(Color.gray.opacity(0.5))
-                Text("到底了")
-                    .font(.system(size: 12, weight: .thin, design: .default))
-                    .foregroundColor(Color.gray)
-                    .italic()
-                Rectangle()
-                    .frame(maxWidth: .infinity, maxHeight: 1, alignment: .center)
-                    .foregroundColor(Color.gray.opacity(0.5))
-            }.padding(.top)
         }
         .scrollIndicators(.hidden)
-        .padding(.horizontal)
+        .padding(.horizontal, 5)
         .background(Color.xgrayBg)
+        .refreshable {
+            shelfVM.search()
+        }
     }
 
     var emptylist: some View {
@@ -109,9 +114,10 @@ struct LocalShelfView: View {
 #Preview {
     NavigationStack {
         let context = PersistenceController.shared.container.viewContext
+        var localShelfVM: LocalShelfViewModel = .init(context: context)
 
         LocalShelfView()
-            .environmentObject(LocalShelfViewModel(context: context))
+            .environmentObject(localShelfVM)
             .environment(\.managedObjectContext, context)
             .background(Color.red)
     }

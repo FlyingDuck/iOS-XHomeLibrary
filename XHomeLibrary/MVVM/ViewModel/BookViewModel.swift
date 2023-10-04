@@ -82,6 +82,18 @@ extension BookViewModel {
         PersistenceController.shared.save()
     }
 
+    func deleteLocalBook() {
+        guard let bookEntity = fetchBookByID(id: book.id) else { return }
+
+        let imagePath = bookEntity.cover ?? ""
+
+        getContext().delete(bookEntity)
+
+        PersistenceController.shared.save()
+
+        BookViewModel.removeImageFile(filepath: imagePath)
+    }
+
     private func fetchBookByID(id: String) -> BookEntity? {
         let predicate = NSPredicate(format: "id == %@", id as CVarArg)
 
@@ -119,6 +131,18 @@ extension BookViewModel {
         let data: Data = localImage.pngData()!
         try! data.write(to: URL(fileURLWithPath: newFilepath))
         return newFilepath
+    }
+
+    static func removeImageFile(filepath: String) {
+        if filepath.isEmpty {
+            return
+        }
+        let filemanager = FileManager.default
+        do {
+            try filemanager.removeItem(atPath: filepath)
+        } catch let err {
+            print(err.localizedDescription)
+        }
     }
 
 //    static func saveImage2Local(tmpFilePath: String) -> String {

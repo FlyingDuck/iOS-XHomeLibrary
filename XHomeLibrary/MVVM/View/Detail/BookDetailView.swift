@@ -7,10 +7,15 @@
 
 import CoreData
 import Kingfisher
+import SPAlert
 import SwiftUI
 
 struct BookDetailView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var bookVM: BookViewModel
+    @EnvironmentObject var localShelfVM: LocalShelfViewModel
+    @State var showDialog: Bool = false
     
     init(book: Book, context: NSManagedObjectContext) {
         print("init BookDetailView")
@@ -29,6 +34,24 @@ struct BookDetailView: View {
             .background(Color.xwhiteCard)
             .navigationBarTitle("图书详情")
             .navigationBarTitleDisplayMode(.inline)
+            .confirmationDialog("真的要删除《\(bookVM.book.name)》吗？", isPresented: $showDialog, titleVisibility: .visible) {
+                Button("确认删除") {
+                    let editingAlert = SPAlertView(title: "", message: "正在删除《\(self.bookVM.book.name)》的信息，请稍等", preset: .spinner)
+                    editingAlert.duration = .infinity
+                    editingAlert.present()
+                    
+                    self.bookVM.deleteLocalBook()
+                    self.bookVM.reset()
+                    self.localShelfVM.refresh()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        editingAlert.dismiss()
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            } message: {
+                Text("删除后数据不可恢复")
+            }
         }
     }
     
@@ -156,19 +179,42 @@ struct BookDetailView: View {
                     .interactiveDismissDisabled() // 禁止滑动关闭sheet
                     .environmentObject(bookVM)
             } label: {
-                Label("去编辑", systemImage: "square.and.pencil")
-                    .frame(width: UIScreen.main.bounds.width, alignment: .center)
-                    .padding(.vertical)
-                    .background(Color.xwhiteCard)
-//                    .clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 15.0, style: .continuous)
-                            .stroke(Color.accentColor.opacity(0.8), lineWidth: 1)
-                            .padding(.horizontal)
-                    }
+                HStack {
+                    Image(systemName: "square.and.pencil")
+                        .font(.system(size: 16))
+                    Text("编辑")
+                        .font(.system(size: 16, weight: .regular, design: .default))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+                .background(Color.accentColor.opacity(0.8))
+                .foregroundColor(.white)
+                .cornerRadius(15)
+                .padding(.horizontal)
+            }
+            
+            Button(action: {
+                print("delete")
+                self.showDialog = true
+            }) {
+                HStack {
+                    Image(systemName: "trash.fill")
+                        .font(.system(size: 16))
+                    Text("删除")
+                        .font(.system(size: 16, weight: .regular, design: .default))
+                }
+                .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width / 4, minHeight: 0, maxHeight: 50)
+                .background(Color.white)
+                .foregroundColor(.red)
+                .cornerRadius(15)
+                .padding(.horizontal)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 15.0, style: .continuous)
+                        .stroke(Color.red, lineWidth: 1)
+                        .padding(.horizontal)
+                }
             }
         }
-        .padding(.vertical)
+        .padding(.all)
     }
 }
 
