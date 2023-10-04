@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SPAlert
 
 struct CodeScannerView: View {
     @EnvironmentObject var bookVM: BookViewModel
@@ -14,6 +15,8 @@ struct CodeScannerView: View {
         VStack {
             CodeScanner(code: $bookVM.book.isbn) { code in
                 print("goto fetch data from network: code=\(code)")
+                let alert = SPAlertView(title: "获取条形码", message: "\(code)", preset: .done)
+                alert.present(haptic: .success)
             }
         }
     }

@@ -139,15 +139,11 @@ struct BookDetailView: View {
                 }
             }
             .padding(.horizontal)
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 5, alignment: .leading)
-            .overlay(
-                Rectangle()
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                    .padding(.horizontal)
-            )
+            .frame(width: UIScreen.main.bounds.width, alignment: .leading)
         }
         .padding(.all)
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3.5)
+        .frame(width: UIScreen.main.bounds.width)
+        .frame(maxHeight: .infinity)
         .background(Color.xwhiteCard)
         .frame(width: UIScreen.main.bounds.width)
     }

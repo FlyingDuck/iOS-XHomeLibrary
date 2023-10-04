@@ -7,6 +7,7 @@
 
 import CoreData
 import Kingfisher
+import SPAlert
 import SwiftUI
 
 struct BookEditView: View {
@@ -170,15 +171,34 @@ struct BookEditView: View {
             Button {
                 // TODO: 这里还需要区分是本地上传还是远端上传
                 if self.editing {
+                    let editingAlert = SPAlertView(title: "操作成功", message: "正在修改《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
+                    editingAlert.duration = .infinity
+                    editingAlert.present()
+                    
                     self.bookVM.updateLocalBook()
                     self.bookWatcher.setBookDetail(book: bookVM.book)
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.localShelfVM.refresh()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        editingAlert.dismiss()
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    
                 } else {
+                    let addingAlert = SPAlertView(title: "操作成功", message: "正在添加《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
+                    addingAlert.duration = .infinity
+                    addingAlert.present()
+                    
                     self.bookVM.addLocalBook()
                     self.bookVM.reset()
                     self.bookWatcher.clear()
+                    self.localShelfVM.refresh()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        addingAlert.dismiss()
+                    }
                 }
-                self.localShelfVM.refresh()
+                
             } label: {
                 Label("保存", systemImage: "checkmark")
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)

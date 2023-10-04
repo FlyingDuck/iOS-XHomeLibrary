@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '17.0'
+platform :ios, '16.0'
 use_frameworks!
 
 target 'XHomeLibrary' do
@@ -9,8 +9,9 @@ target 'XHomeLibrary' do
   pod 'SwifterSwift'
   pod 'Moya'# 网络底层
   pod 'Moya/Combine', '~> 15.0'#
-  pod 'KakaJSON'# JSON处理
+  pod 'KakaJSON'
   pod 'SwiftyJSON'# JSON处理
   pod 'Kingfisher'
-  pod 'BarcodeScanner'
+  pod 'BarcodeScanner' # 条形码处理，好像二维码也能扫
+  pod 'SPAlert' # 
 end
