@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CodeScanner: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
-    @Binding var code: String
+//    @Binding var code: String
     let handleCode: (_ code: String) -> Void
 
     func makeCoordinator() -> Coordinator {
@@ -37,7 +37,7 @@ struct CodeScanner: UIViewControllerRepresentable {
         func scanner(_ controller: BarcodeScanner.BarcodeScannerViewController, didCaptureCode code: String, type: String) {
             print("Barcode Data: \(code)")
             print("Symbology Type: \(type)")
-            parent.code = code
+//            parent.code = code
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 self.parent.handleCode(code)

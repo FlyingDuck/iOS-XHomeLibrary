@@ -2,7 +2,7 @@
 //  UserRedPacketAPI.swift
 //  FantasyChat
 //
-//  Created by 赵翔宇 on 2022/12/7.
+//  Created by on 2022/12/7.
 //
 
 import Foundation

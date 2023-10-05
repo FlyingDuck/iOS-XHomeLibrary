@@ -5,22 +5,20 @@
 //  Created by dongshujin on 2023/10/4.
 //
 
-import SwiftUI
 import BarcodeScanner
+import SwiftUI
 
 struct BarcodeScannerTest: View {
-    @State var code : String = ""
+    @State var code: String = ""
     
     var body: some View {
-        
         VStack {
             Spacer()
             Text("条形码: \(code)")
             
-            
             NavigationView {
                 NavigationLink {
-                    CodeScanner(code: $code) { code in
+                    CodeScanner { code in
                         print("goto fetch data from network: code=\(code)")
                     }
                 } label: {
@@ -30,11 +28,8 @@ struct BarcodeScannerTest: View {
                         .shadow(color: .accentColor, radius: 10, x: 0, y: 0)
                         .frame(maxHeight: .infinity)
                 }
-                
             }
         }
-        
-        
     }
 }
 

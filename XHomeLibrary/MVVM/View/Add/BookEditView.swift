@@ -222,7 +222,7 @@ struct BookEditView: View {
             .disabled(!self.bookVM.validate())
             
         }
-//        .padding(.horizontal)
+        .padding(.bottom, 30)
     }
 }
 
