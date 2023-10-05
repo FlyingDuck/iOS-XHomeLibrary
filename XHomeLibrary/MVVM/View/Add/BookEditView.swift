@@ -25,14 +25,15 @@ struct BookEditView: View {
     
     var body: some View {
         ScrollView {
-            baseInfo
-            additionalInfo
+                baseInfo
+                additionalInfo
                 
-            Spacer()
-            footer
+                Spacer()
+                footer
         }
         .scrollIndicators(.hidden)
         .dismissKeyboard()
+        .padding(.horizontal, 5)
     }
     
     var baseInfo: some View {
@@ -40,7 +41,7 @@ struct BookEditView: View {
             VStack(spacing: 30) {
                 HStack {
                     Text("封面")
-                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .font(.system(size: 15, weight: .bold, design: .rounded))
                         .frame(width: 50, alignment: .leading)
                     Spacer()
                     
@@ -128,7 +129,8 @@ struct BookEditView: View {
         }
         .padding(.all, 20)
         .background(Color.xwhiteCard)
-        .frame(width: UIScreen.main.bounds.width)
+        .frame(maxWidth: UIScreen.main.bounds.width)
+        .cornerRadius(10)
     }
     
     var additionalInfo: some View {
@@ -155,7 +157,8 @@ struct BookEditView: View {
         }
         .padding(.all, 20)
         .background(Color.xwhiteCard)
-        .frame(width: UIScreen.main.bounds.width)
+        .frame(maxWidth: UIScreen.main.bounds.width)
+        .cornerRadius(10)
     }
     
     var footer: some View {
@@ -206,7 +209,7 @@ struct BookEditView: View {
             }
             
         }
-        .padding(.horizontal)
+//        .padding(.horizontal)
     }
 }
 
@@ -221,6 +224,6 @@ struct BookEditView: View {
                     context: context)
                 )
         }
-        .background(Color.xgrayBg)
+        .background(Color.red)
     }
 }

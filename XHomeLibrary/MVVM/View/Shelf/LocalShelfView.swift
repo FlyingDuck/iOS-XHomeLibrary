@@ -17,7 +17,7 @@ struct LocalShelfView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
                 // 头部：搜索栏
                 header
                 if shelfVM.isEmpty() {
@@ -28,7 +28,8 @@ struct LocalShelfView: View {
                     booklist
                 }
             }
-            .background(Color.xgrayTab)
+//            .navigationBarTitle("本地书架", displayMode: .inline)
+//            .background(Color.xgrayTab)
             .dismissKeyboard()
         }
     }
@@ -43,22 +44,24 @@ struct LocalShelfView: View {
             })
 
             TextField("输入书名...", text: $shelfVM.keyword)
-                .padding(10)
+                .font(.system(size: 13))
+                .padding(.all, 6)
                 .background(Color.xgrayBg)
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
 
             Button {
                 shelfVM.search()
             } label: {
-                Text("搜索")
+                Text("搜索").font(.system(size: 13))
             }
-            .padding(.all, 10)
+            .padding(.all, 5)
             .background(Color.blue.opacity(0.5))
             .foregroundColor(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
         }
-        .padding(.top, 5)
+        .padding(.vertical, 5)
         .padding(.horizontal)
+        .background(Color.xgrayBg)
     }
 
     var booklist: some View {
@@ -108,6 +111,7 @@ struct LocalShelfView: View {
                 .foregroundColor(Color.black.opacity(0.7))
         }
         .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
+        .background(Color.xgrayBg)
     }
 }
 

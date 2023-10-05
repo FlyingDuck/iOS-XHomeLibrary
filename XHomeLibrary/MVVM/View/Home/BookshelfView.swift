@@ -10,7 +10,7 @@ import SwiftUI
 struct BookshelfView: View {
     @Environment(\.managedObjectContext) private var context
     @ObservedObject var bookWatcher = BookWatcher.shared
-    @EnvironmentObject var shelfVM: BookshelfViewModel
+    @EnvironmentObject var shelfVM: RemoteShelfViewModel
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -115,5 +115,5 @@ struct BookshelfView: View {
 
 #Preview {
     BookshelfView()
-        .environmentObject(BookshelfViewModel())
+        .environmentObject(RemoteShelfViewModel())
 }

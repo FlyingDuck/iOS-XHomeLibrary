@@ -16,11 +16,14 @@ struct BookAddPageView: View {
     }
 
     var body: some View {
+        NavigationView {
             VStack {
                 BookEditView(editing: false)
                     .environmentObject(bookVM)
             }
+            .navigationBarTitle("新增图书", displayMode: .inline)
             .background(Color.xgrayBg)
+        }
     }
 }
 

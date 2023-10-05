@@ -25,8 +25,6 @@ struct MainView: View {
         NavigationStack {
             TabView(selection: $tabVM.tab) {
                 HomeView()
-                    .padding(.vertical, 1)
-                    .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.home.icon
                         TabViewModel.Tab.home.title
@@ -34,8 +32,6 @@ struct MainView: View {
                     .tag(TabViewModel.Tab.home)
 
                 BookAddPageView()
-                    .padding(.vertical, 1)
-                    .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.add.icon
                         TabViewModel.Tab.add.title
@@ -46,8 +42,6 @@ struct MainView: View {
 
                 LocalShelfView()
                     .badge(localShelfVM.getTotal())
-                    .padding(.vertical, 1)
-                    .background(Color.xgrayTab)
                     .tabItem {
                         TabViewModel.Tab.bookshelf.icon
                         TabViewModel.Tab.bookshelf.title
@@ -55,8 +49,6 @@ struct MainView: View {
                     .tag(TabViewModel.Tab.bookshelf)
                     .environmentObject(self.localShelfVM)
             }
-            .navigationTitle(tabVM.getCurrentTab().title)
-            .navigationBarTitleDisplayMode(.inline)
         }
         .sheet(isPresented: $bookWatcher.showBookDetail) {
             print("close local shelf sheet")
@@ -65,8 +57,6 @@ struct MainView: View {
             BookDetailView(book: bookWatcher.getBookDetail(), context: context)
                 .environmentObject(self.localShelfVM)
         }
-
-        
     }
 }
 

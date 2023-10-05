@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-//    @ObservedObject var bookWatcher = BookWatcher.shared
-    @StateObject var shelfVM: BookshelfViewModel = .init()
+    @StateObject var remoteShelfVM: RemoteShelfViewModel = .init()
     
     init() {
         print("init homeView")
@@ -18,17 +17,23 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                header.padding(.top, 5)
                 HoneyCombView()
-                    .background(Color.xgrayBg)
-                    .environmentObject(shelfVM)
+                    .environmentObject(remoteShelfVM)
             }
-            .background(Color.xgrayTab)
-            .padding(.horizontal)
+            .navigationBarTitle("首页", displayMode: .inline)
+            .searchable(text: $remoteShelfVM.keyword, placement: .navigationBarDrawer(displayMode: .always), prompt: "输入书名")
+            .onChange(of: remoteShelfVM.keyword, perform: { value in
+                print("onChange: keyword=\(remoteShelfVM.keyword)")
+            })
+            .onSubmit(of: [.search]) {
+                print("onSubmit: keyword=\(remoteShelfVM.keyword)")
+                remoteShelfVM.goShelf()
+                remoteShelfVM.search()
+            }
         }
-        .fullScreenCover(isPresented: $shelfVM.show, content: {
+        .fullScreenCover(isPresented: $remoteShelfVM.show, content: {
             BookshelfView()
-                .environmentObject(shelfVM)
+                .environmentObject(remoteShelfVM)
         })
         
     }
@@ -37,14 +42,14 @@ struct HomeView: View {
         VStack(spacing: 30) {
             HStack {
                 HStack(spacing: 2) {
-                    TextField("输入书名...", text: $shelfVM.keyword)
+                    TextField("输入书名...", text: $remoteShelfVM.keyword)
                         .padding(10)
                         .background(Color.xgrayBg)
                         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
                 Button {
-                    shelfVM.goShelf()
-                    shelfVM.search()
+                    remoteShelfVM.goShelf()
+                    remoteShelfVM.search()
                 } label: {
                     Text("搜索")
                 }
