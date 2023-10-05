@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var remoteShelfVM: RemoteShelfViewModel = .init()
+    @ObservedObject var bookWatcher = BookWatcher.shared
     
     init() {
         print("init homeView")

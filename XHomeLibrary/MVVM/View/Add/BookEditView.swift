@@ -186,7 +186,7 @@ struct BookEditView: View {
                     self.bookWatcher.setBookDetail(book: bookVM.book)
                     self.localShelfVM.refresh()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         editingAlert.dismiss()
                         self.presentationMode.wrappedValue.dismiss()
                     }
@@ -201,7 +201,7 @@ struct BookEditView: View {
                     self.bookWatcher.clear()
                     self.localShelfVM.refresh()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         addingAlert.dismiss()
                     }
                 }

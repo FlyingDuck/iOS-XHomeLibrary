@@ -22,6 +22,7 @@
 		3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A72AC1DDBF003A2C1B /* XColor.swift */; };
 		3E2661752ACE92A900FC942B /* ISBNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2661742ACE92A900FC942B /* ISBNAPI.swift */; };
 		3E2661772ACE930000FC942B /* ISBNAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2661762ACE930000FC942B /* ISBNAPIConfig.swift */; };
+		3E26617A2ACEDEC800FC942B /* HoneycombImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2661792ACEDEC800FC942B /* HoneycombImage.swift */; };
 		3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */; };
 		3E47E6E32ACCEECA000CB4A0 /* BarcodeScannerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E22ACCEECA000CB4A0 /* BarcodeScannerTest.swift */; };
 		3E47E6E72ACCFC73000CB4A0 /* CodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */; };
@@ -75,6 +76,7 @@
 		3E2661742ACE92A900FC942B /* ISBNAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNAPI.swift; sourceTree = "<group>"; };
 		3E2661762ACE930000FC942B /* ISBNAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNAPIConfig.swift; sourceTree = "<group>"; };
 		3E2661782ACEA03100FC942B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3E2661792ACEDEC800FC942B /* HoneycombImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneycombImage.swift; sourceTree = "<group>"; };
 		3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfView.swift; sourceTree = "<group>"; };
 		3E47E6E22ACCEECA000CB4A0 /* BarcodeScannerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerTest.swift; sourceTree = "<group>"; };
 		3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScanner.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				3E013A962AC70DDC00647B3D /* UnderlineTextField.swift */,
 				3E91C2982ACAAE5A009CDF90 /* ImagePicker.swift */,
 				3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */,
+				3E2661792ACEDEC800FC942B /* HoneycombImage.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */,
 				3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */,
 				3E2661772ACE930000FC942B /* ISBNAPIConfig.swift in Sources */,
+				3E26617A2ACEDEC800FC942B /* HoneycombImage.swift in Sources */,
 				3E013A992AC70F9600647B3D /* TextInputRow.swift in Sources */,
 				3E5FC2B62AC03B5100EBD86B /* BookItemCard.swift in Sources */,
 				3E47E6E72ACCFC73000CB4A0 /* CodeScanner.swift in Sources */,

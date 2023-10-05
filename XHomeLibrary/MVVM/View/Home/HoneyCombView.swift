@@ -8,24 +8,18 @@
 import SwiftUI
 
 struct HoneyCombView: View {
-    @EnvironmentObject var shelfVM: RemoteShelfViewModel
     @ObservedObject var bookWatcher = BookWatcher.shared
 
+    init() {
+        print("init HoneyCambView")
+    }
+
     var body: some View {
-        if shelfVM.recBooks.count != 0 {
-            List {
-                honeycomb
-                    .listRowSeparator(.hidden)
-            }
-            .listStyle(.plain)
-        } else {
-            // 空页面
-            VStack {
-                Spacer()
-                Text("nothing")
-                Spacer()
-            }
-            .frame(width: UIScreen.main.bounds.width)
+        ScrollView {
+            honeycomb
+        }
+        .refreshable {
+            bookWatcher.refreshRecommandBooks()
         }
     }
 
@@ -35,58 +29,40 @@ struct HoneyCombView: View {
                 // 占位
             }.frame(width: UIScreen.main.bounds.width, height: 40)
 
-            ForEach(0...shelfVM.recBooks.count, id: \.self) { bookIndex in
-
-                if bookIndex == 1 {
-                    HStack(spacing: 20) {
-                        ForEach(0...bookIndex, id: \.self) { i in
-                            Image(shelfVM.recBooks[i].cover)
-                                .resizable()
-                                .modifier(HoneycombImageModifer())
-                                .onTapGesture {
-                                    bookWatcher.setBookDetail(book: shelfVM.recBooks[i])
-                                }
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width)
-
-                } else if bookIndex == 4 {
-                    HStack(spacing: 20) {
-                        ForEach(2...bookIndex, id: \.self) { i in
-                            Image(shelfVM.recBooks[i].cover)
-                                .resizable()
-                                .modifier(HoneycombImageModifer())
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width)
-                } else if bookIndex == 6 {
-                    HStack(spacing: 20) {
-                        ForEach(5...bookIndex, id: \.self) { i in
-                            Image(shelfVM.recBooks[i].cover)
-                                .resizable()
-                                .modifier(HoneycombImageModifer())
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width)
-                } else if bookIndex == 9 {
-                    HStack(spacing: 20) {
-                        ForEach(7...bookIndex, id: \.self) { i in
-                            Image(shelfVM.recBooks[i].cover)
-                                .resizable()
-                                .modifier(HoneycombImageModifer())
-                        }
-                    }
-                } else if bookIndex == 11 {
-                    HStack(spacing: 20) {
-                        ForEach(10...bookIndex, id: \.self) { i in
-                            Image(shelfVM.recBooks[i].cover)
-                                .resizable()
-                                .modifier(HoneycombImageModifer())
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width)
+            HStack(spacing: 20) {
+                ForEach(bookWatcher.recBooks[0...1], id: \.self.id) { book in
+                    HoneycombImage(book: book)
                 }
             }
+            .frame(width: UIScreen.main.bounds.width)
+
+            HStack(spacing: 20) {
+                ForEach(bookWatcher.recBooks[2...4], id: \.self.id) { book in
+                    HoneycombImage(book: book)
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width)
+
+            HStack(spacing: 20) {
+                ForEach(bookWatcher.recBooks[5...6], id: \.self.id) { book in
+                    HoneycombImage(book: book)
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width)
+
+            HStack(spacing: 20) {
+                ForEach(bookWatcher.recBooks[7...9], id: \.self.id) { book in
+                    HoneycombImage(book: book)
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width)
+
+            HStack(spacing: 20) {
+                ForEach(bookWatcher.recBooks[10...11], id: \.self.id) { book in
+                    HoneycombImage(book: book)
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width)
         }
     }
 }
