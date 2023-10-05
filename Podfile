@@ -9,9 +9,10 @@ target 'XHomeLibrary' do
   pod 'SwifterSwift'
   pod 'Moya'# 网络底层
   pod 'Moya/Combine', '~> 15.0'#
-  pod 'KakaJSON'
-  pod 'SwiftyJSON'# JSON处理
+  pod 'SwiftyJSON'
+  pod 'KakaJSON', '~> 1.1.2' # JSON处理
   pod 'Kingfisher'
   pod 'BarcodeScanner' # 条形码处理，好像二维码也能扫
   pod 'SPAlert' # 
+  pod 'Kanna', '~> 5.2.2'
 end

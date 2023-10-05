@@ -39,7 +39,7 @@ struct CodeScanner: UIViewControllerRepresentable {
             print("Symbology Type: \(type)")
 //            parent.code = code
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.parent.handleCode(code)
                 if code.isEmpty {
                     controller.resetWithError(message: "条形码错误")

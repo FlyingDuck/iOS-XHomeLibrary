@@ -20,6 +20,8 @@
 		3E013AA02AC8510F00647B3D /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E013A9F2AC8510F00647B3D /* PersistenceController.swift */; };
 		3E0E47A62AC1DB06003A2C1B /* HoneycombImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */; };
 		3E0E47A82AC1DDBF003A2C1B /* XColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E47A72AC1DDBF003A2C1B /* XColor.swift */; };
+		3E2661752ACE92A900FC942B /* ISBNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2661742ACE92A900FC942B /* ISBNAPI.swift */; };
+		3E2661772ACE930000FC942B /* ISBNAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2661762ACE930000FC942B /* ISBNAPIConfig.swift */; };
 		3E3B6EA92AC478B10078AFB0 /* BookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */; };
 		3E47E6E32ACCEECA000CB4A0 /* BarcodeScannerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E22ACCEECA000CB4A0 /* BarcodeScannerTest.swift */; };
 		3E47E6E72ACCFC73000CB4A0 /* CodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */; };
@@ -70,6 +72,9 @@
 		3E013A9F2AC8510F00647B3D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		3E0E47A52AC1DB06003A2C1B /* HoneycombImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneycombImageModifier.swift; sourceTree = "<group>"; };
 		3E0E47A72AC1DDBF003A2C1B /* XColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XColor.swift; sourceTree = "<group>"; };
+		3E2661742ACE92A900FC942B /* ISBNAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNAPI.swift; sourceTree = "<group>"; };
+		3E2661762ACE930000FC942B /* ISBNAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNAPIConfig.swift; sourceTree = "<group>"; };
+		3E2661782ACEA03100FC942B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3E3B6EA82AC478B10078AFB0 /* BookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfView.swift; sourceTree = "<group>"; };
 		3E47E6E22ACCEECA000CB4A0 /* BarcodeScannerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerTest.swift; sourceTree = "<group>"; };
 		3E47E6E62ACCFC73000CB4A0 /* CodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScanner.swift; sourceTree = "<group>"; };
@@ -183,6 +188,7 @@
 		3E4B8E582ABFE6B60010028C /* XHomeLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				3E2661782ACEA03100FC942B /* Info.plist */,
 				3E4B8E592ABFE6B60010028C /* XHomeLibraryApp.swift */,
 				3E013A9F2AC8510F00647B3D /* PersistenceController.swift */,
 				3E4B8E5B2ABFE6B60010028C /* ContentView.swift */,
@@ -250,7 +256,7 @@
 		3E5FC2962ABFF56E00EBD86B /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3E5FC2972ABFF56E00EBD86B /* Apis */,
+				3E5FC2972ABFF56E00EBD86B /* API */,
 				3E5FC2992ABFF56E00EBD86B /* Extension */,
 				3E5FC29D2ABFF56E00EBD86B /* Config */,
 				3E5FC2A02ABFF56E00EBD86B /* Plugin */,
@@ -258,12 +264,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		3E5FC2972ABFF56E00EBD86B /* Apis */ = {
+		3E5FC2972ABFF56E00EBD86B /* API */ = {
 			isa = PBXGroup;
 			children = (
 				3E5FC2982ABFF56E00EBD86B /* SearchAPI.swift */,
+				3E2661742ACE92A900FC942B /* ISBNAPI.swift */,
 			);
-			path = Apis;
+			path = API;
 			sourceTree = "<group>";
 		};
 		3E5FC2992ABFF56E00EBD86B /* Extension */ = {
@@ -281,6 +288,7 @@
 			children = (
 				3E5FC29E2ABFF56E00EBD86B /* NetWorking.swift */,
 				3E5FC29F2ABFF56E00EBD86B /* ApiConfig.swift */,
+				3E2661762ACE930000FC942B /* ISBNAPIConfig.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -474,6 +482,7 @@
 			files = (
 				3E5FC2C12AC08D0A00EBD86B /* LocalShelfViewModel.swift in Sources */,
 				3E91C29E2ACACC46009CDF90 /* PhotoPickerView.swift in Sources */,
+				3E2661752ACE92A900FC942B /* ISBNAPI.swift in Sources */,
 				3ED7416F2ACC029F00B22309 /* ResignKeyboardOnDragGesture.swift in Sources */,
 				3E5FC2B42AC02FC600EBD86B /* Book.swift in Sources */,
 				3E5FC2AE2AC020A200EBD86B /* LocalShelfView.swift in Sources */,
@@ -506,6 +515,7 @@
 				3E4B8E5A2ABFE6B60010028C /* XHomeLibraryApp.swift in Sources */,
 				3E5FC2AB2ABFF56E00EBD86B /* NetworkLoggerPlugin.swift in Sources */,
 				3E5FC2AA2ABFF56E00EBD86B /* TokenPlugin.swift in Sources */,
+				3E2661772ACE930000FC942B /* ISBNAPIConfig.swift in Sources */,
 				3E013A992AC70F9600647B3D /* TextInputRow.swift in Sources */,
 				3E5FC2B62AC03B5100EBD86B /* BookItemCard.swift in Sources */,
 				3E47E6E72ACCFC73000CB4A0 /* CodeScanner.swift in Sources */,
@@ -653,6 +663,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XHomeLibrary/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HiBook;
 				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要您的照相机权限来拍摄书籍封面";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您的相册权限以添加书籍封面";
@@ -689,6 +700,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XHomeLibrary/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HiBook;
 				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要您的照相机权限来拍摄书籍封面";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您的相册权限以添加书籍封面";

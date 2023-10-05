@@ -6,7 +6,9 @@
 //
 
 import CoreData
+import Kanna
 import Kingfisher
+import SwifterSwift
 import SwiftUI
 
 class BookViewModel: ObservableObject {
@@ -66,6 +68,82 @@ extension BookViewModel {
             return false
         }
         return true
+    }
+
+    func searchISBN(code: String) {
+        book.isbn = code
+
+        Networking.request(ISBNAPI.fetchRealURL) { result in
+            print("ISBNAPI.fetchRealURL: ", result)
+            if result.HttpCode != 200 {
+                return
+            }
+            let html = String(data: result.rawReponse?.data ?? Data(), encoding: .utf8) ?? ""
+            print("fetchRealURL html size: ", html.count)
+
+            DispatchQueue.main.async {
+                var token = ""
+                if let doc = try? HTML(html: html, encoding: .utf8) {
+                    for form in doc.css("form") {
+                        let action = form["action"] ?? ""
+                        let name = form["name"]
+                        let method = form["method"]
+                        if name == "form1", method == "get", action.hasPrefix("http://opac.nlc.cn:80/F") {
+                            print("html from action: ", action)
+                            token = action.components(separatedBy: "/").last ?? ""
+                        }
+                    }
+                }
+                if token.isEmpty {
+                    return
+                }
+
+                Networking.request(ISBNAPI.fetchBookInfo(token: token, code: code)) { result in
+                    print("ISBNAPI.fetchBookInfo: ", result)
+                    if result.HttpCode != 200 {
+                        return
+                    }
+                    let html = String(data: result.rawReponse?.data ?? Data(), encoding: .utf8) ?? ""
+                    print("fetchBookInfo html size: ", html.count)
+
+                    if let doc = try? HTML(html: html, encoding: .utf8) {
+                        for div in doc.css("div") {
+                            let id = div["id"]
+                            if id != "details2" {
+                                continue
+                            }
+                            for tr in div.css("tr") {
+                                let tds = tr.css("td")
+                                if tds.count != 2 {
+                                    continue
+                                }
+                                let key = tds[0].text?.trimmed ?? ""
+                                let value = tds[1].text?.trimmed ?? ""
+                                if key.isEmpty || value.isEmpty {
+                                    continue
+                                }
+                                switch key {
+                                case "题名与责任":
+                                    let vals = value.components(separatedBy: "/")
+                                    if vals.count == 2 {
+                                        self.book.name = vals[0]
+                                        self.book.author = vals[1]
+                                    } else {
+                                        self.book.name = value
+                                    }
+                                case "出版项":
+                                    self.book.publisher = value
+                                case "内容提要":
+                                    self.book.description = value
+                                default:
+                                    continue
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     func updateLocalBook() {
