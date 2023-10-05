@@ -9,6 +9,7 @@ import CoreData
 import Kingfisher
 import SPAlert
 import SwiftUI
+import SwifterSwift
 
 struct BookEditView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
@@ -105,10 +106,19 @@ struct BookEditView: View {
                 }
                 .frame(height: 150)
                 
-                TextInputRow(title: "书名", text: $bookVM.book.name)
-                TextInputRow(title: "作者", text: $bookVM.book.author)
-                TextInputRow(title: "出版社", text: $bookVM.book.publisher)
-                TextInputRow(title: "ISBN", text: $bookVM.book.isbn).keyboardType(.numberPad)
+                TextInputRow(title: "书名", text: $bookVM.book.name) { text in
+                    return !text.trimmed.isEmpty
+                }
+                TextInputRow(title: "作者", text: $bookVM.book.author) { text in
+                    return !text.trimmed.isEmpty
+                }
+                TextInputRow(title: "出版社", text: $bookVM.book.publisher) { text in
+                    return !text.trimmed.isEmpty
+                }
+                TextInputRow(title: "ISBN", text: $bookVM.book.isbn) { text in
+                    return !text.trimmed.isEmpty && text.isDigits
+                }
+                    .keyboardType(.numberPad)
             }
             
             HStack {
@@ -150,6 +160,7 @@ struct BookEditView: View {
                     .font(.system(size: 12, weight: .bold, design: .rounded))
                     .frame(width: 50, alignment: .topLeading)
                 TextEditor(text: $bookVM.book.description)
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .font(.system(size: 12))
                     .frame(height: 150)
                     .border(Color.gray, width: 1)
@@ -165,6 +176,7 @@ struct BookEditView: View {
         HStack {
             Button {
                 // TODO: 这里还需要区分是本地上传还是远端上传
+                
                 if self.editing {
                     let editingAlert = SPAlertView(title: "保存中", message: "正在修改《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
                     editingAlert.duration = .infinity
@@ -207,6 +219,7 @@ struct BookEditView: View {
                 .foregroundColor(.white)
                 .cornerRadius(15)
             }
+            .disabled(!self.bookVM.validate())
             
         }
 //        .padding(.horizontal)
@@ -224,6 +237,6 @@ struct BookEditView: View {
                     context: context)
                 )
         }
-        .background(Color.red)
+        .background(Color.green)
     }
 }

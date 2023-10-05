@@ -70,7 +70,8 @@ struct LocalShelfView: View {
                 HStack {
                     Text("共找到 \(shelfVM.getTotal()) 条结果")
                         .font(.system(size: 12, weight: .thin, design: .default))
-                        .underline(true, color: Color.gray)
+                        .foregroundColor(.gray)
+                        .underline(true, color: Color.gray.opacity(0.6))
                         .italic(true)
                     Spacer()
                 }
@@ -91,7 +92,7 @@ struct LocalShelfView: View {
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: 1, alignment: .center)
                         .foregroundColor(Color.gray.opacity(0.5))
-                }.padding(.horizontal)
+                }.padding(.horizontal, 15)
             }
         }
         .scrollIndicators(.hidden)

@@ -52,6 +52,22 @@ extension BookViewModel {
         return localImage
     }
 
+    func validate() -> Bool {
+        if book.name.trimmed.isEmpty {
+            return false
+        }
+        if book.author.trimmed.isEmpty {
+            return false
+        }
+        if book.publisher.trimmed.isEmpty {
+            return false
+        }
+        if book.isbn.trimmed.isEmpty || !book.isbn.isDigits {
+            return false
+        }
+        return true
+    }
+
     func updateLocalBook() {
         if !(localImage.size == .zero) {
             let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
