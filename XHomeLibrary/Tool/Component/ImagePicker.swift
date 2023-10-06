@@ -10,10 +10,11 @@ import SwiftUI
 struct ImagePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
 
-    @Binding var selectedImage: UIImage
+//    @Binding var selectedImage: UIImage
 //    @Binding var selectedImagePath: String
     @Environment(\.presentationMode) private var presentationMode
-    let handlerImage: (_ image: UIImage) -> Void
+    let handleImage: (_ image: UIImage) -> Void
+    let handleImagepath: (_ filepath : String) -> Void
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -43,16 +44,15 @@ struct ImagePicker: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image.fixOrientation()
-                parent.handlerImage(image)
+//                parent.selectedImage = image.fixOrientation()
                 if let imageURL = info[.imageURL] as? NSURL {
                     print("pick imageURL = \(imageURL)")
                     if let imagePath = imageURL.path {
-//                        parent.selectedImage = UIImage(contentsOfFile: imagePath)!
-//                        parent.selectedImagePath = imagePath
                         print("pick imagePath = \(imagePath)")
+                        parent.handleImagepath(imagePath)
                     }
                 }
+                parent.handleImage(image.fixOrientation())
             }
             parent.presentationMode.wrappedValue.dismiss()
         }

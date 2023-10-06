@@ -73,7 +73,7 @@ struct BookDetailView: View {
                         .frame(width: 140)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 } else {
-                    let image = bookVM.getLocalBookCoverUIImage()
+                    let image = bookVM.book.getLocalThumbnailCover()
                     if image.size == .zero {
                         Image(systemName: "questionmark")
                             .font(.system(size: 40, weight: .light, design: .monospaced))

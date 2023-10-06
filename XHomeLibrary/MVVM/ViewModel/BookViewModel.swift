@@ -18,18 +18,18 @@ class BookViewModel: ObservableObject {
     // 图片处理
     // - 本地图片
     private static let localImageSavingDir = "XHomeLib"
-    @Published var localImage: UIImage
+//    @Published var localImage: UIImage
     // - 网络图片
     @Published var remoteImageURL: String
 
     init(book: Book, context: NSManagedObjectContext) {
         self.managedObjectContext = context
         self.book = book
-        self.localImage = UIImage()
+//        self.localImage = UIImage()
         self.remoteImageURL = ""
         if !book.cover.isEmpty {
             if book.isLocal() {
-                self.localImage = UIImage(contentsOfFile: book.cover) ?? UIImage()
+//                self.localImage = UIImage(contentsOfFile: book.cover) ?? UIImage()
             } else {
                 self.remoteImageURL = book.cover
             }
@@ -46,13 +46,13 @@ extension BookViewModel {
     func reset() {
         print("[BookVM] reset book to empty")
         book = Book.newEmptyBook()
-        localImage = UIImage()
+//        localImage = UIImage()
         remoteImageURL = ""
     }
 
-    func getLocalBookCoverUIImage() -> UIImage {
-        return localImage
-    }
+//    func getLocalBookCoverUIImage() -> UIImage {
+//        return localImage
+//    }
 
     func searchISBN(code: String) {
         book.isbn = code
@@ -140,10 +140,9 @@ extension BookViewModel {
             return CoreDataMessage.warning(msg: "ISBN=\(book.isbn) 的书籍已存在")
         }
 
-        if !(localImage.size == .zero) {
-            let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
-            book.cover = imageFilepath
-        }
+//        let tmpFielpath = book.cover
+//        let imageFilepath = BookViewModel.moveImage2Local(filepath: tmpFielpath)
+//        book.cover = imageFilepath
 
         guard let bookEntity = fetchBookByID(id: book.id) else {
             return CoreDataMessage.success()
@@ -154,7 +153,7 @@ extension BookViewModel {
         print("[BookVM] will update book: id=\(book.id), name=\(book.name), cover=\(book.cover)")
 
         PersistenceController.shared.save()
-        
+
         return CoreDataMessage.success()
     }
 
@@ -168,9 +167,11 @@ extension BookViewModel {
             return CoreDataMessage.warning(msg: "ISBN=\(book.isbn) 的书籍已存在，其书名为：《\(book.name)》")
         }
 
+//        let tmpCoverFilepath = book.cover
+//        let imageFilepath = BookViewModel.moveImage2Local(filepath: tmpCoverFilepath)
+        
         book.id = UUID().uuidString
-        let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
-        book.cover = imageFilepath
+//        book.cover = imageFilepath
 
         let bookEntity = book.trans2NewEntity(context: getContext())
         bookEntity.createTime = Date()
@@ -246,6 +247,34 @@ extension BookViewModel {
         // 写入新的目录
         let data: Data = localImage.pngData()!
         try! data.write(to: URL(fileURLWithPath: newFilepath))
+        return newFilepath
+    }
+
+    static func moveImage2Local(tmpFilepath: String) -> String {
+        if tmpFilepath.isEmpty {
+            return ""
+        }
+
+        let filemanager = FileManager.default
+        let BuildingPropertyDir = localImageSavingDir
+
+        // 创建图片文件目录
+        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
+        let dir = filePath + "/images/" + BuildingPropertyDir + "/"
+        try! filemanager.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
+        print("images dir: \(dir)")
+        
+        // 提取图片文件名
+        guard let filename = tmpFilepath.components(separatedBy: "/").last else { return "" }
+
+        let newFilepath = dir + filename
+        print("saving image path: \(newFilepath)")
+
+        do {
+            try filemanager.moveItem(atPath: tmpFilepath, toPath: newFilepath)
+        } catch let err {
+            print(err.localizedDescription)
+        }
         return newFilepath
     }
 

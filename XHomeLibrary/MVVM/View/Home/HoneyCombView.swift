@@ -9,9 +9,12 @@ import SwiftUI
 
 struct HoneyCombView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
-
-    init() {
-        print("init HoneyCambView")
+    
+    @State private var recommandBooks : [Book]
+    
+    init(recommandBooks: [Book]) {
+        self.recommandBooks = recommandBooks
+        print("init HoneyCambView: recommandBooks=\(self.recommandBooks.count)")
     }
 
     var body: some View {
@@ -19,7 +22,7 @@ struct HoneyCombView: View {
             honeycomb
         }
         .refreshable {
-            bookWatcher.refreshRecommandBooks()
+            self.recommandBooks = bookWatcher.refreshRecommandBooks()
         }
     }
 
@@ -30,35 +33,35 @@ struct HoneyCombView: View {
             }.frame(width: UIScreen.main.bounds.width, height: 40)
 
             HStack(spacing: 20) {
-                ForEach(bookWatcher.recBooks[0...1], id: \.self.id) { book in
+                ForEach(recommandBooks[0...1], id: \.self.id) { book in
                     HoneycombImage(book: book)
                 }
             }
             .frame(width: UIScreen.main.bounds.width)
 
             HStack(spacing: 20) {
-                ForEach(bookWatcher.recBooks[2...4], id: \.self.id) { book in
+                ForEach(recommandBooks[2...4], id: \.self.id) { book in
                     HoneycombImage(book: book)
                 }
             }
             .frame(width: UIScreen.main.bounds.width)
 
             HStack(spacing: 20) {
-                ForEach(bookWatcher.recBooks[5...6], id: \.self.id) { book in
+                ForEach(recommandBooks[5...6], id: \.self.id) { book in
                     HoneycombImage(book: book)
                 }
             }
             .frame(width: UIScreen.main.bounds.width)
 
             HStack(spacing: 20) {
-                ForEach(bookWatcher.recBooks[7...9], id: \.self.id) { book in
+                ForEach(recommandBooks[7...9], id: \.self.id) { book in
                     HoneycombImage(book: book)
                 }
             }
             .frame(width: UIScreen.main.bounds.width)
 
             HStack(spacing: 20) {
-                ForEach(bookWatcher.recBooks[10...11], id: \.self.id) { book in
+                ForEach(recommandBooks[10...11], id: \.self.id) { book in
                     HoneycombImage(book: book)
                 }
             }
@@ -68,6 +71,6 @@ struct HoneyCombView: View {
 }
 
 #Preview {
-    HoneyCombView()
+    HoneyCombView(recommandBooks: [])
         .environmentObject(RemoteShelfViewModel())
 }

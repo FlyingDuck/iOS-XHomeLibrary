@@ -33,9 +33,9 @@ struct HoneycombImage: View {
                     }
                 }
         } else {
-            let image = UIImage(contentsOfFile: book.cover)
-            if image != nil {
-                Image(uiImage: image!)
+            let image = book.getLocalThumbnailCover()
+            if image.size != .zero {
+                Image(uiImage: image)
                     .resizable()
                     .modifier(HoneycombImageModifer())
                     .onTapGesture {
@@ -43,6 +43,7 @@ struct HoneycombImage: View {
                             bookWatcher.setBookDetail(book: book)
                         }
                     }
+                    
             } else {
                 Image(systemName: "photo")
                     .resizable()

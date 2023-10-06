@@ -30,7 +30,7 @@ class LocalShelfViewModel: ObservableObject {
 
 extension LocalShelfViewModel {
     func refresh() {
-        self.search()
+//        self.search()
         self.count()
     }
     

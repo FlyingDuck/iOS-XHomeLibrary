@@ -18,7 +18,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HoneyCombView()
+                HoneyCombView(recommandBooks: bookWatcher.refreshRecommandBooks())
                     .environmentObject(remoteShelfVM)
             }
             .navigationBarTitle("首页", displayMode: .inline)

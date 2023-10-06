@@ -16,14 +16,14 @@ class BookWatcher: ObservableObject {
     @Published var bookDetail: Book = .newEmptyBook()
 
     // 首页推荐
-    @Published var recBooks: [Book] = []
+    private var recBooks: [Book] = []
 
     var managedObjectContext: NSManagedObjectContext
     init() {
         print("init BookWatcher")
         let context = PersistenceController.shared.container.viewContext
         self.managedObjectContext = context
-        self.refreshRecommandBooks()
+        self.initRecommandBooks()
     }
 
     func getContext() -> NSManagedObjectContext {
@@ -51,8 +51,8 @@ extension BookWatcher {
         self.bookDetail = book
     }
 
-    func refreshRecommandBooks() {
-        print("[BookWatcher] refresh recommand books")
+    func initRecommandBooks() {
+        print("[BookWatcher] init recommand books")
 
         var bookEntities: [BookEntity] = []
 
@@ -69,18 +69,18 @@ extension BookWatcher {
         for bookEntity in bookEntities {
             books.append(bookEntity.trans2LocalBook())
         }
-        
-        print("append book to recommand queue: count=\(books.count)")
 
         if books.count < 12 {
             for _ in 0 ... 12 - books.count {
                 books.append(Book.newEmptyBook())
             }
         }
-        
-        print("recommand fisrt book: name=\(books[0].name)")
-        
+
         self.recBooks = books
+    }
+
+    func refreshRecommandBooks() -> [Book] {
+        return self.recBooks
     }
 
     func appendRecommandQueue(book: Book) {

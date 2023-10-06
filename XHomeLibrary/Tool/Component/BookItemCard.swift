@@ -51,18 +51,18 @@ struct BookItemCard: View {
                     .frame(width: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
             } else {
-                let image = UIImage(contentsOfFile: book.cover)
-                if image != nil {
-                    Image(uiImage: image!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100)
-                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                } else {
+                let image = book.getLocalThumbnailCover()
+                if image.size == .zero {
                     Image(systemName: "questionmark")
                         .font(.system(size: 40, weight: .light, design: .monospaced))
                         .foregroundColor(.orange.opacity(0.4))
                         .frame(width: 100)
+                } else {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                 }
             }
         }

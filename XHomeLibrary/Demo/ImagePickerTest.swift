@@ -12,13 +12,13 @@ struct ImagePickerTest: View {
 //    @State private var sourceType: UIImagePickerController.SourceType = .camera
 
     @State private var isShowPhotoLibrary = false
-    @State private var image = UIImage()
-//    @State private var imagePath = ""
+//    @State private var image = UIImage()
+    @State private var imagePath = ""
 
     var body: some View {
         VStack {
-//            Image(uiImage: (self.imagePath.isEmpty ? UIImage() : UIImage(contentsOfFile: self.imagePath))!)
-            Image(uiImage: self.image)
+            Image(uiImage: (self.imagePath.isEmpty ? UIImage() : UIImage(contentsOfFile: self.imagePath))!)
+//            Image(uiImage: self.image)
                 .resizable()
                 .scaledToFill()
                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -41,8 +41,12 @@ struct ImagePickerTest: View {
             }
         }
         .sheet(isPresented: $isShowPhotoLibrary) {
-            ImagePicker(sourceType: .photoLibrary, selectedImage: $image) {image in
-                print("handle image: size=\(image.size)")
+            ImagePicker(sourceType: .photoLibrary) { _ in
+                print("image")
+            } handleImagepath: { imageFilepath in
+
+                print("handle image: filepath=\(imageFilepath)")
+                imagePath = imageFilepath
             }
         }
     }

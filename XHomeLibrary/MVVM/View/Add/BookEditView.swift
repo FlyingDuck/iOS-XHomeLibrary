@@ -48,14 +48,14 @@ struct BookEditView: View {
                     
                     HStack(spacing: 40) {
                         if bookVM.book.isLocal() {
-                            let image = bookVM.getLocalBookCoverUIImage()
+                            let image = bookVM.book.getLocalThumbnailCover()
                             if image.size == .zero {
                                 Image(systemName: "questionmark")
                                     .font(.system(size: 40, weight: .light, design: .monospaced))
                                     .foregroundColor(.orange.opacity(0.4))
                                     .frame(width: 100)
                             } else {
-                                Image(uiImage: bookVM.getLocalBookCoverUIImage())
+                                Image(uiImage: image)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100)
