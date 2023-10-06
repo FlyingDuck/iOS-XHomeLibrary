@@ -69,12 +69,17 @@ extension BookWatcher {
         for bookEntity in bookEntities {
             books.append(bookEntity.trans2LocalBook())
         }
+        
+        print("append book to recommand queue: count=\(books.count)")
 
         if books.count < 12 {
             for _ in 0 ... 12 - books.count {
                 books.append(Book.newEmptyBook())
             }
         }
+        
+        print("recommand fisrt book: name=\(books[0].name)")
+        
         self.recBooks = books
     }
 
@@ -90,7 +95,7 @@ extension BookWatcher {
             }
             books.append(recBook)
         }
-        print("append book to recommand queue: count=\(self.recBooks.count)")
+        print("append book to recommand queue: count=\(books.count)")
 
         books.insert(book, at: 0)
         if books.count > 30 {

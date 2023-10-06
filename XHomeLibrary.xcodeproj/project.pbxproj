@@ -669,7 +669,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = XHomeLibrary/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HiBook;
-				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要您的照相机权限来拍摄书籍封面";
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要您的照相机权限来拍摄书籍封面";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您的相册权限以添加书籍封面";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -706,7 +706,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = XHomeLibrary/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HiBook;
-				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要您的照相机权限来拍摄书籍封面";
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要您的照相机权限来拍摄书籍封面";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您的相册权限以添加书籍封面";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

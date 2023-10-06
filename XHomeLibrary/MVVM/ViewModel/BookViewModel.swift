@@ -168,12 +168,11 @@ extension BookViewModel {
             return CoreDataMessage.warning(msg: "ISBN=\(book.isbn) 的书籍已存在，其书名为：《\(book.name)》")
         }
 
+        book.id = UUID().uuidString
         let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
-
         book.cover = imageFilepath
 
         let bookEntity = book.trans2NewEntity(context: getContext())
-        bookEntity.id = UUID().uuidString
         bookEntity.createTime = Date()
         bookEntity.updateTime = Date()
 
