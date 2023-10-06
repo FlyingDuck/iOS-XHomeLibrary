@@ -54,21 +54,21 @@ extension BookViewModel {
         return localImage
     }
 
-    func validate() -> Bool {
-        if book.name.trimmed.isEmpty {
-            return false
-        }
-        if book.author.trimmed.isEmpty {
-            return false
-        }
-        if book.publisher.trimmed.isEmpty {
-            return false
-        }
-        if book.isbn.trimmed.isEmpty || !book.isbn.isDigits {
-            return false
-        }
-        return true
-    }
+//    func validate() -> Bool {
+//        if book.name.trimmed.isEmpty {
+//            return false
+//        }
+//        if book.author.trimmed.isEmpty {
+//            return false
+//        }
+//        if book.publisher.trimmed.isEmpty {
+//            return false
+//        }
+//        if book.isbn.trimmed.isEmpty || !book.isbn.isDigits {
+//            return false
+//        }
+//        return true
+//    }
 
     func searchISBN(code: String) {
         book.isbn = code

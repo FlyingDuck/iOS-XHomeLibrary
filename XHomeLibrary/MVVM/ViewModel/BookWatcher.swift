@@ -49,8 +49,6 @@ extension BookWatcher {
     func setBookDetail(book: Book) {
         self.showBookDetail = true
         self.bookDetail = book
-
-        self.appendRecommandQueue(book: book)
     }
 
     func refreshRecommandBooks() {
@@ -80,29 +78,55 @@ extension BookWatcher {
         self.recBooks = books
     }
 
-    private func appendRecommandQueue(book: Book) {
-        if book.id.isEmpty {
+    func appendRecommandQueue(book: Book) {
+        if !book.validate() {
             return
         }
 
         var books: [Book] = []
-        var replaced = false
         for recBook in self.recBooks {
             if recBook.id == book.id {
-                books.append(book)
-                replaced = true
+                continue
+            }
+            books.append(recBook)
+        }
+        print("append book to recommand queue: count=\(self.recBooks.count)")
+
+        books.insert(book, at: 0)
+        if books.count > 30 {
+            books.removeLast()
+        }
+
+        print("recommand fisrt book: name=\(books[0].name)")
+
+        self.recBooks = books
+    }
+
+    func removeRecommandQueue(book: Book) {
+        if !book.validate() {
+            return
+        }
+
+        var books: [Book] = []
+        var removed = false
+        for recBook in self.recBooks {
+            if recBook.id == book.id {
+                removed = true
+                continue
             } else {
                 books.append(recBook)
             }
         }
-        print("append book to recommand queue: count=\(self.recBooks.count)")
+        if !removed {
+            return
+        }
 
-        if !replaced {
-            books.insert(book, at: 0)
+        if books.count < 12 {
+            for _ in 0 ... 12 - books.count {
+                books.append(Book.newEmptyBook())
+            }
         }
-        if books.count > 12 {
-            books.removeLast()
-        }
+
         self.recBooks = books
     }
 }

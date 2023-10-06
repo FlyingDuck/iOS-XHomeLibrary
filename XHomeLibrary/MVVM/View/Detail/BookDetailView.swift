@@ -13,6 +13,7 @@ import SwiftUI
 struct BookDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
+    @ObservedObject var bookWatcher = BookWatcher.shared
     @ObservedObject var bookVM: BookViewModel
     @EnvironmentObject var localShelfVM: LocalShelfViewModel
     @State var showDialog: Bool = false
@@ -41,6 +42,7 @@ struct BookDetailView: View {
                     editingAlert.present()
                     
                     self.bookVM.deleteLocalBook()
+                    self.bookWatcher.removeRecommandQueue(book: self.bookVM.book)
                     self.bookVM.reset()
                     self.localShelfVM.refresh()
                     

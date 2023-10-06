@@ -28,7 +28,7 @@ struct HoneycombImage: View {
                 .resizable()
                 .modifier(HoneycombImageModifer())
                 .onTapGesture {
-                    if !book.id.isEmpty {
+                    if book.validate() {
                         bookWatcher.setBookDetail(book: book)
                     }
                 }
@@ -39,7 +39,7 @@ struct HoneycombImage: View {
                     .resizable()
                     .modifier(HoneycombImageModifer())
                     .onTapGesture {
-                        if !book.id.isEmpty {
+                        if book.validate() {
                             bookWatcher.setBookDetail(book: book)
                         }
                     }
@@ -49,7 +49,7 @@ struct HoneycombImage: View {
                     .foregroundColor(.gray.opacity(0.5))
                     .modifier(HoneycombImageModifer())
                     .onTapGesture {
-                        if !book.id.isEmpty {
+                        if book.validate() {
                             bookWatcher.setBookDetail(book: book)
                         }
                     }

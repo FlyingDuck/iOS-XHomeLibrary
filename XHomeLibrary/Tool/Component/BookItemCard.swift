@@ -106,6 +106,7 @@ struct BookItemCard: View {
         VStack {
             Button(action: {
                 bookWatcher.setBookDetail(book: book)
+                bookWatcher.appendRecommandQueue(book: book)
             }, label: {
 //                    Label("", systemImage: "chevron.right")
                 Label("", systemImage: "poweron")

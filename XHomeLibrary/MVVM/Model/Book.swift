@@ -88,6 +88,22 @@ extension Book {
         return !cover.isEmpty && cover.hasPrefix("http")
     }
     
+    func validate() -> Bool {
+        if self.name.trimmed.isEmpty {
+            return false
+        }
+        if self.author.trimmed.isEmpty {
+            return false
+        }
+        if self.publisher.trimmed.isEmpty {
+            return false
+        }
+        if self.isbn.trimmed.isEmpty || !self.isbn.isDigits {
+            return false
+        }
+        return true
+    }
+    
     func trans2NewEntity(context: NSManagedObjectContext) -> BookEntity {
         let bookEntity: BookEntity = .init(context: context)
         bookEntity.id = self.id

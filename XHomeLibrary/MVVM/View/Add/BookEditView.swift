@@ -8,8 +8,8 @@
 import CoreData
 import Kingfisher
 import SPAlert
-import SwiftUI
 import SwifterSwift
+import SwiftUI
 
 struct BookEditView: View {
     @ObservedObject var bookWatcher = BookWatcher.shared
@@ -26,11 +26,11 @@ struct BookEditView: View {
     
     var body: some View {
         ScrollView {
-                baseInfo
-                additionalInfo
+            baseInfo
+            additionalInfo
                 
-                Spacer()
-                footer
+            Spacer()
+            footer
         }
         .scrollIndicators(.hidden)
         .dismissKeyboard()
@@ -107,18 +107,18 @@ struct BookEditView: View {
                 .frame(height: 150)
                 
                 TextInputRow(title: "书名", text: $bookVM.book.name) { text in
-                    return !text.trimmed.isEmpty
+                    !text.trimmed.isEmpty
                 }
                 TextInputRow(title: "作者", text: $bookVM.book.author) { text in
-                    return !text.trimmed.isEmpty
+                    !text.trimmed.isEmpty
                 }
                 TextInputRow(title: "出版社", text: $bookVM.book.publisher) { text in
-                    return !text.trimmed.isEmpty
+                    !text.trimmed.isEmpty
                 }
                 TextInputRow(title: "ISBN", text: $bookVM.book.isbn) { text in
-                    return !text.trimmed.isEmpty && text.isDigits
+                    !text.trimmed.isEmpty && text.isDigits
                 }
-                    .keyboardType(.numberPad)
+                .keyboardType(.numberPad)
             }
             
             HStack {
@@ -183,12 +183,14 @@ struct BookEditView: View {
                     editingAlert.present()
                     
                     self.bookVM.updateLocalBook()
-                    self.bookWatcher.setBookDetail(book: bookVM.book)
-                    self.localShelfVM.refresh()
+                    self.bookWatcher.setBookDetail(book: self.bookVM.book)
+                    self.bookWatcher.appendRecommandQueue(book: self.bookVM.book)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.localShelfVM.refresh()
+                        
                         editingAlert.dismiss()
-                        self.presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     }
                     
                 } else {
@@ -197,11 +199,13 @@ struct BookEditView: View {
                     addingAlert.present()
                     
                     self.bookVM.addLocalBook()
-                    self.bookVM.reset()
+                    self.bookWatcher.appendRecommandQueue(book: self.bookVM.book)
                     self.bookWatcher.clear()
-                    self.localShelfVM.refresh()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.bookVM.reset()
+                        self.localShelfVM.refresh()
+                        
                         addingAlert.dismiss()
                     }
                 }
@@ -219,8 +223,7 @@ struct BookEditView: View {
                 .foregroundColor(.white)
                 .cornerRadius(15)
             }
-            .disabled(!self.bookVM.validate())
-            
+            .disabled(!self.bookVM.book.validate())
         }
         .padding(.bottom, 30)
     }
