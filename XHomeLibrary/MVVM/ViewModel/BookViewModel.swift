@@ -54,22 +54,6 @@ extension BookViewModel {
         return localImage
     }
 
-//    func validate() -> Bool {
-//        if book.name.trimmed.isEmpty {
-//            return false
-//        }
-//        if book.author.trimmed.isEmpty {
-//            return false
-//        }
-//        if book.publisher.trimmed.isEmpty {
-//            return false
-//        }
-//        if book.isbn.trimmed.isEmpty || !book.isbn.isDigits {
-//            return false
-//        }
-//        return true
-//    }
-
     func searchISBN(code: String) {
         book.isbn = code
 
@@ -146,22 +130,44 @@ extension BookViewModel {
         }
     }
 
-    func updateLocalBook() {
+    func updateLocalBook() -> CoreDataMessage {
+        if !book.validate() {
+            return CoreDataMessage.warning(msg: "书籍信息输入有误，请检查后重新输入")
+        }
+        // 判断是否已经存在相同 isbn 的书籍
+        let curBookEntitys = fetchBookByISBN(isbn: book.isbn)
+        if curBookEntitys.count > 1 {
+            return CoreDataMessage.warning(msg: "ISBN=\(book.isbn) 的书籍已存在")
+        }
+
         if !(localImage.size == .zero) {
             let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
             book.cover = imageFilepath
         }
 
-        guard let bookEntity = fetchBookByID(id: book.id) else { return }
+        guard let bookEntity = fetchBookByID(id: book.id) else {
+            return CoreDataMessage.success()
+        }
         book.trans2UpdateEntity(bookEntity: bookEntity)
         bookEntity.updateTime = Date()
 
         print("[BookVM] will update book: id=\(book.id), name=\(book.name), cover=\(book.cover)")
 
         PersistenceController.shared.save()
+        
+        return CoreDataMessage.success()
     }
 
-    func addLocalBook() {
+    func addLocalBook() -> CoreDataMessage {
+        if !book.validate() {
+            return CoreDataMessage.warning(msg: "书籍信息输入有误，请检查后重新输入")
+        }
+        // 判断是否已经存在相同 isbn 的书籍
+        let curBookEntitys = fetchBookByISBN(isbn: book.isbn)
+        if curBookEntitys.count != 0 {
+            return CoreDataMessage.warning(msg: "ISBN=\(book.isbn) 的书籍已存在，其书名为：《\(book.name)》")
+        }
+
         let imageFilepath = BookViewModel.saveImage2Local(localImage: localImage)
 
         book.cover = imageFilepath
@@ -174,6 +180,8 @@ extension BookViewModel {
         print("[BookVM] will add new book: id=\(book.id), name=\(book.name), cover=\(book.cover)")
 
         PersistenceController.shared.save()
+
+        return CoreDataMessage.success()
     }
 
     func deleteLocalBook() {
@@ -201,6 +209,21 @@ extension BookViewModel {
             print(err.localizedDescription)
         }
         return bookEntities.first
+    }
+
+    private func fetchBookByISBN(isbn: String) -> [BookEntity] {
+        let predicate = NSPredicate(format: "isbn == %@", isbn as CVarArg)
+
+        let fetchRequest: NSFetchRequest = BookEntity.fetchRequest()
+        fetchRequest.predicate = predicate
+
+        var bookEntities: [BookEntity] = []
+        do {
+            bookEntities = try getContext().fetch(fetchRequest)
+        } catch let err {
+            print(err.localizedDescription)
+        }
+        return bookEntities
     }
 
     static func saveImage2Local(localImage: UIImage) -> String {
@@ -238,32 +261,23 @@ extension BookViewModel {
             print(err.localizedDescription)
         }
     }
+}
 
-//    static func saveImage2Local(tmpFilePath: String) -> String {
-//        if tmpFilePath.isEmpty {
-//            return ""
-//        }
-//
-//        let BuildingPropertyDir = localImageSavingDir
-//        guard let image = UIImage(contentsOfFile: tmpFilePath) else {
-//            return ""
-//        }
-//
-//        // 创建图片文件目录
-//        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last!
-//        let dir = filePath+"/images/"+BuildingPropertyDir+"/"
-//        let filemanager = FileManager.default
-//        try! filemanager.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
-//        print("images dir: \(dir)")
-//
-//        // 提取图片文件名
-//        let components = tmpFilePath.components(separatedBy: "/")
-//        let newFilepath = dir+components.last!
-//        print("saving image path: \(newFilepath)")
-//
-//        // 写入新的目录
-//        let data: Data = image.pngData()!
-//        try! data.write(to: URL(fileURLWithPath: newFilepath))
-//        return newFilepath
-//    }
+struct CoreDataMessage {
+    var statusCode: Int = 0
+    var message: String = ""
+}
+
+extension CoreDataMessage {
+    func isOK() -> Bool {
+        return statusCode == 0
+    }
+
+    static func success() -> CoreDataMessage {
+        return CoreDataMessage(statusCode: 0, message: "")
+    }
+
+    static func warning(msg: String) -> CoreDataMessage {
+        return CoreDataMessage(statusCode: 1, message: msg)
+    }
 }

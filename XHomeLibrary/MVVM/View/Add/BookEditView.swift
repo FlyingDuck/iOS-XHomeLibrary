@@ -176,40 +176,11 @@ struct BookEditView: View {
         HStack {
             Button {
                 // TODO: 这里还需要区分是本地上传还是远端上传
-                
                 if self.editing {
-                    let editingAlert = SPAlertView(title: "保存中", message: "正在修改《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
-                    editingAlert.duration = .infinity
-                    editingAlert.present()
-                    
-                    self.bookVM.updateLocalBook()
-                    self.bookWatcher.setBookDetail(book: self.bookVM.book)
-                    self.bookWatcher.appendRecommandQueue(book: self.bookVM.book)
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self.localShelfVM.refresh()
-                        
-                        editingAlert.dismiss()
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    
+                    editBook()
                 } else {
-                    let addingAlert = SPAlertView(title: "保存中", message: "正在添加《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
-                    addingAlert.duration = .infinity
-                    addingAlert.present()
-                    
-                    self.bookVM.addLocalBook()
-                    self.bookWatcher.appendRecommandQueue(book: self.bookVM.book)
-                    self.bookWatcher.clear()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self.bookVM.reset()
-                        self.localShelfVM.refresh()
-                        
-                        addingAlert.dismiss()
-                    }
+                    addBook()
                 }
-                
             } label: {
                 HStack {
                     Image(systemName: "checkmark")
@@ -226,6 +197,61 @@ struct BookEditView: View {
             .disabled(!self.bookVM.book.validate())
         }
         .padding(.bottom, 30)
+    }
+    
+    func editBook() {
+        let editingAlert = SPAlertView(title: "保存中", message: "正在修改《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
+        editingAlert.duration = .infinity
+        editingAlert.present()
+        
+        let result = self.bookVM.updateLocalBook()
+        if result.isOK() {
+            self.bookWatcher.setBookDetail(book: self.bookVM.book)
+            self.bookWatcher.appendRecommandQueue(book: self.bookVM.book)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.localShelfVM.refresh()
+                
+                editingAlert.dismiss()
+                presentationMode.wrappedValue.dismiss()
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                editingAlert.dismiss()
+                
+                let warningAlert = SPAlertView(title: "保存失败", message: result.message, preset: .error)
+                warningAlert.duration = 3
+                warningAlert.present(haptic: .warning) {}
+                
+            }
+        }
+    }
+    
+    func addBook() {
+        let addingAlert = SPAlertView(title: "保存中", message: "正在添加《\(self.bookVM.book.name)》信息，请稍等", preset: .spinner)
+        addingAlert.duration = .infinity
+        addingAlert.present()
+        
+        let result = self.bookVM.addLocalBook()
+        if result.isOK() {
+            self.bookWatcher.appendRecommandQueue(book: self.bookVM.book)
+            self.bookWatcher.clear()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.bookVM.reset()
+                self.localShelfVM.refresh()
+                
+                addingAlert.dismiss()
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                addingAlert.dismiss()
+                
+                let warningAlert = SPAlertView(title: "保存失败", message: result.message, preset: .error)
+                warningAlert.duration = 3
+                warningAlert.present(haptic: .warning) {}
+            }
+        }
     }
 }
 
